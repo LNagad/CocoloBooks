@@ -1,0 +1,18 @@
+C:\Users\xde\Desktop\Programming\C#\CARRITO DE COMPRAS ASP.NET MVC\App\CursoMVCFrw\CapaEntidad\bin\Debug\CapaEntidad.dll
+C:\Users\xde\Desktop\Programming\C#\CARRITO DE COMPRAS ASP.NET MVC\App\CursoMVCFrw\CapaEntidad\bin\Debug\CapaEntidad.pdb
+C:\Users\xde\Desktop\Programming\C#\CARRITO DE COMPRAS ASP.NET MVC\App\CursoMVCFrw\CapaEntidad\obj\Debug\CapaEntidad.csproj.AssemblyReference.cache
+C:\Users\xde\Desktop\Programming\C#\CARRITO DE COMPRAS ASP.NET MVC\App\CursoMVCFrw\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
+C:\Users\xde\Desktop\Programming\C#\CARRITO DE COMPRAS ASP.NET MVC\App\CursoMVCFrw\CapaEntidad\obj\Debug\CapaEntidad.dll
+C:\Users\xde\Desktop\Programming\C#\CARRITO DE COMPRAS ASP.NET MVC\App\CursoMVCFrw\CapaEntidad\obj\Debug\CapaEntidad.pdb
+C:\Users\xde\Desktop\Programming\C#\CARRITO DE COMPRAS ASP.NET MVC\App\CursoMVCFrwYO\CapaEntidad\obj\Debug\CapaEntidad.csproj.AssemblyReference.cache
+C:\Users\xde\Desktop\Programming\C#\CARRITO DE COMPRAS ASP.NET MVC\App\CursoMVCFrwYO\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
+C:\Users\xde\Desktop\Programming\C#\CARRITO DE COMPRAS ASP.NET MVC\App\CursoMVCFrwYO\CapaEntidad\obj\Debug\CapaEntidad.dll
+C:\Users\xde\Desktop\Programming\C#\CARRITO DE COMPRAS ASP.NET MVC\App\CursoMVCFrwYO\CapaEntidad\obj\Debug\CapaEntidad.pdb
+C:\Users\xde\Desktop\Programming\C#\CARRITO DE COMPRAS ASP.NET MVC\App\CursoMVCFrwYO\CapaEntidad\bin\Debug\CapaEntidad.dll
+C:\Users\xde\Desktop\Programming\C#\CARRITO DE COMPRAS ASP.NET MVC\App\CursoMVCFrwYO\CapaEntidad\bin\Debug\CapaEntidad.pdb
+C:\Users\xde\Desktop\ITLA\PROG 2\CocoBoloBooks\Proyecto_FinalP2\App\CursoMVCFrwYO\CapaEntidad\bin\Debug\CapaEntidad.dll
+C:\Users\xde\Desktop\ITLA\PROG 2\CocoBoloBooks\Proyecto_FinalP2\App\CursoMVCFrwYO\CapaEntidad\bin\Debug\CapaEntidad.pdb
+C:\Users\xde\Desktop\ITLA\PROG 2\CocoBoloBooks\Proyecto_FinalP2\App\CursoMVCFrwYO\CapaEntidad\obj\Debug\CapaEntidad.csproj.AssemblyReference.cache
+C:\Users\xde\Desktop\ITLA\PROG 2\CocoBoloBooks\Proyecto_FinalP2\App\CursoMVCFrwYO\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
+C:\Users\xde\Desktop\ITLA\PROG 2\CocoBoloBooks\Proyecto_FinalP2\App\CursoMVCFrwYO\CapaEntidad\obj\Debug\CapaEntidad.dll
+C:\Users\xde\Desktop\ITLA\PROG 2\CocoBoloBooks\Proyecto_FinalP2\App\CursoMVCFrwYO\CapaEntidad\obj\Debug\CapaEntidad.pdb
