@@ -1,0 +1,378 @@
+﻿
+@{
+    ViewBag.Title = "Editoras";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <i class="fas fa-users me-1"></i> <h7>Lista de Editoras</h7>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <button type="button" class="btn btn-success" onclick="abrirModal()">Crear nuevo</button>
+            </div>
+        </div>
+        <hr />
+
+        <table id="tablaLibros" class="display cell-border " style="width: 100%;">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripcion</th>
+                    <th>Activo</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
+
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="FormModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white" style="width: 100%;">
+                <h5 class="modal-title" id="exampleModalLabel">Bibliografia</h5>
+
+            </div>
+            <div class="modal-body ">
+
+                @*es importante darle el valor 0 que significa que es un nuevo registro el que vamos a insertar
+                    y asi podemos validar eso*@
+
+                <input id="txtId" type="text" value="0" />
+
+                <div class="row g-1">
+                    <div class="col-sm-6">
+                        <label for="txtNombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="txtNombre">
+
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="txtDescripcion" class="form-label">Descripcion</label>
+                        <input type="text" class="form-control" id="txtDescripcion">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="cbxActivo" class="form-label">Activo</label>
+                        <select class="form-select" id="cbxActivo">
+                            <option value="1">Si</option>
+                            <option value="0">No</option>
+                        </select>
+
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <div id="mensajeError" class="alert alert-danger" role="alert">
+                                A simple danger alert—check it out!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="Guardar()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="ModalDetalles" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white" style="width: 100%;">
+                <h5 class="modal-title" id="exampleModalLabel">Bibliografia</h5>
+
+            </div>
+            <div class="modal-body ">
+
+                @*es importante darle el valor 0 que significa que es un nuevo registro el que vamos a insertar
+                    y asi podemos validar eso*@
+
+                <input id="txtIdD" readonly="readonly" type="text" value="0" />
+
+                <div class="row g-1">
+                    <div class="col-sm-6">
+                        <label for="txtNombreD" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" readonly="readonly" id="txtNombreD">
+
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="txtDescripcionD" class="form-label">Descripcion</label>
+                        <input type="text" class="form-control" readonly="readonly" id="txtDescripcionD">
+
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="cbxActivoD" class="form-label">Activo</label>
+                        <input type="text" class="form-control" readonly="readonly" id="cbxActivoD">
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts {
+    <script>
+
+        var tablaData;
+
+        var filaSeleccionada;
+
+        tablaData = $("#tablaLibros").DataTable
+        ({
+            responsive: true,
+            ordering: false,
+            "ajax": {
+                url: '@Url.Action("ListarEditoras", "Mantenimiento")',
+                type: "GET",
+                dataType: "json",
+            },
+            "columns":
+            [
+                { "data": "Name" },
+                { "data": "Description" },
+                { "data": "Estado", "render": function (valor) {
+                        if (valor == 1) {
+                            return '<span class="badge bg-success">Si</span>'
+                        } else {
+                            return '<span class="badge bg-danger">No</span>'
+                        }
+                    }
+                },
+            {"defaultContent": '<button type="button" class="btn btn-primary btn-sm btn-editar" ><i class="fas fa-pen me-1"></i></button>' +
+                '<button type="button" class="btn btn-danger ms-2 btn-sm btn-eliminar"><i class="fas fa-trash me-1"></i></button>' +
+                '<button type="button" class="btn btn-warning ms-2 btn-sm btn-info" > <i class= fas fa-info me-1" style="weight: bold;"></i> </button>',
+
+                "orderable": false,
+                "searchable": false,
+                "width": "120px",
+                "size": "20px"
+            }
+            ],
+            "language": {
+                "url": "https://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json"
+            }
+
+        });
+
+
+           ///bibliografias
+        jQuery.ajax({
+            url: '@Url.Action("ListarEditoras", "Mantenimiento")',
+            type: "GET",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+
+
+                console.log(data)
+            },
+            error: {
+
+            }
+        });
+
+
+        function abrirModal(json) {
+
+            if (json != null) {
+
+                $("#mensajeError").hide()
+                $("#txtId").val(json.Id)
+                $("#txtNombre").val(json.Name)
+                $("#txtDescripcion").val(json.Description)
+                $("#cbxActivo").val(json.Estado == true ? 1 : 0)
+
+            } else {
+                $("#mensajeError").hide()
+                $("#txtId").val(0)
+                $("#txtNombre").val("")
+                $("#txtDescripcion").val("")
+                $("#cbxActivo").val("")
+            }
+
+            $("#FormModal").modal("show");
+        }
+
+        function Guardar() {
+
+                var Editoras = {
+                    Id: $("#txtId").val(),
+                    Name: $("#txtNombre").val(),
+                    Description: $("#txtDescripcion").val(),
+                    Estado: $("#cbxActivo").val() == 1 ? true: false
+                }
+
+                jQuery.ajax({
+                    url: '@Url.Action("GuardarEditoras", "Mantenimiento")',
+                    type: "POST",
+                    data: JSON.stringify({ editora: Editoras }), // parametro del metodo GuardarUsuario que es usuariox y se carga con el objeto Usuario
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) { //la data es lo que resivimos del url que viene del controlador metodo GuardarUsuario
+                        console.log(data)
+                        //BIBLIOGRAFIA NUEVA
+                        debugger
+
+                        if (Editoras.Id == 0)
+                        { // si usuarioID = 0 es que se va a agregar
+
+                            if (data.resultado != 0) {
+
+                                tablaData.ajax.reload();
+
+                                $("#FormModal").modal("hide");
+
+                                Swal.fire('Todo nitido', '', 'success')
+
+                            } else {
+                                //error
+                                Swal.fire(
+                                    ''+data.mensaje,
+                                    '',
+                                    'error'
+                                )
+                            }
+                        }
+                        else
+                        { // editar
+
+                            if (data.resultado) {
+
+                                tablaData.row(filaSeleccionada).data(Editoras).draw(false);
+                                filaSeleccionada = null;
+                                $("#FormModal").modal("hide");
+
+                                Swal.fire('Todo nitido','','success')
+                            } else {
+                                $("#mensajeError").text(data.mensaje);
+                                $("#mensajeError").show();
+                            }
+                        }
+                    },
+                    error: function (error) {
+                        console.log(error)
+                    },
+                    beforeSend: function () {
+
+                    }
+                });
+
+                $("#FormModal").modal("hide");
+            }
+
+        function Eliminar(json) {
+
+             var Editora = {
+
+                 Id: json["Id"]
+
+            }
+
+            jQuery.ajax({
+                url: '@Url.Action("EliminarEditoras", "Mantenimiento")',
+                type: "POST",
+                data: JSON.stringify({ id: Editora.Id }), // parametro del metodo GuardarUsuario que es usuariox y se carga con el objeto Usuario
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) { //la data es lo que resivimos del url que viene del controlador metodo GuardarUsuario
+
+                    if (data.resultado) {
+
+                        tablaData.row(filaSeleccionada).draw(false);
+                        filaSeleccionada = null;
+
+                        Swal.fire(
+                            'Borrado',
+                            '',
+                            'success'
+                        )
+
+                    } else {
+                        $("#mensajeError").text(data.mensaje);
+
+                        $("#mensajeError").show();
+                        Swal.fire(
+                            'se jodio' + data.mensaje,
+                            '',
+                            'error'
+                        )
+                    }
+                 },
+                error: function (error) {
+                    console.log(error)
+                }
+            });
+
+            $("#FormModal").modal("hide");
+        }
+
+        function Detalles(json) {
+
+            console.log(json)
+
+            if (json != null) {
+                $("#mensajeError").hide()
+                $("#txtIdD").val(json.Id)
+                $("#txtNombreD").val(json.Name)
+                $("#txtDescripcionD").val(json.Description)
+                $("#cbxActivoD").val(json.Estado == true ? 'Si' : 'No')
+
+                $("#ModalDetalles").modal("show");
+            }
+        }
+        ////////////////////-----------------------------
+
+        $("#tablaLibros tbody").on("click", '.btn-editar', function () {
+
+            filaSeleccionada = $(this).closest("tr")
+
+            var data = tablaData.row(filaSeleccionada).data()
+
+            abrirModal(data)
+
+        })
+
+        $("#tablaLibros tbody").on("click", '.btn-eliminar', function () {
+
+            filaSeleccionada = $(this).closest("tr")
+
+            var data = tablaData.row(filaSeleccionada).data()
+
+            //console.log(tablaData.row(filaSeleccionada).data())
+
+            Eliminar(data)
+
+            tablaData.row(filaSeleccionada).remove();
+
+        })
+
+        $("#tablaLibros tbody").on("click", '.btn-info', function () {
+
+            filaSeleccionada = $(this).closest("tr")
+
+            var data = tablaData.row(filaSeleccionada).data()
+
+            Detalles(data)
+
+        })
+    </script>
+}
+
+
+

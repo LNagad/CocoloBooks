@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<!-- Header-->
+<header class="bg-dark py-5" style="margin-top: -10px">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">CocoBoloBooks</h1>
+            <p class="lead fw-normal text-white-50 mb-0">Todos tus libros en un solo lugar</p>
+        </div>
+    </div>
+</header>
+
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" id="contenedor">
+   
+
+        </div>
+    </div>
+</section>
+@section scripts {
+    <script>
+
+        ///bibliografias
+        jQuery.ajax({
+            url: '@Url.Action("ListarLibros", "Libros")',
+            type: "GET",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+
+            //$("<option>").attr({ "value": "0", "disabled": "true" }).text("Seleccionar").appendTo("#cbxBibliografia");
+
+                /*`<h1>${value.Nombre}</h1>`*/
+                $.each(data.data, function (index, value) {
+                    var miString = `<div class= "col mb-5" >`+
+                        `<div class="card h-100">` +
+                                    `<img class="card-img-top img_foto" style="width: 150px; " src="../Content/src/Books.png"  alt="..." />`+
+                                    `<div class="card-body p-4">`+
+                                    `<div class="text-center" >`+
+                                        `<h5 class="fw-bolder" > Nombre: ${value.Nombre}</h5 >`+
+                                            `Autores: ${value.Autores}` +
+                                            `<br>Editora: ${value.Editora}` +
+                                            `<br>Idioma: ${value.Idioma}` +
+                                            `</div>`+
+                                `</div >`+
+                                    `<!-- Product actions-->`+
+                                `<div class="card-footer p-4 pt-0 border-top-0 bg-transparent" >`+
+                                    `<div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Ver detalles</a></div>`+
+                                `</div >`
+
+
+
+                    console.log(value)
+                    console.log(miString)
+
+                    $("#contenedor").append(miString);
+                    //    '''
+                    
+                    })
+
+                
+            },
+            error: {
+
+            }
+            });
+
+    </script>
+    
+}

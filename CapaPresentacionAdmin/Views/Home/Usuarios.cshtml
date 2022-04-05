@@ -1,0 +1,589 @@
+﻿
+@{
+    ViewBag.Title = "Usuarios";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<ol class="breadcrumb mb-4 mt-4">
+    <li class="breadcrumb-item"><a href="index.html">Principal</a></li>
+    <li class="breadcrumb-item active">Usuarios</li>
+</ol>
+
+<div class="card">
+    <div class="card-header">
+        <i class="fas fa-users me-1"></i> <h7>Lista de Usuarios</h7>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <button type="button" class="btn btn-success" onclick="abrirModal()">Crear nuevo</button>
+            </div>
+        </div>
+        <hr />
+
+        <table id="tablaUsuarios" class="display cell-border " style="width: 100%;">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Correo</th>
+                    <th>TipoUsuario</th>
+                    <th>Activo</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
+
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="FormModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white" style="width: 100%;">
+                <h5 class="modal-title" id="exampleModalLabel">Usuario</h5>
+
+            </div>
+            <div class="modal-body ">
+
+                @*es importante darle el valor 0 que significa que es un nuevo registro el que vamos a insertar
+                    y asi podemos validar eso*@
+
+                <input id="txtId" type="text" value="0" />
+
+                <div class="row g-2">
+
+                    <div class="col-sm-6">
+                        <label for="txtNombre" class="form-label">Nombres</label>
+                        <input type="text" class="form-control" id="txtNombre">
+
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="txtApellido" class="form-label">Apellidos</label>
+                        <input type="text" class="form-control" id="txtApellido">
+
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="txtCorreo" class="form-label">Correo</label>
+                        <input type="text" class="form-control" id="txtCorreo">
+
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="txtClave" id="lblClave" class="form-label">Clave</label>
+                        <input type="text" class="form-control" id="txtClave">
+
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="cbxActivo" class="form-label">Tipo de usuario</label>
+                        <select class="form-select" id="cbxUsuario">
+                            <option value="1">Usuario</option>
+                            <option value="2">Admin</option>
+                        </select>
+
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="txtCedula" class="form-label">Cedula</label>
+                        <input type="text" class="form-control" id="txtCedula">
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="txtCarnet" class="form-label">No. Carnet</label>
+                        <input type="text" class="form-control" id="txtCarnet">
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="cbxPersona" class="form-label">Tipo de Persona</label>
+                        <select class="form-select" id="cbxPersona">
+                            <option value="1">Juridica</option>
+                            <option value="2">Fisica</option>
+                        </select>
+
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="cbxActivo" class="form-label">Activo</label>
+                        <select class="form-select" id="cbxActivo">
+                            <option value="1">Si</option>
+                            <option value="0">No</option>
+                        </select>
+
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <div id="mensajeError" class="alert alert-danger" role="alert">
+                                A simple danger alert—check it out!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="Guardar()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Detalles -->
+<div class="modal fade" id="ModalDetalles" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white" style="width: 100%;">
+                <h5 class="modal-title" id="exampleModalLabel">Usuario</h5>
+
+            </div>
+            <div class="modal-body ">
+
+                @*es importante darle el valor 0 que significa que es un nuevo registro el que vamos a insertar
+                    y asi podemos validar eso*@
+
+
+                <input id="txtId" type="text" value="0" />
+
+                <div class="row g-2">
+
+                    <div class="col-sm-6">
+                        <label for="txtNombreD" class="form-label">Nombres</label>
+                        <input type="text" class="form-control" id="txtNombreD" readonly="readonly">
+
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="txtApellidoD" class="form-label">Apellidos</label>
+                        <input type="text" class="form-control" id="txtApellidoD" readonly="readonly">
+
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="txtCorreoD" class="form-label">Correo</label>
+                        <input type="text" class="form-control" id="txtCorreoD" readonly="readonly">
+
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <label for="cbxUsuarioD" class="form-label">Tipo de usuario</label>
+                        
+                        <input type="text" class="form-control" id="cbxUsuarioD" readonly="readonly">
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="txtCedulaD" class="form-label">Cedula</label>
+                        <input type="text" class="form-control" id="txtCedulaD" readonly="readonly">
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="txtCarnetD" class="form-label">No. Carnet</label>
+                        <input type="text" class="form-control" id="txtCarnetD" readonly="readonly">
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="cbxPersonaD" class="form-label">Tipo de Persona</label>
+                        
+                        <input type="text" class="form-control" id="cbxPersonaD" readonly="readonly">
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="cbxActivoD" class="form-label">Activo</label>
+
+                        <input type="text" class="form-control" id="cbxActivoD" readonly="readonly">
+                    </div>
+                </div>
+            </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section scripts {
+    <script>
+
+        var tablaData;
+
+        var filaSeleccionada;
+
+        @*jQuery.ajax({
+            url: '@Url.Action("ListarUsuarios", "Home")',
+            type: "GET",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+        /*        debugger; // para detener*/
+                var texto1 = "hola soy el texto 1"
+
+                console.log(data)
+            }
+        })*@
+
+        tablaData = $("#tablaUsuarios").DataTable
+        ({
+            responsive: true,
+            ordering: false,
+            "ajax": {
+                url: '@Url.Action("ListarUsuarios", "Home")',
+                type: "GET",
+                dataType: "json",
+            },
+            "columns":
+            [
+                {"data": "Nombre"},
+                { "data": "Apellido"},
+                { "data": "Correo" },
+                {"data": "TipoUsuario", "render": function (valor) {
+                    if (valor == 1) {
+                        return '<span style="margin-left: 25px;" class="badge bg-primary">Usuario</span>'
+                    } else if (valor == 2) {
+                        return '<span style="margin-left: 25px;" class="badge bg-danger">Admin</span>'
+                    } 
+                }
+                },
+                { "data": "Estado", "render": function (valor) {
+                        if (valor) {
+                            return '<span style="margin-left: 20px;" class="badge bg-success">Si</span>'
+                        } else {
+                            return '<span style="margin-left: 20px;" class="badge bg-danger">No</span>'
+                        }
+                    }
+                },
+                {"defaultContent": '<button type="button" class="btn btn-primary btn-sm btn-editar" ><i class="fas fa-pen me-1"></i></button>' +
+                        '<button type="button" class="btn btn-danger ms-2 btn-sm btn-eliminar"><i class="fas fa-trash me-1"></i></button>' +
+                        '<button type="button" class="btn btn-warning ms-2 btn-sm btn-info" > <i class= fas fa-info me-1" style="weight: bold;"></i> </button>',
+                "orderable": false,
+                "searchable": false,
+                "width": "105px",
+                "size": "20px"
+            }
+            ],
+            "language": {
+                "url": "https://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json"
+            }
+
+        });
+
+
+
+         @*jQuery.ajax({
+            url: '@Url.Action("ListarUsuarios", "Home")',
+            type: "GET",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                /*        debugger; // para detener*/
+
+                console.log(data)
+            }
+        })*@
+
+
+
+        function abrirModal(json) {
+            console.log(json)
+
+            if (json != null) {
+
+                $("#mensajeError").hide()
+                $("#txtId").val(json.Id)
+                $("#txtNombre").val(json.Nombre)
+                $("#txtApellido").val(json.Apellido)
+                $("#txtCorreo").val(json.Correo)
+                $("#txtClave").hide()
+                $("#lblClave").hide()
+                $("#txtCedula").val(json.Cedula)
+                $("#txtCarnet").val(json.NCarnet)
+                $("#cbxPersona").val(json.TipoPersona)
+                $("#cbxUsuario").val(json.TipoUsuario) /// ponerle el valro a esto
+                $("#cbxActivo").val(json.Estado == true ? 1 : 0)
+
+
+            } else {
+                $("#lblClave").show()
+                $("#txtClave").show()
+                $("#txtId").val(0)
+                $("#txtNombre").val("")
+                $("#txtApellido").val("")
+                $("#txtCorreo").val("")
+                $("#txtCarnet").val("")
+                $("#txtCedula").val("")
+                $("#cbxPersona").val("")
+                $("#cbxUsuario").val("") /// ponerle el valro a esto
+                $("#cbxActivo").val("")
+                $("#mensajeError").hide()
+            }
+
+            $("#FormModal").modal("show");
+        }
+
+
+        function validar(texto) {
+
+            for (x in texto) {
+
+                //alert(texto[x])
+
+                if ("@@" == texto[x]) {
+                    return true;
+                }
+            }
+
+        }
+
+        function Guardar() {
+
+            if (validar($("#txtCorreo").val())) {
+
+                console.log('correo con arroba')
+
+                var Usuario = {
+
+                    /*.find(":selected").text()*/
+
+                    Id: $("#txtId").val(),
+                    Nombre: $("#txtNombre").val(),
+                    Apellido: $("#txtApellido").val(),
+                    Correo: $("#txtCorreo").val(),
+                    Clave: $("#txtClave"),
+                    TipoUsuario: $("#cbxUsuario").val(),
+                    Cedula: $("#txtCedula").val(),
+                    NCarnet: $("#txtCarnet").val(),
+                    TipoPersona: $("#cbxPersona").val(),
+                    Estado: $("#cbxActivo").val() == 1 ? true : false
+
+                }
+
+
+                jQuery.ajax({
+                    url: '@Url.Action("GuardarUsuario", "Home")',
+                    type: "POST",
+                    //JSON.stringify( {usuario: Usuario } ) formatea el json y debemos pasarle el objeto y de donde
+                    // los valores en este caso Usuario que es el objeto de arriba y usuario que es el parametro del controlador
+                    data: JSON.stringify({ usuario: Usuario }), // parametro del metodo GuardarUsuario que es usuariox y se carga con el objeto Usuario
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) { //la data es lo que resivimos del url que viene del controlador metodo GuardarUsuario
+
+                        /*debugger;*/
+
+                        //USUARIO NUEVO
+                        if (Usuario.Id == 0)
+                        { // si usuarioID = 0 es que se va a agregar
+
+                            if (data.resultado != 0) {
+
+                                /*Usuario.Ud = data.resultado;*/
+                                tablaData.ajax.reload();
+                                /*$('#example').DataTable().ajax.reload()*/
+                                $("#FormModal").modal("hide");
+
+                                Swal.fire(
+                                    ''+data.mensaje,
+                                    '',
+                                    'success'
+                                )
+
+                            } else {
+                                //$("#mensajeError").text(data.mensaje);
+                                //$("#mensajeError").show();
+
+                                Swal.fire(
+                                    ''+data.mensaje,
+                                    '',
+                                    'error'
+                                )
+                            }
+                        }
+                        else
+                        { // editar
+
+                            if (data.resultado) {
+
+                                /*tablaData.row(filaSeleccionada).data(Usuario).draw(false);*/
+                                tablaData.ajax.reload();
+                                filaSeleccionada = null;
+                                $("#FormModal").modal("hide");
+
+                                Swal.fire(
+                                    ''+data.mensaje,
+                                    '',
+                                    'success'
+                                )
+
+                            } else {
+                                $("#mensajeError").text(data.mensaje);
+
+                                $("#mensajeError").show();
+
+                            }
+                        }
+                    },
+                    error: function (error) {
+                        console.log(error)
+                    },
+                    beforeSend: function () {
+
+                    }
+                });
+
+                $("#FormModal").modal("hide");
+            }
+            else {
+                Swal.fire({
+
+                    title: 'Correo no bien escrito',
+                    text: 'Usted si es bruto hermano, escriba eso bien',
+                    icon: 'error',
+                    confirmButtonColor: '#157347'
+                })
+                console.log('correo sin arroba')
+
+            }
+        }
+
+        function Eliminar(json) {
+
+             var Usuario = {
+
+                 Id: json["Id"]
+
+            }
+
+            jQuery.ajax({
+                url: '@Url.Action("EliminarUsuario", "Home")',
+                type: "POST",
+                //JSON.stringify( {usuario: Usuario } ) formatea el json y debemos pasarle el objeto y de donde
+                // los valores en este caso Usuario que es el objeto de arriba y usuario que es el parametro del controlador
+                data: JSON.stringify({ usuario: Usuario }), // parametro del metodo GuardarUsuario que es usuariox y se carga con el objeto Usuario
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) { //la data es lo que resivimos del url que viene del controlador metodo GuardarUsuario
+
+                    /*debugger;*/
+
+                    //USUARIO NUEVO
+                    if (Usuario.Id == 0)
+                    { // si usuarioID = 0 es que se va a agregar
+
+                        Swal.fire(
+                            ''+data.mensaje,
+                            '',
+                            'error'
+                        )
+                    }
+                    else
+                    { // editar
+
+                        if (data.resultado) {
+
+                            tablaData.ajax.reload()
+
+                            /*tablaData.row(filaSeleccionada).draw(false);*/
+                            filaSeleccionada = null;
+
+                            Swal.fire(
+                                ''+data.mensaje,
+                                '',
+                                'success'
+                            )
+
+                        } else {
+                            $("#mensajeError").text(data.mensaje);
+
+                            $("#mensajeError").show();
+                            Swal.fire(
+                                'se jodio' + data.mensaje,
+                                '',
+                                'error'
+                            )
+                        }
+                    }
+                },
+                error: function (error) {
+                    console.log(error)
+                },
+                beforeSend: function () {
+
+                }
+            });
+
+            $("#FormModal").modal("hide");
+        }
+
+
+        function Detalles(json) {
+
+            console.log(json)
+            if (json != null) {
+                /*.find(":selected").text()*/
+                
+                $("#txtIdD").val(json.Id)
+                $("#txtNombreD").val(json.Nombre)
+                $("#txtApellidoD").val(json.Apellido)
+                $("#txtCorreoD").val(json.Correo)
+                $("#txtCedulaD").val(json.Cedula)
+                $("#txtCarnetD").val(json.NCarnet)
+                $("#cbxPersonaD").val(json.TipoPersona == 1 ? "Juridica" : "Fisica")
+                $("#cbxUsuarioD").val(json.TipoUsuario == 1 ? "Usuario" : "Admin") /// ponerle el valro a esto
+                $("#cbxActivoD").val(json.Estado == true ? "Activo" : "Inactivo")
+
+                $("#ModalDetalles").modal("show");
+            }
+        }
+
+
+        ////////////////////-----------------------------
+
+        $("#tablaUsuarios tbody").on("click", '.btn-editar', function () {
+
+            filaSeleccionada = $(this).closest("tr")
+
+            var data = tablaData.row(filaSeleccionada).data()
+
+            console.log(tablaData.row(filaSeleccionada).data())
+
+            abrirModal(data)
+
+        })
+
+        $("#tablaUsuarios tbody").on("click", '.btn-eliminar', function () {
+
+            filaSeleccionada = $(this).closest("tr")
+
+            var data = tablaData.row(filaSeleccionada).data()
+
+            //console.log(tablaData.row(filaSeleccionada).data())
+
+            Eliminar(data)
+
+            tablaData.row(filaSeleccionada).remove();
+
+        })
+
+        $("#tablaUsuarios tbody").on("click", '.btn-info', function () {
+
+            filaSeleccionada = $(this).closest("tr")
+
+            var data = tablaData.row(filaSeleccionada).data()
+            console.log(data)
+
+            Detalles(data)
+
+            //console.log(tablaData.row(filaSeleccionada).data())
+
+            /*Eliminar(data)*/
+
+            /*tablaData.row(filaSeleccionada).remove();*/
+
+        })
+    </script>
+}
