@@ -31,3 +31,14 @@ C:\Users\xde\Desktop\ITLA\PROG 2\CocoBoloBooks\Proyecto_FinalP2\App\CursoMVCFrwY
 C:\Users\xde\Desktop\ITLA\PROG 2\CocoBoloBooks\Proyecto_FinalP2\App\CursoMVCFrwYO\CapaNegocio\bin\Debug\CapaDatos.pdb
 C:\Users\xde\Desktop\ITLA\PROG 2\CocoBoloBooks\Proyecto_FinalP2\App\CursoMVCFrwYO\CapaNegocio\bin\Debug\CapaEntidad.pdb
 C:\Users\xde\Desktop\ITLA\PROG 2\CocoBoloBooks\Proyecto_FinalP2\App\CursoMVCFrwYO\CapaNegocio\obj\Debug\CapaNegocio.csproj.CopyComplete
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaNegocio\bin\Debug\CapaNegocio.dll
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaNegocio\bin\Debug\CapaNegocio.pdb
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaNegocio\bin\Debug\CapaDatos.dll
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaNegocio\bin\Debug\CapaEntidad.dll
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaNegocio\bin\Debug\CapaDatos.pdb
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaNegocio\bin\Debug\CapaEntidad.pdb
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaNegocio\obj\Debug\CapaNegocio.csproj.AssemblyReference.cache
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaNegocio\obj\Debug\CapaNegocio.csproj.CoreCompileInputs.cache
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaNegocio\obj\Debug\CapaNegocio.csproj.CopyComplete
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaNegocio\obj\Debug\CapaNegocio.dll
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaNegocio\obj\Debug\CapaNegocio.pdb

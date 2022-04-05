@@ -16,3 +16,9 @@ C:\Users\xde\Desktop\ITLA\PROG 2\CocoBoloBooks\Proyecto_FinalP2\App\CursoMVCFrwY
 C:\Users\xde\Desktop\ITLA\PROG 2\CocoBoloBooks\Proyecto_FinalP2\App\CursoMVCFrwYO\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
 C:\Users\xde\Desktop\ITLA\PROG 2\CocoBoloBooks\Proyecto_FinalP2\App\CursoMVCFrwYO\CapaEntidad\obj\Debug\CapaEntidad.dll
 C:\Users\xde\Desktop\ITLA\PROG 2\CocoBoloBooks\Proyecto_FinalP2\App\CursoMVCFrwYO\CapaEntidad\obj\Debug\CapaEntidad.pdb
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaEntidad\bin\Debug\CapaEntidad.dll
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaEntidad\bin\Debug\CapaEntidad.pdb
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaEntidad\obj\Debug\CapaEntidad.csproj.AssemblyReference.cache
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaEntidad\obj\Debug\CapaEntidad.dll
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaEntidad\obj\Debug\CapaEntidad.pdb
