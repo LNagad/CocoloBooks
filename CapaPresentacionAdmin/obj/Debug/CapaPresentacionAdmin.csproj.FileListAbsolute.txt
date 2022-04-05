@@ -423,3 +423,39 @@ C:\Users\xde\Desktop\ITLA\PROG 2\POPOLEO\CocoBoloBooks\Proyecto_FinalP2\App\Curs
 C:\Users\xde\Desktop\ITLA\PROG 2\POPOLEO\CocoBoloBooks\Proyecto_FinalP2\App\CursoMVCFrwYO\CapaPresentacionAdmin\obj\Debug\CapaPresentacionAdmin.csproj.CopyComplete
 C:\Users\xde\Desktop\ITLA\PROG 2\POPOLEO\CocoBoloBooks\Proyecto_FinalP2\App\CursoMVCFrwYO\CapaPresentacionAdmin\obj\Debug\CapaPresentacionAdmin.dll
 C:\Users\xde\Desktop\ITLA\PROG 2\POPOLEO\CocoBoloBooks\Proyecto_FinalP2\App\CursoMVCFrwYO\CapaPresentacionAdmin\obj\Debug\CapaPresentacionAdmin.pdb
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaPresentacionAdmin\bin\CapaPresentacionAdmin.dll.config
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaPresentacionAdmin\bin\CapaPresentacionAdmin.dll
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaPresentacionAdmin\bin\CapaPresentacionAdmin.pdb
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaPresentacionAdmin\bin\Antlr3.Runtime.dll
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaPresentacionAdmin\bin\CapaEntidad.dll
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaPresentacionAdmin\bin\CapaNegocio.dll
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaPresentacionAdmin\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaPresentacionAdmin\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaPresentacionAdmin\bin\Newtonsoft.Json.dll
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaPresentacionAdmin\bin\System.Web.Helpers.dll
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaPresentacionAdmin\bin\System.Web.Mvc.dll
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaPresentacionAdmin\bin\System.Web.Optimization.dll
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaPresentacionAdmin\bin\System.Web.Razor.dll
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaPresentacionAdmin\bin\System.Web.WebPages.Deployment.dll
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaPresentacionAdmin\bin\System.Web.WebPages.dll
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaPresentacionAdmin\bin\System.Web.WebPages.Razor.dll
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaPresentacionAdmin\bin\WebGrease.dll
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaPresentacionAdmin\bin\CapaDatos.dll
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaPresentacionAdmin\bin\CapaEntidad.pdb
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaPresentacionAdmin\bin\CapaNegocio.pdb
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaPresentacionAdmin\bin\System.Web.Helpers.xml
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaPresentacionAdmin\bin\System.Web.Mvc.xml
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaPresentacionAdmin\bin\System.Web.Optimization.xml
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaPresentacionAdmin\bin\System.Web.Razor.xml
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaPresentacionAdmin\bin\System.Web.WebPages.xml
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaPresentacionAdmin\bin\System.Web.WebPages.Deployment.xml
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaPresentacionAdmin\bin\System.Web.WebPages.Razor.xml
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaPresentacionAdmin\bin\Newtonsoft.Json.xml
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaPresentacionAdmin\bin\Antlr3.Runtime.pdb
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaPresentacionAdmin\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaPresentacionAdmin\bin\CapaDatos.pdb
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaPresentacionAdmin\obj\Debug\CapaPresentacionAdmin.csproj.AssemblyReference.cache
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaPresentacionAdmin\obj\Debug\CapaPresentacionAdmin.csproj.CoreCompileInputs.cache
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaPresentacionAdmin\obj\Debug\CapaPresentacionAdmin.csproj.CopyComplete
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaPresentacionAdmin\obj\Debug\CapaPresentacionAdmin.dll
+C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaPresentacionAdmin\obj\Debug\CapaPresentacionAdmin.pdb
