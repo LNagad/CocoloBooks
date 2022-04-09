@@ -14,7 +14,7 @@ namespace CapaPresentacionAdmin.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult DetalleLibro()
         {
             return View();
         }
