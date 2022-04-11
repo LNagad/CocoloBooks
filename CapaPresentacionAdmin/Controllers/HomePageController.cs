@@ -38,7 +38,7 @@ namespace CapaPresentacionAdmin.Controllers
         {
             
             ViewBag.Id = CapaEntidad.LibroDetalleSelect.idLibro;
-            CapaEntidad.LibroDetalleSelect.idLibro = 0;
+            
             return View();
         }
     }

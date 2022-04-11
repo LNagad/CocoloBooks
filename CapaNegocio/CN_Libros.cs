@@ -19,6 +19,13 @@ namespace CapaNegocio
             return objCapaDato.Listar();
         }
 
+        public List<Libros> ListarSelected()
+        {
+            int id = LibroDetalleSelect.idLibro;
+            CapaEntidad.LibroDetalleSelect.idLibro = 0;
+            return objCapaDato.ListarSelected(id);
+        }
+
         public int Registrar(Libros libro, out string Mensaje)
         {
             Mensaje = String.Empty;
