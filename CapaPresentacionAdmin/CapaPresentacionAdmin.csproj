@@ -491,9 +491,9 @@
     <Content Include="Views\Mantenimiento\Autores.cshtml" />
     <Content Include="Views\Shared\_Layout2.cshtml" />
     <Content Include="Views\HomePage\Index.cshtml" />
-    <Content Include="Views\HomePage\About.cshtml" />
     <Content Include="Views\Mantenimiento\Editoras.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\HomePage\DetalleLibro.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

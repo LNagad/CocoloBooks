@@ -19,6 +19,7 @@ aspnet-mvc.gitignore
 ###################
 # compiled source #
 ###################
+[Bb]in/
 *.com
 *.class
 *.dll

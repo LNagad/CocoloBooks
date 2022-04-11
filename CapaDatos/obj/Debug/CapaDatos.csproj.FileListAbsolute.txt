@@ -34,3 +34,12 @@ C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaDa
 C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaDatos\obj\Debug\CapaDatos.csproj.CopyComplete
 C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaDatos\obj\Debug\CapaDatos.dll
 C:\Users\alany\OneDrive\Desktop\CocoBolo\CocoBoloBooks - Copy\CocoloBooks\CapaDatos\obj\Debug\CapaDatos.pdb
+C:\Users\xde\Desktop\ITLA\PROG 2\POPOLEO\CocoBoloBooks\Proyecto_FinalP2\App\CursoMVCFrwYO\CapaDatos\bin\Debug\CapaDatos.dll
+C:\Users\xde\Desktop\ITLA\PROG 2\POPOLEO\CocoBoloBooks\Proyecto_FinalP2\App\CursoMVCFrwYO\CapaDatos\bin\Debug\CapaDatos.pdb
+C:\Users\xde\Desktop\ITLA\PROG 2\POPOLEO\CocoBoloBooks\Proyecto_FinalP2\App\CursoMVCFrwYO\CapaDatos\bin\Debug\CapaEntidad.dll
+C:\Users\xde\Desktop\ITLA\PROG 2\POPOLEO\CocoBoloBooks\Proyecto_FinalP2\App\CursoMVCFrwYO\CapaDatos\bin\Debug\CapaEntidad.pdb
+C:\Users\xde\Desktop\ITLA\PROG 2\POPOLEO\CocoBoloBooks\Proyecto_FinalP2\App\CursoMVCFrwYO\CapaDatos\obj\Debug\CapaDatos.csproj.AssemblyReference.cache
+C:\Users\xde\Desktop\ITLA\PROG 2\POPOLEO\CocoBoloBooks\Proyecto_FinalP2\App\CursoMVCFrwYO\CapaDatos\obj\Debug\CapaDatos.csproj.CoreCompileInputs.cache
+C:\Users\xde\Desktop\ITLA\PROG 2\POPOLEO\CocoBoloBooks\Proyecto_FinalP2\App\CursoMVCFrwYO\CapaDatos\obj\Debug\CapaDatos.csproj.CopyComplete
+C:\Users\xde\Desktop\ITLA\PROG 2\POPOLEO\CocoBoloBooks\Proyecto_FinalP2\App\CursoMVCFrwYO\CapaDatos\obj\Debug\CapaDatos.dll
+C:\Users\xde\Desktop\ITLA\PROG 2\POPOLEO\CocoBoloBooks\Proyecto_FinalP2\App\CursoMVCFrwYO\CapaDatos\obj\Debug\CapaDatos.pdb
