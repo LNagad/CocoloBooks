@@ -66,6 +66,61 @@ namespace CapaDatos
         }
 
 
+        public List<Libros> ListarSelected(int id)
+        {
+            List<Libros> lista = new List<Libros>();
+
+            try
+            {
+                using (SqlConnection oConexion = new SqlConnection(Conexion.cn))
+                {
+                    string query = $"select * from vw_libros WHERE Id = {id}";
+                    SqlCommand cmd = new SqlCommand(query, oConexion);
+                    cmd.CommandType = CommandType.Text;
+
+                    oConexion.Open();
+
+                    using (SqlDataReader DR = cmd.ExecuteReader())
+                    {
+                        while (DR.Read())
+                        {
+                            lista.Add(
+
+                                new Libros()
+                                {
+                                    Id = Convert.ToInt32(DR["Id"]),
+                                    SignaturaTopografica = DR["SignaturaTopografica"].ToString(),
+                                    Nombre = DR["Nombre"].ToString(),
+                                    ISB = Convert.ToDecimal(DR["ISB"]),
+                                    BibliografiaId = Convert.ToInt32(DR["BibliografiaId"]),
+                                    Bibliografia = DR["Bibliografia"].ToString(),
+                                    Autores = DR["Autores"].ToString(),
+                                    Descripcion = DR["Descripcion"].ToString(),
+                                    Ciencia = DR["Ciencia"].ToString(),
+                                    Editora = DR["Editora"].ToString(),
+                                    Estado = Convert.ToBoolean(DR["Estado"]),
+                                    Idioma = DR["Idioma"].ToString(),
+                                    year = DR["year"].ToString(),
+
+                                }
+
+                                ); ;
+                        }
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                lista = new List<Libros>();
+            }
+            return lista;
+        }
+
+
+
         public int Registrar(Libros libro, out string Mensaje)
         {
             int idAutoGenerado = 0;
