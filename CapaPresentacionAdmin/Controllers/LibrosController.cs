@@ -28,6 +28,18 @@ namespace CapaPresentacionAdmin.Controllers
 
         }
 
+        [HttpGet]
+        public JsonResult ListarLibroSeleccionado()
+        {
+            List<Libros> oLista = new List<Libros>();
+
+            oLista = new CN_Libros().ListarSelected();
+
+
+            return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
+
+        }
+
 
         [HttpPost]
         public JsonResult GuardarLibro(Libros libro)
