@@ -1,24 +1,11 @@
-Skip to content
- 
-Search…
-All gists
-Back to GitHub
-@LNagad 
-@indyfromoz
-indyfromoz/aspnet-mvc.gitignore
-Created 10 years ago • Report abuse
-166
-46
- Code
- Revisions 2
- Stars 166
- Forks 46
-<script src="https://gist.github.com/indyfromoz/4109296.js"></script>
+
 .Gitignore for ASP.NET MVC
 aspnet-mvc.gitignore
 ###################
 # compiled source #
 ###################
+/bin
+/.vs
 [Bb]in/
 *.com
 *.class
