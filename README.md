@@ -14,9 +14,10 @@
 ## PROYECTO DESARROLLADO 🛠️
 
 1. Desarrollado con el lenguaje de programación C#.
-2. EntityFramework & ASP.NET CORE.
-3. Patrón de Arquitectura MVC (Modelo - Vista - Controlador).
-4. Base de Datos (SQL Server).
+2. Usando jQuery para el manejo de peticiones al backend con ajax
+3. ADO.NET & ASP.NET FRAMEWORK.
+4. Patrón de Arquitectura MVC (Modelo - Vista - Controlador).
+5. Base de Datos (SQL Server).
 
 ## FUNCIONES DEL PROYECTO
 
