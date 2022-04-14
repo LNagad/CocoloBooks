@@ -80,42 +80,42 @@ tablaData = $("#tablaUsuarios").DataTable
 
 
 
-    function abrirModal(json) {
-        console.log(json)
+function abrirModal(json) {
+    console.log(json)
 
-        if (json != null) {
+    if (json != null) {
 
-            $("#mensajeError").hide()
-            $("#txtId").val(json.Id)
-            $("#txtNombre").val(json.Nombre)
-            $("#txtApellido").val(json.Apellido)
-            $("#txtCorreo").val(json.Correo)
-            $("#txtClave").hide()
-            $("#lblClave").hide()
-            $("#txtCedula").val(json.Cedula)
-            $("#txtCarnet").val(json.NCarnet)
-            $("#cbxPersona").val(json.TipoPersona)
-            $("#cbxUsuario").val(json.TipoUsuario) /// ponerle el valro a esto
-            $("#cbxActivo").val(json.Estado == true ? 1 : 0)
+        $("#mensajeError").hide()
+        $("#txtId").val(json.Id)
+        $("#txtNombre").val(json.Nombre)
+        $("#txtApellido").val(json.Apellido)
+        $("#txtCorreo").val(json.Correo)
+        $("#txtClave").hide()
+        $("#lblClave").hide()
+        $("#txtCedula").val(json.Cedula)
+        $("#txtCarnet").val(json.NCarnet)
+        $("#cbxPersona").val(json.TipoPersona)
+        $("#cbxUsuario").val(json.TipoUsuario) /// ponerle el valro a esto
+        $("#cbxActivo").val(json.Estado == true ? 1 : 0)
 
 
-        } else {
-            $("#lblClave").show()
-            $("#txtClave").show()
-            $("#txtId").val(0)
-            $("#txtNombre").val("")
-            $("#txtApellido").val("")
-            $("#txtCorreo").val("")
-            $("#txtCarnet").val("")
-            $("#txtCedula").val("")
-            $("#cbxPersona").val("")
-            $("#cbxUsuario").val("") /// ponerle el valro a esto
-            $("#cbxActivo").val("")
-            $("#mensajeError").hide()
-        }
-
-        $("#FormModal").modal("show");
+    } else {
+        $("#lblClave").show()
+        $("#txtClave").show()
+        $("#txtId").val(0)
+        $("#txtNombre").val("")
+        $("#txtApellido").val("")
+        $("#txtCorreo").val("")
+        $("#txtCarnet").val("")
+        $("#txtCedula").val("")
+        $("#cbxPersona").val("")
+        $("#cbxUsuario").val("") /// ponerle el valro a esto
+        $("#cbxActivo").val("")
+        $("#mensajeError").hide()
     }
+
+    $("#FormModal").modal("show");
+}
 
 
 function validar(texto) {

@@ -1,0 +1,6 @@
+hay que cambiar todas las decclaraciones de variables var en los archivos de mantenimiento de
+js y usar 
+
+const o let
+
+esto porque var tiene hoisting y no queremos que nos metan un dedo
