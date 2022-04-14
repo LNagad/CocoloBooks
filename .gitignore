@@ -6,6 +6,7 @@ aspnet-mvc.gitignore
 ###################
 /bin
 /.vs
+/obj
 [Bb]in/
 *.com
 *.class
