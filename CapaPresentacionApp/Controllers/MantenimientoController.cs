@@ -10,7 +10,9 @@ namespace CapaPresentacionAdmin.Controllers
 {
     public class MantenimientoController : Controller
     {
-        // GET: Mantenimiento
+        //+++++++++++++++++++++++++++++ VIEWS ++++++++++++++++++
+        #region VIEWS
+
         public ActionResult Bibliografias()
         {
             return View();
@@ -25,7 +27,7 @@ namespace CapaPresentacionAdmin.Controllers
         {
             return View();
         }
-
+        #endregion
 
 
         //+++++++++++++++++++++++++++++ BIBLIOGRAFIA ++++++++++++++++++
@@ -76,7 +78,6 @@ namespace CapaPresentacionAdmin.Controllers
         #endregion
 
 
-
         //+++++++++++++++++++++++++++++ AUTORES ++++++++++++++++++
         #region AUTORES
 
@@ -94,8 +95,8 @@ namespace CapaPresentacionAdmin.Controllers
         #endregion
 
 
-        #region AUTORES
         //+++++++++++++++++++++++++++++ EDITORAS ++++++++++++++++++
+        #region EDITORAS
 
         [HttpGet]
         public JsonResult ListarEditoras()

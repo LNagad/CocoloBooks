@@ -58,7 +58,7 @@ namespace CapaDatos
 
                 using (SqlConnection oConexion = new SqlConnection(Conexion.cn))
                 {
-                    SqlCommand cmd = new SqlCommand($"Insert Editoras(Name,Description, Estado) values ('{autores.Name}','{autores.Description}', '{autores.Estado}' )", oConexion);
+                    SqlCommand cmd = new SqlCommand($"Insert Editoras(Name,Description, Estado, paisOrigen, IdiomaNativo) values ('{autores.Name}','{autores.Description}','{autores.paisOrigen}','{autores.IdiomaNativo}','{autores.Estado}' )", oConexion);
                     cmd.CommandType = CommandType.Text;
 
                     oConexion.Open();
@@ -90,10 +90,12 @@ namespace CapaDatos
                 using (SqlConnection oConexion = new SqlConnection(Conexion.cn))
                 {
                     StringBuilder sb = new StringBuilder();
-                    sb.Append("UPDATE Editoras SET ");
+                    sb.Append("UPDATE Autores SET ");
 
                     sb.Append("Name = @Name,");
                     sb.Append("Description = @Description,");
+                    sb.Append("paisOrige = @paisOrigen,");
+                    sb.Append("IdiomaNativo = @IdiomaNativo,");
                     sb.Append("Estado = @Estado ");
                     sb.Append("WHERE Id = @Id");
 
@@ -101,6 +103,8 @@ namespace CapaDatos
                     {
                         cmd.Parameters.AddWithValue("@Name", autores.Name);
                         cmd.Parameters.AddWithValue("@Description", autores.Description);
+                        cmd.Parameters.AddWithValue("@paisOrigen", autores.paisOrigen);
+                        cmd.Parameters.AddWithValue("@IdiomaNativo", autores.IdiomaNativo);
                         cmd.Parameters.AddWithValue("@Estado", autores.Estado);
                         cmd.Parameters.AddWithValue("@Id", autores.Id);
 
