@@ -18,5 +18,60 @@ namespace CapaNegocio
             return objCapaDato.Listar();
         }
 
+        public int Registrar(Autores autor, out string Mensaje)
+        {
+            Mensaje = String.Empty;
+
+            if (string.IsNullOrEmpty(autor.Name) || string.IsNullOrWhiteSpace(autor.Name))
+            {
+                Mensaje = "El nombre del autor no puede estar vacio";
+            }
+
+            else if (string.IsNullOrEmpty(autor.Description) || string.IsNullOrWhiteSpace(autor.Description))
+            {
+                Mensaje = "La descripcion del Autor no puede estar vacia";
+            }
+
+
+            if (string.IsNullOrEmpty(Mensaje))
+            {
+
+                return objCapaDato.Registrar(autor, out Mensaje);
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        public bool Editar(Autores autores, out string Mensaje)
+        {
+            Mensaje = String.Empty;
+
+            if (string.IsNullOrEmpty(autores.Name) || string.IsNullOrWhiteSpace(autores.Name))
+            {
+                Mensaje = "El nombre del Autor no puede estar vacio";
+            }
+
+            else if (string.IsNullOrEmpty(autores.Description) || string.IsNullOrWhiteSpace(autores.Description))
+            {
+                Mensaje = "La descripcion del Autor no puede estar vacia";
+            }
+
+            if (string.IsNullOrEmpty(Mensaje))
+            {
+                return objCapaDato.Editar(autores, out Mensaje);
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+        public bool Eliminar(int id, out string Mensaje)
+        {
+            return objCapaDato.Eliminar(id, out Mensaje);
+        }
+
     }
 }

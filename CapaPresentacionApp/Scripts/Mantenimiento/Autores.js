@@ -17,6 +17,8 @@ tablaData = $("#tablaLibros").DataTable
             [
                 { "data": "Name" },
                 { "data": "Description" },
+                { "data": "paisOrigen" },
+                { "data": "IdiomaNativo" },
                 {
                     "data": "Estado", "render": function (valor) {
                         if (valor == 1) {
@@ -51,6 +53,8 @@ function abrirModal(json) {
         $("#txtId").val(json.Id)
         $("#txtNombre").val(json.Name)
         $("#txtDescripcion").val(json.Description)
+        $("#txtPais").val(json.paisOrigen)
+        $("#txtIdioma").val(json.IdiomaNativo)
         $("#cbxActivo").val(json.Estado == true ? 1 : 0)
 
     } else {
@@ -58,6 +62,8 @@ function abrirModal(json) {
         $("#txtId").val(0)
         $("#txtNombre").val("")
         $("#txtDescripcion").val("")
+        $("#txtPais").val("")
+        $("#txtIdioma").val("")
         $("#cbxActivo").val("")
     }
 
@@ -66,34 +72,35 @@ function abrirModal(json) {
 
 function Guardar() {
 
-    var Autores = {
+    var Autor = {
         Id: $("#txtId").val(),
         Name: $("#txtNombre").val(),
         Description: $("#txtDescripcion").val(),
+        PaisOrigen: $("#txtPais").val(),
+        IdiomaNativo: $("#txtIdioma").val(),
         Estado: $("#cbxActivo").val() == 1 ? true : false
     }
 
     jQuery.ajax({
-        url: '/Mantenimiento/GuardarBibliografia', /*@Url.Action("GuardarBibliografia", "Mantenimiento")*/
+        url: '/Mantenimiento/GuardarAutor', /*@Url.Action("GuardarBibliografia", "Mantenimiento")*/
         type: "POST",
-        data: JSON.stringify({ bibliografia: Bibliografia }), // parametro del metodo GuardarUsuario que es usuariox y se carga con el objeto Usuario
+        data: JSON.stringify({ autor: Autor }), // parametro del metodo GuardarUsuario que es usuariox y se carga con el objeto Usuario
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         success: function (data) { //la data es lo que resivimos del url que viene del controlador metodo GuardarUsuario
 
-            //BIBLIOGRAFIA NUEVA
-            if (Autores.Id == 0) { // si usuarioID = 0 es que se va a agregar
+          
+            if (Autor.Id == 0) { // si Autor Id = 0 es que se va a agregar
 
                 if (data.resultado != 0) {
 
-                    Bibliografia.Id = data.resultado;
-                    tablaData.row.add(Bibliografia).draw(false);
+                    tablaData.ajax.reload();
                     $("#FormModal").modal("hide");
 
-                    Swal.fire('Todo nitido', '', 'success')
+                    Swal.fire('' + data.mensaje,'','success')
 
                 } else {
-                    //error
+                    
                     Swal.fire(
                         '' + data.mensaje,
                         '',
@@ -105,14 +112,22 @@ function Guardar() {
 
                 if (data.resultado) {
 
-                    tablaData.row(filaSeleccionada).data(Bibliografia).draw(false);
+                    /*tablaData.row(filaSeleccionada).data(Bibliografia).draw(false);*/
+                    tablaData.ajax.reload();
                     filaSeleccionada = null;
                     $("#FormModal").modal("hide");
 
-                    Swal.fire('Todo nitido', '', 'success')
+                    Swal.fire('' + data.mensaje, '', 'success')
+
                 } else {
+
                     $("#mensajeError").text(data.mensaje);
                     $("#mensajeError").show();
+                    Swal.fire(
+                        '' + data.mensaje,
+                        '',
+                        'error'
+                    )
                 }
             }
         },
@@ -129,37 +144,38 @@ function Guardar() {
 
 function Eliminar(json) {
 
-    var Autores = {
+    var Autor = {
 
-        IdAutores: json["Id"]
+        Id: json["Id"]
 
     }
 
     jQuery.ajax({
-        url: '/Mantenimiento/EliminarBibliografia',/*@Url.Action("EliminarBibliografia", "Mantenimiento")*/
+        url: '/Mantenimiento/EliminarAutor',/*@Url.Action("EliminarBibliografia", "Mantenimiento")*/
         type: "POST",
-        data: JSON.stringify({ id: Bibliografia.IdBibliografia }), // parametro del metodo GuardarUsuario que es usuariox y se carga con el objeto Usuario
+        data: JSON.stringify({ id: Autor.Id }), // parametro del metodo GuardarUsuario que es usuariox y se carga con el objeto Usuario
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         success: function (data) { //la data es lo que resivimos del url que viene del controlador metodo GuardarUsuario
 
             if (data.resultado) {
 
-                tablaData.row(filaSeleccionada).draw(false);
+                /*tablaData.row(filaSeleccionada).draw(false);*/
+                tablaData.ajax.reload()
                 filaSeleccionada = null;
 
                 Swal.fire(
-                    'Borrado',
+                    '' + data.mensaje,
                     '',
                     'success'
                 )
 
             } else {
-                $("#mensajeError").text(data.mensaje);
+                //$("#mensajeError").text(data.mensaje);
 
-                $("#mensajeError").show();
+                //$("#mensajeError").show();
                 Swal.fire(
-                    'se jodio' + data.mensaje,
+                    '' + data.mensaje,
                     '',
                     'error'
                 )
@@ -182,6 +198,8 @@ function Detalles(json) {
         $("#txtIdD").val(json.Id)
         $("#txtNombreD").val(json.Name)
         $("#txtDescripcionD").val(json.Description)
+        $("#txtPaisD").val(json.paisOrigen)
+        $("#txtIdiomaD").val(json.IdiomaNativo)
         $("#cbxActivoD").val(json.Estado == true ? 'Si' : 'No')
 
         $("#ModalDetalles").modal("show");

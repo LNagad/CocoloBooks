@@ -9,10 +9,14 @@ namespace CapaEntidad
     public class Autores
     {
 
-    public int Id { get; set; }
-    public string Name { get; set; }
-    public string Description { get; set; }
-    public bool Estado { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public bool Estado { get; set; }
+
+        public string paisOrigen { get; set; }
+
+        public string IdiomaNativo { get; set; }
 
     }
 }
