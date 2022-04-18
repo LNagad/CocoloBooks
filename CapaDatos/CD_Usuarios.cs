@@ -41,7 +41,7 @@ namespace CapaDatos
                                     TipoUsuario = Convert.ToInt32(dr["TipoUsuario"]),
                                     Cedula = dr["Cedula"].ToString(),
                                     NCarnet = Convert.ToInt32(dr["NCarnet"]),
-                                    TipoPersona = Convert.ToInt32(dr["TipoUsuario"]),
+                                    TipoPersona = Convert.ToInt32(dr["TipoPersona"]),
                                     FechaRegistro = Convert.ToDateTime(dr["FechaRegistro"]),
                                     Estado = Convert.ToBoolean(dr["Estado"])
                                 }

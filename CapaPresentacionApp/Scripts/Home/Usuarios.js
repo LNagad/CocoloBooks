@@ -30,6 +30,7 @@ tablaData = $("#tablaUsuarios").DataTable
                 { "data": "Nombre" },
                 { "data": "Apellido" },
                 { "data": "Correo" },
+                { "data": "TipoPersona" },
                 {
                     "data": "TipoUsuario", "render": function (valor) {
                         if (valor == 1) {
@@ -66,17 +67,17 @@ tablaData = $("#tablaUsuarios").DataTable
 
 
 
-//@* jQuery.ajax({
-//    url: '@Url.Action("ListarUsuarios", "Home")',
-//    type: "GET",
-//    dataType: "json",
-//    contentType: "application/json; charset=utf-8",
-//    success: function (data) {
-//        /*        debugger; // para detener*/
+jQuery.ajax({
+    url: '/Home/ListarUsuarios',
+    type: "GET",
+    dataType: "json",
+    contentType: "application/json; charset=utf-8",
+    success: function (data) {
+        /*        debugger; // para detener*/
 
-//        console.log(data)
-//    }
-//}) *@
+        console.log(data)
+    }
+}) 
 
 
 
