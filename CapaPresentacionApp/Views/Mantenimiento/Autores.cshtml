@@ -21,6 +21,8 @@
                 <tr>
                     <th>Nombre</th>
                     <th>Descripcion</th>
+                    <th>Pais</th>
+                    <th>Idioma</th>
                     <th>Activo</th>
                     <th></th>
                 </tr>
@@ -45,7 +47,7 @@
                 @*es importante darle el valor 0 que significa que es un nuevo registro el que vamos a insertar
                     y asi podemos validar eso*@
 
-                <input id="txtId" type="text" value="0" />
+                <input id="txtId" type="text" value="0" hidden/>
 
                 <div class="row g-1">
                     <div class="col-sm-6">
@@ -56,6 +58,16 @@
                     <div class="col-sm-6">
                         <label for="txtDescripcion" class="form-label">Descripcion</label>
                         <input type="text" class="form-control" id="txtDescripcion">
+
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="txtPais" class="form-label">Pais de origen</label>
+                        <input type="text" class="form-control" id="txtPais">
+
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="txtIdioma" class="form-label">Idioma Nativo</label>
+                        <input type="text" class="form-control" id="txtIdioma">
 
                     </div>
                     <div class="col-sm-6">
@@ -97,7 +109,7 @@
                 @*es importante darle el valor 0 que significa que es un nuevo registro el que vamos a insertar
                     y asi podemos validar eso*@
 
-                <input id="txtIdD" readonly="readonly" type="text" value="0" />
+                <input id="txtIdD" readonly="readonly" type="text" value="0" hidden />
 
                 <div class="row g-1">
                     <div class="col-sm-6">
@@ -108,6 +120,16 @@
                     <div class="col-sm-6">
                         <label for="txtDescripcionD" class="form-label">Descripcion</label>
                         <input type="text" class="form-control" readonly="readonly" id="txtDescripcionD">
+
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="txtPais" class="form-label">Pais de origen</label>
+                        <input type="text" class="form-control" id="txtPaisD">
+
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="txtIdioma" class="form-label">Idioma Nativo</label>
+                        <input type="text" class="form-control" id="txtIdiomaD">
 
                     </div>
                     <div class="col-sm-6">

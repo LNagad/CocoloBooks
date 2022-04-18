@@ -18,16 +18,16 @@ namespace CapaNegocio
             return objCapaDato.Listar();
         }
 
-        public int Registrar(Autores autores, out string Mensaje)
+        public int Registrar(Autores autor, out string Mensaje)
         {
             Mensaje = String.Empty;
 
-            if (string.IsNullOrEmpty(autores.Name) || string.IsNullOrWhiteSpace(autores.Name))
+            if (string.IsNullOrEmpty(autor.Name) || string.IsNullOrWhiteSpace(autor.Name))
             {
                 Mensaje = "El nombre del autor no puede estar vacio";
             }
 
-            else if (string.IsNullOrEmpty(autores.Description) || string.IsNullOrWhiteSpace(autores.Description))
+            else if (string.IsNullOrEmpty(autor.Description) || string.IsNullOrWhiteSpace(autor.Description))
             {
                 Mensaje = "La descripcion del Autor no puede estar vacia";
             }
@@ -36,7 +36,7 @@ namespace CapaNegocio
             if (string.IsNullOrEmpty(Mensaje))
             {
 
-                return objCapaDato.Registrar(autores, out Mensaje);
+                return objCapaDato.Registrar(autor, out Mensaje);
             }
             else
             {

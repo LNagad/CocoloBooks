@@ -92,6 +92,42 @@ namespace CapaPresentacionAdmin.Controllers
 
         }
 
+        [HttpPost]
+        public JsonResult GuardarAutor(Autores autor)
+        {
+            object resultado;
+            string mensaje = string.Empty;
+
+            if (autor.Id == 0)
+            {
+                resultado = new CN_Autores().Registrar(autor, out mensaje);
+            }
+            else
+            {
+                resultado = new CN_Autores().Editar(autor, out mensaje);
+            }
+
+            return Json(new { resultado = resultado, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult EliminarAutor(int id)
+        {
+            object resultado;
+            string mensaje = string.Empty;
+
+            if (id == 0)
+            {
+                resultado = false;
+            }
+            else
+            {
+                resultado = new CN_Autores().Eliminar(id, out mensaje);
+            }
+
+            return Json(new { resultado = resultado, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
+        }
+
         #endregion
 
 

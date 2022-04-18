@@ -19,7 +19,7 @@ namespace CapaDatos
             {
                 using (SqlConnection oConexion = new SqlConnection(Conexion.cn))
                 {
-                    string query = "select Id, Name, Description, Estado from Autores";
+                    string query = "select Id, Name, Description, Estado, paisOrigen, IdiomaNativo from Autores";
                     SqlCommand cmd = new SqlCommand(query, oConexion);
                     cmd.CommandType = CommandType.Text;
 
@@ -35,6 +35,8 @@ namespace CapaDatos
                                 Name = DR["Name"].ToString(),
                                 Description = DR["Description"].ToString(),
                                 Estado = Convert.ToBoolean(DR["Estado"]),
+                                paisOrigen = DR["paisOrigen"].ToString(),
+                                IdiomaNativo = DR["IdiomaNativo"].ToString()
                             });
                         }
                     }
@@ -47,7 +49,7 @@ namespace CapaDatos
             return lista;
         }
 
-        public int Registrar(Autores autores, out string Mensaje)
+        public int Registrar(Autores autor, out string Mensaje)
         {
             int idAutoGenerado = 0;
 
@@ -55,21 +57,29 @@ namespace CapaDatos
 
             try
             {
-
                 using (SqlConnection oConexion = new SqlConnection(Conexion.cn))
                 {
-                    SqlCommand cmd = new SqlCommand($"Insert Editoras(Name,Description, Estado, paisOrigen, IdiomaNativo) values ('{autores.Name}','{autores.Description}','{autores.paisOrigen}','{autores.IdiomaNativo}','{autores.Estado}' )", oConexion);
-                    cmd.CommandType = CommandType.Text;
+                    StringBuilder sb = new StringBuilder();
+                    sb.Append("Insert autores (Name,Description, Estado, paisOrigen, IdiomaNativo) ");
+                    sb.Append("VALUES ( @Name, @Description, @Estado, @paisOrigen, @IdiomaNativo)");
 
-                    oConexion.Open();
+                    using (SqlCommand cmd = new SqlCommand(sb.ToString(), oConexion))
+                    {
+                        cmd.Parameters.AddWithValue("@Name", autor.Name);
+                        cmd.Parameters.AddWithValue("@Description", autor.Description);
+                        cmd.Parameters.AddWithValue("@Estado", autor.Estado);
+                        cmd.Parameters.AddWithValue("@paisOrigen", autor.paisOrigen);
+                        cmd.Parameters.AddWithValue("@IdiomaNativo", autor.IdiomaNativo);
 
-                    cmd.ExecuteNonQuery();
+                        oConexion.Open();
+                        cmd.ExecuteNonQuery();
+                        oConexion.Close();
 
-                    idAutoGenerado = 1;
-
-                    Mensaje = "Se ha registrado el autor correctamente";
-
+                        idAutoGenerado = 1;
+                        Mensaje = "Se ha registrado el autor correctamente";
+                    }
                 }
+
             }
             catch (Exception ex)
             {
@@ -94,7 +104,7 @@ namespace CapaDatos
 
                     sb.Append("Name = @Name,");
                     sb.Append("Description = @Description,");
-                    sb.Append("paisOrige = @paisOrigen,");
+                    sb.Append("paisOrigen = @paisOrigen,");
                     sb.Append("IdiomaNativo = @IdiomaNativo,");
                     sb.Append("Estado = @Estado ");
                     sb.Append("WHERE Id = @Id");
