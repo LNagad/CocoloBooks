@@ -124,7 +124,7 @@ function validar(texto) {
 
         //alert(texto[x])
 
-        if ("@@" == texto[x]) {
+        if ("@" == texto[x]) {
             return true;
         }
     }
@@ -132,6 +132,8 @@ function validar(texto) {
 }
 
 function Guardar() {
+
+    console.log($("#txtCorreo").val() )
 
     if (validar($("#txtCorreo").val())) {
 
@@ -156,7 +158,7 @@ function Guardar() {
 
 
         jQuery.ajax({
-            url: 'Home/GuardarUsuario', /*@Url.Action("GuardarUsuario", "Home")*/
+            url: '/Home/GuardarUsuario', /*@Url.Action("GuardarUsuario", "Home")*/
             type: "POST",
             //JSON.stringify( {usuario: Usuario } ) formatea el json y debemos pasarle el objeto y de donde
             // los valores en este caso Usuario que es el objeto de arriba y usuario que es el parametro del controlador
@@ -249,7 +251,7 @@ function Eliminar(json) {
     }
 
     jQuery.ajax({
-        url: 'Home/EliminarUsuario', /*@Url.Action("EliminarUsuario", "Home")*/
+        url: '/Home/EliminarUsuario', /*@Url.Action("EliminarUsuario", "Home")*/
         type: "POST",
         //JSON.stringify( {usuario: Usuario } ) formatea el json y debemos pasarle el objeto y de donde
         // los valores en este caso Usuario que es el objeto de arriba y usuario que es el parametro del controlador
