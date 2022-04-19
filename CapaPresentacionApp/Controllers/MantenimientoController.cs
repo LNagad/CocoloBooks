@@ -27,7 +27,17 @@ namespace CapaPresentacionAdmin.Controllers
         {
             return View();
         }
+<<<<<<< HEAD
         #endregion
+=======
+
+        public ActionResult Idiomas()
+        {
+            return View();
+        }
+
+
+>>>>>>> 0f90134 (feature-Alan-Idioma)
 
 
         //+++++++++++++++++++++++++++++ BIBLIOGRAFIA ++++++++++++++++++
