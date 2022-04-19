@@ -509,6 +509,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CapaDatos\CapaDatos.csproj">
+      <Project>{363DE030-52D9-4C41-8BE7-EEAF0F12DE78}</Project>
+      <Name>CapaDatos</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CapaEntidad\CapaEntidad.csproj">
       <Project>{e6e4b463-4107-4722-8ece-5ae85274fa2a}</Project>
       <Name>CapaEntidad</Name>
