@@ -44,6 +44,7 @@
     <Compile Include="Autores.cs" />
     <Compile Include="Bibliografias.cs" />
     <Compile Include="Editoras.cs" />
+    <Compile Include="Idiomas.cs" />
     <Compile Include="LibroDetalleSelect.cs" />
     <Compile Include="Libros.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

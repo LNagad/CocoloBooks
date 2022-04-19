@@ -44,6 +44,7 @@
     <Compile Include="CN_Autores.cs" />
     <Compile Include="CN_Bibliografias.cs" />
     <Compile Include="CN_Editoras.cs" />
+    <Compile Include="CN_Idiomas.cs" />
     <Compile Include="CN_Libros.cs" />
     <Compile Include="CN_Recursos.cs" />
     <Compile Include="CN_Usuarios.cs" />
