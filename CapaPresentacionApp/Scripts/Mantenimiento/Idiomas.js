@@ -2,7 +2,6 @@
 
 var filaSeleccionada;
 
-debugger
 tablaData = $("#tablaLibros").DataTable
     ({
         responsive: true,
@@ -97,9 +96,6 @@ function Guardar() {
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         success: function (data) { //la data es lo que resivimos del url que viene del controlador metodo GuardarUsuario
-            console.log(data)
-            //BIBLIOGRAFIA NUEVA
-            debugger
 
             if (Idiomas.Id == 0) { // si usuarioID = 0 es que se va a agregar
 
@@ -109,27 +105,28 @@ function Guardar() {
 
                     $("#FormModal").modal("hide");
 
-                    Swal.fire('Todo nitido', '', 'success')
+                    Swal.fire('' + data.mensaje, '', 'success')
 
                 } else {
                     //error
-                    Swal.fire(
-                        '' + data.mensaje,
-                        '',
-                        'error'
-                    )
+                    Swal.fire('' + data.mensaje,'','error')
                 }
             }
             else { // editar
 
                 if (data.resultado) {
 
-                    tablaData.row(filaSeleccionada).data(Idiomas).draw(false);
+                    /*tablaData.row(filaSeleccionada).data(Idiomas).draw(false);*/
+
+                    tablaData.ajax.reload();
                     filaSeleccionada = null;
                     $("#FormModal").modal("hide");
 
-                    Swal.fire('Todo nitido', '', 'success')
+                    Swal.fire('' + data.mensaje, '', 'success')
                 } else {
+
+                    Swal.fire('' + data.mensaje, '', 'error')
+
                     $("#mensajeError").text(data.mensaje);
                     $("#mensajeError").show();
                 }
@@ -164,24 +161,19 @@ function Eliminar(json) {
 
             if (data.resultado) {
 
-                tablaData.row(filaSeleccionada).draw(false);
+                /*tablaData.row(filaSeleccionada).draw(false);*/
+                tablaData.ajax.reload()
                 filaSeleccionada = null;
 
-                Swal.fire(
-                    'Borrado',
-                    '',
-                    'success'
-                )
+                Swal.fire('' + data.mensaje, '', 'success')
 
             } else {
+
                 $("#mensajeError").text(data.mensaje);
 
                 $("#mensajeError").show();
-                Swal.fire(
-                    'se jodio' + data.mensaje,
-                    '',
-                    'error'
-                )
+
+                Swal.fire('' + data.mensaje, '', 'error')
             }
         },
         error: function (error) {
@@ -228,7 +220,7 @@ $("#tablaLibros tbody").on("click", '.btn-eliminar', function () {
 
     Eliminar(data)
 
-    tablaData.row(filaSeleccionada).remove();
+    /*tablaData.row(filaSeleccionada).remove();*/
 
 })
 
