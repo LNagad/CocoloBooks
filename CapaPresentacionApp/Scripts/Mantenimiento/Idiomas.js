@@ -2,6 +2,7 @@
 
 var filaSeleccionada;
 
+debugger
 tablaData = $("#tablaLibros").DataTable
     ({
         responsive: true,
@@ -43,20 +44,20 @@ tablaData = $("#tablaLibros").DataTable
 
 
 ///bibliografias
-jQuery.ajax({
-    url: '@Url.Action("ListarIdiomas", "Mantenimiento")',
-    type: "GET",
-    dataType: "json",
-    contentType: "application/json; charset=utf-8",
-    success: function (data) {
+//jQuery.ajax({
+//    url: '@Url.Action("ListarIdiomas", "Mantenimiento")',
+//    type: "GET",
+//    dataType: "json",
+//    contentType: "application/json; charset=utf-8",
+//    success: function (data) {
 
 
-        console.log(data)
-    },
-    error: {
+//        console.log(data)
+//    },
+//    error: {
 
-    }
-});
+//    }
+//});
 
 
 function abrirModal(json) {

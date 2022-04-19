@@ -29,7 +29,7 @@ namespace CapaPresentacionAdmin.Controllers
         }
 <<<<<<< HEAD
         #endregion
-=======
+//=======
 
         public ActionResult Idiomas()
         {
@@ -37,7 +37,7 @@ namespace CapaPresentacionAdmin.Controllers
         }
 
 
->>>>>>> 0f90134 (feature-Alan-Idioma)
+//>>>>>>> 0f90134 (feature-Alan-Idioma)
 
 
         //+++++++++++++++++++++++++++++ BIBLIOGRAFIA ++++++++++++++++++
@@ -189,5 +189,56 @@ namespace CapaPresentacionAdmin.Controllers
 
         #endregion
 
+        //+++++++++++++++++++++++++++++ Idiomas ++++++++++++++++++
+        #region IDIOMAS
+
+        [HttpGet]
+        public JsonResult ListarIdiomas()
+        {
+            List<Idiomas> oLista = new List<Idiomas>();
+
+            oLista = new CN_Idiomas().Listar();
+
+            return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
+
+        }
+
+        [HttpPost]
+        public JsonResult GuardarIdiomas(Idiomas idiomas)
+        {
+            object resultado;
+            string mensaje = string.Empty;
+
+            if (idiomas.Id == 0)
+            {
+                resultado = new CN_Idiomas().Registrar(idiomas, out mensaje);
+            }
+            else
+            {
+                resultado = new CN_Idiomas().Editar(idiomas, out mensaje);
+            }
+
+            return Json(new { resultado = resultado, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult EliminarIdiomas(int id)
+        {
+            object resultado;
+            string mensaje = string.Empty;
+
+            if (id == 0)
+            {
+                resultado = false;
+            }
+            else
+            {
+                resultado = new CN_Idiomas().Eliminar(id, out mensaje);
+            }
+
+            return Json(new { resultado = resultado, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
+        }
+
+        #endregion
     }
 }
