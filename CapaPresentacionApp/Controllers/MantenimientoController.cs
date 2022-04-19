@@ -31,6 +31,10 @@ namespace CapaPresentacionAdmin.Controllers
         {
             return View();
         }
+        public ActionResult Ciencias()
+        {
+            return View();
+        }
 
         #endregion
 
@@ -183,7 +187,7 @@ namespace CapaPresentacionAdmin.Controllers
 
         #endregion
 
-        //+++++++++++++++++++++++++++++ Idiomas ++++++++++++++++++
+        //+++++++++++++++++++++++++++++ IDIOMAS ++++++++++++++++++
         #region IDIOMAS
 
         [HttpGet]
@@ -228,6 +232,57 @@ namespace CapaPresentacionAdmin.Controllers
             else
             {
                 resultado = new CN_Idiomas().Eliminar(id, out mensaje);
+            }
+
+            return Json(new { resultado = resultado, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
+        }
+
+        #endregion
+        //+++++++++++++++++++++++++++++ CIENCIAS ++++++++++++++++++
+        #region CIENCIAS
+
+        [HttpGet]
+        public JsonResult ListarCiencias()
+        {
+            List<Ciencias> oLista = new List<Ciencias>();
+
+            oLista = new CN_Ciencias().Listar();
+
+            return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
+
+        }
+
+        [HttpPost]
+        public JsonResult GuardarCiencias(Ciencias Ciencias)
+        {
+            object resultado;
+            string mensaje = string.Empty;
+
+            if (Ciencias.Id == 0)
+            {
+                resultado = new CN_Ciencias().Registrar(Ciencias, out mensaje);
+            }
+            else
+            {
+                resultado = new CN_Ciencias().Editar(Ciencias, out mensaje);
+            }
+
+            return Json(new { resultado = resultado, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult EliminarCiencias(int id)
+        {
+            object resultado;
+            string mensaje = string.Empty;
+
+            if (id == 0)
+            {
+                resultado = false;
+            }
+            else
+            {
+                resultado = new CN_Ciencias().Eliminar(id, out mensaje);
             }
 
             return Json(new { resultado = resultado, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
