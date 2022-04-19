@@ -45,6 +45,7 @@
     <Compile Include="CD_Autores.cs" />
     <Compile Include="CD_Bibliografias.cs" />
     <Compile Include="CD_Editoras.cs" />
+    <Compile Include="CD_Ciencias.cs" />
     <Compile Include="CD_Idiomas.cs" />
     <Compile Include="CD_Libros.cs" />
     <Compile Include="CD_Usuarios.cs" />
