@@ -60,6 +60,49 @@ namespace CapaDatos
             return lista;
         }
 
+        public Boolean GetUsuarioSession(int id)
+        {
+            //List<Session> lista = new List<Session>();
+
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(Conexion.cn))
+                {
+                    string query = "select Id, Nombre, Apellido, Correo, Clave, TipoUsuario, " +
+                        "Cedula, NCarnet, TipoPersona, Estado, FechaRegistro  from USUARIOS " +
+                        $"where id = {id}";
+
+                    SqlCommand cmd = new SqlCommand(query, oconexion);
+                    cmd.CommandType = CommandType.Text;
+
+                    oconexion.Open();
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            Session.IdUsuario = Convert.ToInt32(dr["Id"]);
+                            Session.Nombre = dr["Nombre"].ToString();
+                            Session.Apellido = dr["Apellido"].ToString();
+                            Session.Correo = dr["Correo"].ToString();
+                            Session.Clave = dr["Clave"].ToString();
+                            Session.TipoUsuario = Convert.ToInt32(dr["TipoUsuario"]);
+                            Session.Cedula = dr["Cedula"].ToString();
+                            Session.NCarnet = Convert.ToInt32(dr["NCarnet"]);
+                            Session.TipoPersona = Convert.ToInt32(dr["TipoPersona"]);
+                            Session.FechaRegistro = Convert.ToDateTime(dr["FechaRegistro"]);
+                            Session.Estado = Convert.ToBoolean(dr["Estado"]);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+            return true;
+        }
 
         public int Registrar(Usuario usuario, out string Mensaje)
         {

@@ -39,7 +39,18 @@ namespace CapaPresentacionAdmin.Controllers
             if (oUsuario.Id != 0)
             {
                 Session["usuario"] = oUsuario;
-                return RedirectToAction("Libros", "Libros");
+                
+                var myobj = new CapaDatos.CD_Usuarios();
+                myobj.GetUsuarioSession(oUsuario.Id);
+
+                if ( CapaEntidad.Session.TipoUsuario == 1 ) // roleo
+                {
+                    return RedirectToAction("Index", "HomePage");
+
+                } else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
             }
             else
             {
