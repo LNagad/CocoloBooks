@@ -20,5 +20,18 @@ namespace CapaEntidad
         public static DateTime FechaRegistro { get; set; }
         public static bool Estado { get; set; }
 
+        public static void descargarSession() 
+        {
+            IdUsuario = 0;
+            Nombre = null;
+            Apellido = null;
+            Correo = null;
+            Clave = null;
+            TipoUsuario = 0;
+            Cedula = null;
+            NCarnet = 0;
+            TipoPersona = 0;
+        }
+
     }
 }

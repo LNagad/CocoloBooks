@@ -60,7 +60,7 @@ namespace CapaPresentacionAdmin.Controllers
         }
         public ActionResult CerrarSesion()
         {
-            CapaEntidad.Session.TipoUsuario = 0;
+            CapaEntidad.Session.descargarSession();
             Session["Usuario"] = null;
             return RedirectToAction("Index", "HomePage");
         }
