@@ -36,9 +36,14 @@ namespace CapaNegocio
                 Mensaje = "El Correo del usuario no puede estar vacio";
             }
 
+            else if (string.IsNullOrEmpty(usuario.Clave) || string.IsNullOrWhiteSpace(usuario.Clave))
+            {
+                Mensaje = "La clave del usuario no puede estar vacio";
+            }
+
             if (string.IsNullOrEmpty(Mensaje))
             {
-                string clave = "test123";
+                string clave = usuario.Clave;
                 usuario.Clave = CN_Recursos.ConvertirSha256(clave);
 
 

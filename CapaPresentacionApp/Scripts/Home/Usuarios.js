@@ -148,7 +148,7 @@ function Guardar() {
             Nombre: $("#txtNombre").val(),
             Apellido: $("#txtApellido").val(),
             Correo: $("#txtCorreo").val(),
-            Clave: $("#txtClave"),
+            Clave: $("#txtClave").val(),
             TipoUsuario: $("#cbxUsuario").val(),
             Cedula: $("#txtCedula").val(),
             NCarnet: $("#txtCarnet").val(),
@@ -157,6 +157,7 @@ function Guardar() {
 
         }
 
+        console.log(Usuario)
 
         jQuery.ajax({
             url: '/Home/GuardarUsuario', /*@Url.Action("GuardarUsuario", "Home")*/

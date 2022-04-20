@@ -20,6 +20,8 @@ drop table USUARIOS;
 
 select Id, Nombre, Apellido, Correo, Clave,TipoUsuario, Cedula, NCarnet, TipoPersona, Estado, FechaRegistro  from USUARIOS;
 
+use CocoBoLoBooks
+
 insert into USUARIOS (Nombre, Apellido, Correo, Clave,TipoUsuario, Cedula, NCarnet, TipoPersona, Estado) 
-values ('Maycol', 'Perez', 'maycol@gmail.com', 's12', 1, '40135479685', 123, 1, 1)
+values ('MaycolTest', 'Perez', 'hola@gmail.com', 'test123', 2, '40135479674', 123, 1, 1)
 
