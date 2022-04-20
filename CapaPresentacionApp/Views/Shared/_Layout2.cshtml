@@ -31,9 +31,9 @@
                     <div class="loginBTN navbar-nav me-0 mb-2 mb-lg-0 ms-lg-4">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Mi dashboard</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            @*<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#!">Cambiar contraseña</a></li>
-                            </ul>
+                            </ul>*@
                         </li>
                         @if (CapaEntidad.Session.TipoUsuario == 0)
                         {
@@ -41,7 +41,7 @@
                         }
                         else
                         {
-                            <li class="nav-item" style="right: 0;"><a class="nav-link" href="" onclick="alert('cerraste mmg')">Cerrar sesion</a></li>
+                            <li class="nav-item" style="right: 0;"><a class="nav-link" href="@Url.Action("CerrarSesion","Login")" onclick="alert('cerraste mmg')">Cerrar sesion</a></li>
                         }
                     </div>
                     

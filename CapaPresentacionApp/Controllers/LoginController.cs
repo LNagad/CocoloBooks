@@ -58,5 +58,11 @@ namespace CapaPresentacionAdmin.Controllers
                 return View();
             }
         }
+        public ActionResult CerrarSesion()
+        {
+            CapaEntidad.Session.TipoUsuario = 0;
+            Session["Usuario"] = null;
+            return RedirectToAction("Index", "HomePage");
+        }
     }
 }
