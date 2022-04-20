@@ -35,10 +35,17 @@
                                 <li><a class="dropdown-item" href="#!">Cambiar contraseña</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item" style="right: 0;"><a class="nav-link" href="@Url.Action("Login","Login")">Iniciar sesion</a></li>
+                        @if (CapaEntidad.Session.TipoUsuario == 0)
+                        {
+                            <li class="nav-item" style="right: 0;"><a class="nav-link" href="@Url.Action("Login", "Login")">Iniciar sesion</a></li>
+                        }
+                        else
+                        {
+                            <li class="nav-item" style="right: 0;"><a class="nav-link" href="" onclick="alert('cerraste mmg')">Cerrar sesion</a></li>
+                        }
                     </div>
-
-                </div>
+                    
+                    </div>
             </div>
         </nav>
         <!-- Header-->
