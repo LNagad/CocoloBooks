@@ -5,133 +5,134 @@
 }
 
 
+@if (CapaEntidad.Session.TipoUsuario == 2)
+{
 
-<div class="card">
-    <div class="card-header">
-        <i class="fas fa-users me-1"></i> <h7>Lista de Ciencias</h7>
-    </div>
-    <div class="card-body">
-        <div class="row">
-            <div class="col-12">
-                <button type="button" class="btn btn-success" onclick="abrirModal()">Crear nuevo</button>
-            </div>
+    <div class="card">
+        <div class="card-header">
+            <i class="fas fa-users me-1"></i> <h7>Lista de Ciencias</h7>
         </div>
-        <hr />
-
-        <table id="tablaLibros" class="display cell-border " style="width: 100%;">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Descripcion</th>
-                    <th>Activo</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
-
-
-    </div>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="FormModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header bg-dark text-white" style="width: 100%;">
-                <h5 class="modal-title" id="exampleModalLabel">Idiomas</h5>
-
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12">
+                    <button type="button" class="btn btn-success" onclick="abrirModal()">Crear nuevo</button>
+                </div>
             </div>
-            <div class="modal-body ">
+            <hr />
 
-                @*es importante darle el valor 0 que significa que es un nuevo registro el que vamos a insertar
-                    y asi podemos validar eso*@
+            <table id="tablaLibros" class="display cell-border " style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Descripcion</th>
+                        <th>Activo</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-                <input id="txtId" type="text" value="0" hidden/>
+    <!-- Modal -->
+    <div class="modal fade" id="FormModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-white" style="width: 100%;">
+                    <h5 class="modal-title" id="exampleModalLabel">Idiomas</h5>
 
-                <div class="row g-1">
-                    <div class="col-sm-6">
-                        <label for="txtNombre" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="txtNombre">
+                </div>
+                <div class="modal-body ">
 
-                    </div>
+                    @*es importante darle el valor 0 que significa que es un nuevo registro el que vamos a insertar
+                        y asi podemos validar eso*@
 
-                    <div class="col-sm-6">
-                        <label for="txtDescripcion" class="form-label">Descripcion</label>
-                        <input type="text" class="form-control" id="txtDescripcion">
-                    </div>
-                    <div class="col-sm-6">
-                        <label for="cbxActivo" class="form-label">Activo</label>
-                        <select class="form-select" id="cbxActivo">
-                            <option value="1">Si</option>
-                            <option value="0">No</option>
-                        </select>
+                    <input id="txtId" type="text" value="0" hidden />
 
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col-12">
-                            <div id="mensajeError" class="alert alert-danger" role="alert">
-                                A simple danger alert—check it out!
+                    <div class="row g-1">
+                        <div class="col-sm-6">
+                            <label for="txtNombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="txtNombre">
+
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label for="txtDescripcion" class="form-label">Descripcion</label>
+                            <input type="text" class="form-control" id="txtDescripcion">
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="cbxActivo" class="form-label">Activo</label>
+                            <select class="form-select" id="cbxActivo">
+                                <option value="1">Si</option>
+                                <option value="0">No</option>
+                            </select>
+
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-12">
+                                <div id="mensajeError" class="alert alert-danger" role="alert">
+                                    A simple danger alert—check it out!
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" onclick="Guardar()">Guardar</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<!-- Modal -->
-<div class="modal fade" id="ModalDetalles" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header bg-dark text-white" style="width: 100%;">
-                <h5 class="modal-title" id="exampleModalLabel">Ciencias</h5>
-
-            </div>
-            <div class="modal-body ">
-
-                @*es importante darle el valor 0 que significa que es un nuevo registro el que vamos a insertar
-                    y asi podemos validar eso*@
-
-                <input id="txtIdD" readonly="readonly" type="text" value="0" hidden/>
-
-                <div class="row g-1">
-                    <div class="col-sm-6">
-                        <label for="txtNombreD" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" readonly="readonly" id="txtNombreD">
-
-                    </div>
-                    <div class="col-sm-6">
-                        <label for="txtDescripcionD" class="form-label">Descripcion</label>
-                        <input type="text" class="form-control" readonly="readonly" id="txtDescripcionD">
-
-                    </div>
-                    <div class="col-sm-6">
-                        <label for="cbxActivoD" class="form-label">Activo</label>
-                        <input type="text" class="form-control" readonly="readonly" id="cbxActivoD">
-
-                    </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" onclick="Guardar()">Guardar</button>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="ModalDetalles" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-white" style="width: 100%;">
+                    <h5 class="modal-title" id="exampleModalLabel">Ciencias</h5>
+
+                </div>
+                <div class="modal-body ">
+
+                    @*es importante darle el valor 0 que significa que es un nuevo registro el que vamos a insertar
+                        y asi podemos validar eso*@
+
+                    <input id="txtIdD" readonly="readonly" type="text" value="0" hidden />
+
+                    <div class="row g-1">
+                        <div class="col-sm-6">
+                            <label for="txtNombreD" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" readonly="readonly" id="txtNombreD">
+
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="txtDescripcionD" class="form-label">Descripcion</label>
+                            <input type="text" class="form-control" readonly="readonly" id="txtDescripcionD">
+
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="cbxActivoD" class="form-label">Activo</label>
+                            <input type="text" class="form-control" readonly="readonly" id="cbxActivoD">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
-
-@section scripts {
-    <script src="~/Scripts/Mantenimiento/Ciencias.js"></script>
+    @section scripts {
+        <script src="~/Scripts/Mantenimiento/Ciencias.js"></script>
+    }
 }
-
+else
+{
+    Response.Redirect("~/HomePage/Index");
+}
 
 
 

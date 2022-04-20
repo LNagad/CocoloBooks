@@ -13,10 +13,12 @@ namespace CapaPresentacionAdmin
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            CapaEntidad.Session.TipoUsuario = 0;
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "HomePage", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
