@@ -19,7 +19,7 @@ namespace CapaDatos
             {
                 using (SqlConnection oConexion = new SqlConnection (Conexion.cn) )
                 {
-                    string query = "select Id,SignaturaTopografica,Nombre,ISB,BibliografiaId,Bibliografia,Autores,Descripcion,Ciencia,Editora,Estado,Idioma,year from vw_libros";
+                    string query = "select * from vw_libros";
                     SqlCommand cmd = new SqlCommand(query, oConexion);
                     cmd.CommandType = CommandType.Text;
 
@@ -29,32 +29,32 @@ namespace CapaDatos
                     {
                         while (DR.Read() )
                         {
-                            lista.Add(
-
-                                new Libros()
-                                {
-                                    Id = Convert.ToInt32(DR["Id"]),
-                                    SignaturaTopografica = DR["SignaturaTopografica"].ToString(),
-                                    Nombre = DR["Nombre"].ToString(),
-                                    ISB = Convert.ToDecimal(DR["ISB"]),
-                                    BibliografiaId = Convert.ToInt32(DR["BibliografiaId"]),
-                                    Bibliografia = DR["Bibliografia"].ToString(),
-                                    Autores = DR["Autores"].ToString(),
-                                    Descripcion = DR["Descripcion"].ToString(),
-                                    Ciencia = DR["Ciencia"].ToString(),
-                                    Editora = DR["Editora"].ToString(),
-                                    Estado = Convert.ToBoolean(DR["Estado"]),
-                                    Idioma = DR["Idioma"].ToString(),
-                                    year = DR["year"].ToString(),
-
-                                }
-
-                                ); ;
+                            lista.Add
+                                (
+                                    new Libros()
+                                    {
+                                        Id = Convert.ToInt32(DR["Id"]),
+                                        SignaturaTopografica = DR["SignaturaTopografica"].ToString(),
+                                        Nombre = DR["Nombre"].ToString(),
+                                        ISBN = Convert.ToDecimal(DR["ISBN"]),
+                                        Descripcion = DR["Descripcion"].ToString(),
+                                        BibliografiaId = Convert.ToInt32(DR["BibliografiaId"]), //fk
+                                        Bibliografia = DR["Bibliografia"].ToString(),
+                                        CienciaId = Convert.ToInt32(DR["CienciaId"]), // fk
+                                        Ciencia = DR["Ciencia"].ToString(),
+                                        AutorId = Convert.ToInt32(DR["AutorId"]), // fk
+                                        Autores = DR["Autor"].ToString(),
+                                        EditoraId = Convert.ToInt32(DR["EditoraId"]), // fk
+                                        Editora = DR["Editora"].ToString(),
+                                        IdiomaId = Convert.ToInt32(DR["IdiomaId"]), // fk
+                                        Idioma = DR["Idioma"].ToString(),
+                                        year = DR["year"].ToString(),
+                                        Estado = Convert.ToBoolean(DR["Estado"])
+                                    }
+                                ); 
                         }
                     }
-
                 }
-
 
             }
             catch (Exception ex)
@@ -91,16 +91,20 @@ namespace CapaDatos
                                     Id = Convert.ToInt32(DR["Id"]),
                                     SignaturaTopografica = DR["SignaturaTopografica"].ToString(),
                                     Nombre = DR["Nombre"].ToString(),
-                                    ISB = Convert.ToDecimal(DR["ISB"]),
-                                    BibliografiaId = Convert.ToInt32(DR["BibliografiaId"]),
-                                    Bibliografia = DR["Bibliografia"].ToString(),
-                                    Autores = DR["Autores"].ToString(),
+                                    ISBN = Convert.ToDecimal(DR["ISBN"]),
                                     Descripcion = DR["Descripcion"].ToString(),
+                                    BibliografiaId = Convert.ToInt32(DR["BibliografiaId"]), //fk
+                                    Bibliografia = DR["Bibliografia"].ToString(),
+                                    CienciaId = Convert.ToInt32(DR["CienciaId"]), // fk
                                     Ciencia = DR["Ciencia"].ToString(),
+                                    AutorId = Convert.ToInt32(DR["AutorId"]), // fk
+                                    Autores = DR["Autor"].ToString(),
+                                    EditoraId = Convert.ToInt32(DR["EditoraId"]), // fk
                                     Editora = DR["Editora"].ToString(),
-                                    Estado = Convert.ToBoolean(DR["Estado"]),
+                                    IdiomaId = Convert.ToInt32(DR["IdiomaId"]), // fk
                                     Idioma = DR["Idioma"].ToString(),
                                     year = DR["year"].ToString(),
+                                    Estado = Convert.ToBoolean(DR["Estado"]),
 
                                 }
 
@@ -134,23 +138,24 @@ namespace CapaDatos
                     //SqlCommand cmd = new SqlCommand("INSERT INTO Libros VALUES @Signa, @Nombre, @ISB, @BibliografiaId, @Autores, @Descripcion, @Ciencia, @Editora, @Estado, @Idioma, @year", oConexion);
                     //cmd.Parameters
 
-                     StringBuilder sb = new StringBuilder();
-                     sb.Append("INSERT INTO Libros (SignaturaTopografica, Nombre, ISB, BibliografiaId, Autores, Descripcion, Ciencia, Editora, Estado,Idioma, year) ");
-                     sb.Append("VALUES ( @SignaturaTopografica, @Nombre, @ISB, @BibliografiaId, @Autores, @Descripcion, @Ciencia, @Editora, @Estado, @Idioma, @year)");
+                     StringBuilder sb = new StringBuilder(); // (SignaturaTopografica, Nombre, ISB, BibliografiaId, Autores, Descripcion, Ciencia, Editora, Estado,Idioma, year) 
+                    sb.Append("INSERT INTO Libros ");
+                     sb.Append("VALUES ( @SignaturaTopografica, @Nombre, @ISBN, @Descripcion, @AutorId" +
+                         ", @BibliografiaId, @CienciaId, @EditoraId, @IdiomaId, @year, @Estado)");
                     
                     using (SqlCommand cmd = new SqlCommand(sb.ToString(), oConexion))
                     {
                         cmd.Parameters.AddWithValue("@SignaturaTopografica", libro.SignaturaTopografica);
                         cmd.Parameters.AddWithValue("@Nombre", libro.Nombre);
-                        cmd.Parameters.AddWithValue("@ISB", libro.ISB);
-                        cmd.Parameters.AddWithValue("@BibliografiaId", libro.BibliografiaId);
-                        cmd.Parameters.AddWithValue("@Autores", libro.Autores);
+                        cmd.Parameters.AddWithValue("@ISBN", libro.ISBN);
                         cmd.Parameters.AddWithValue("@Descripcion", libro.Descripcion);
-                        cmd.Parameters.AddWithValue("@Ciencia", libro.Ciencia);
-                        cmd.Parameters.AddWithValue("@Editora", libro.Editora);
-                        cmd.Parameters.AddWithValue("@Estado", libro.Estado);
-                        cmd.Parameters.AddWithValue("@Idioma", libro.Idioma);
+                        cmd.Parameters.AddWithValue("@AutorId", libro.AutorId); //FK
+                        cmd.Parameters.AddWithValue("@BibliografiaId", libro.BibliografiaId); //FK
+                        cmd.Parameters.AddWithValue("@CienciaId", libro.CienciaId); //FK
+                        cmd.Parameters.AddWithValue("@EditoraId", libro.EditoraId); //FK
+                        cmd.Parameters.AddWithValue("@IdiomaId", libro.IdiomaId); //FK
                         cmd.Parameters.AddWithValue("@year", libro.year);
+                        cmd.Parameters.AddWithValue("@Estado", libro.Estado);
 
                         oConexion.Open();
                         cmd.ExecuteNonQuery();
@@ -196,30 +201,30 @@ namespace CapaDatos
                     sb.Append("UPDATE Libros SET "); 
                     sb.Append("SignaturaTopografica = @SignaturaTopografica,");
                     sb.Append("Nombre = @Nombre,");
-                    sb.Append("ISB = @ISB,");
-                    sb.Append("BibliografiaId = @BibliografiaId,");
-                    sb.Append("Autores = @Autores,");
+                    sb.Append("ISBN = @ISBN,");
                     sb.Append("Descripcion = @Descripcion,");
-                    sb.Append("Ciencia = @Ciencia,");
-                    sb.Append("Editora = @Editora,");
-                    sb.Append("Estado = @Estado,");
-                    sb.Append("Idioma = @Idioma,");
+                    sb.Append("AutorId = @AutorId,");
+                    sb.Append("BibliografiaId = @BibliografiaId,");
+                    sb.Append("CienciaId = @CienciaId,");
+                    sb.Append("EditoraId = @EditoraId,");
+                    sb.Append("IdiomaId = @IdiomaId,");
                     sb.Append("year = @year ");
+                    sb.Append("Estado = @Estado,");
                     sb.Append("WHERE Id = @Id");
 
                     using (SqlCommand cmd = new SqlCommand(sb.ToString(), oConexion))
                     {
                         cmd.Parameters.AddWithValue("@SignaturaTopografica", libro.SignaturaTopografica);
                         cmd.Parameters.AddWithValue("@Nombre", libro.Nombre);
-                        cmd.Parameters.AddWithValue("@ISB", libro.ISB);
-                        cmd.Parameters.AddWithValue("@BibliografiaId", libro.BibliografiaId);
-                        cmd.Parameters.AddWithValue("@Autores", libro.Autores);
+                        cmd.Parameters.AddWithValue("@ISBN", libro.ISBN);
                         cmd.Parameters.AddWithValue("@Descripcion", libro.Descripcion);
-                        cmd.Parameters.AddWithValue("@Ciencia", libro.Ciencia);
-                        cmd.Parameters.AddWithValue("@Editora", libro.Editora);
-                        cmd.Parameters.AddWithValue("@Estado", libro.Estado);
-                        cmd.Parameters.AddWithValue("@Idioma", libro.Idioma);
+                        cmd.Parameters.AddWithValue("@AutorId", libro.AutorId);
+                        cmd.Parameters.AddWithValue("@BibliografiaId", libro.BibliografiaId);
+                        cmd.Parameters.AddWithValue("@CienciaId", libro.CienciaId);
+                        cmd.Parameters.AddWithValue("@EditoraId", libro.EditoraId);
+                        cmd.Parameters.AddWithValue("@IdiomaId", libro.IdiomaId);
                         cmd.Parameters.AddWithValue("@year", libro.year);
+                        cmd.Parameters.AddWithValue("@Estado", libro.Estado);
                         cmd.Parameters.AddWithValue("@Id", libro.Id);
 
                         oConexion.Open();

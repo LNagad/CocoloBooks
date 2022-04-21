@@ -52,10 +52,11 @@ select * from Libros;
 CREATE VIEW vw_libros
 AS
 	SELECT t1.Id, t1.SignaturaTopografica, t1.Nombre, t1.ISBN, t1.Descripcion, t1.BibliografiaId, t2.Name as Bibliografia, 
-		t1.AutorId, t3.Name as Autor , t1.EditoraId, t4.Name as Editora, 
+		t1.CienciaId,t7.Name as Ciencia, t1.AutorId, t3.Name as Autor , t1.EditoraId, t4.Name as Editora, 
 		t1.IdiomaId, t5.Name as Idioma, t1.year ,t1.Estado 
 	FROM Libros t1 
 		INNER JOIN Bibliografias t2 ON (t1.BibliografiaId = t2.Id)
+		INNER JOIN Ciencias t7 ON (t1.CienciaId = t7.Id)
 		INNER JOIN Autores t3 ON (t1.AutorId = t3.Id)
 		INNER JOIN Editoras t4 ON (t1.EditoraId = t4.Id)
 		INNER JOIN Idiomas t5 ON (t1.IdiomaId = t5.Id);
@@ -63,6 +64,8 @@ AS
 select * from vw_libros;
 
 select * from Libros;
+
+drop view vw_libros;
 
 INSERT INTO Libros 
 VALUES --tirara error en la fecha porque es datetime
