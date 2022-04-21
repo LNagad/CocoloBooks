@@ -199,6 +199,7 @@ function abrirModal(json) {
         $("#cbxEditoras").val(json.EditoraId),
         $("#cbxIdiomas").val(json.IdiomaId),
         $("#txtYear").val(json.year),
+            
         $("#cbxActivo").val(json.Estado == true ? 1 : 0)
     
     } else {
@@ -231,15 +232,15 @@ function Guardar() {
         ISBN: $("#txtISB").val(),
         Descripcion: $("#txtDesc").val(),
         BibliografiaId: $("#cbxBibliografia").val(),
-        Bibliografia: $("#cbxBibliografia").find(":selected").text(),
+        
         CienciaId: $("#cbxCiencias").val(),
-        Ciencia: $("#cbxCiencias").find(":selected").text(),
+        
         AutorId: $("#cbxAutores").val(),
-        Autores: $("#cbxAutores").find(":selected").text(),
+        
         EditoraId: $("#cbxEditoras").val(),
-        Editora: $("#cbxEditoras").find(":selected").text(),
+        
         IdiomaId: $("#cbxIdiomas").val(),
-        Idioma: $("#cbxIdiomas").find(":selected").text(),
+        
         year: $("#txtYear").val(),
         Estado: $("#cbxActivo").val() == 1 ? true : false
 

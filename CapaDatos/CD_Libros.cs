@@ -169,7 +169,7 @@ namespace CapaDatos
                     //cmd.ExecuteNonQuery();
 
                     //idAutoGenerado = Convert.ToInt32(cmd.Parameters["Resultado"].Value);
-                    //Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
+                    Mensaje = "Registro insertado exitosamente!";
 
                 }
             }
@@ -234,6 +234,8 @@ namespace CapaDatos
                         resultado = true;
                     }
                 }
+
+                Mensaje = "Registro actualizado exitosamente!";
             }
             catch (Exception ex)
             {
@@ -261,7 +263,7 @@ namespace CapaDatos
                     cmd.ExecuteNonQuery();
 
                     resultado = true;
-                    Mensaje = "Libro eliminado correctamente";
+                    Mensaje = "Registro eliminado correctamente";
 
                 }
             }
