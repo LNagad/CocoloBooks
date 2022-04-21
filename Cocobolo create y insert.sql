@@ -34,53 +34,42 @@ CREATE TABLE Libros(
 	Id int primary key IDENTITY NOT NULL,
 	[SignaturaTopografica] nvarchar(75) NOT NULL,
 	[Nombre] nvarchar(75) NOT NULL,
-	[ISB] decimal NOT NULL,
-	[BibliografiaId] int references Bibliografias(Id) NOT NULL,
-	[Autores] nvarchar(75) NOT NULL,
+	[ISBN] decimal NOT NULL,
 	[Descripcion] nvarchar(75) NOT NULL,
-	[Ciencia] nvarchar(75) NOT NULL,
-	[Editora] nvarchar(75) NOT NULL,
+	[AutorId] int references Autores(Id) NOT NULL,
+	[BibliografiaId] int references Bibliografias(Id) NOT NULL,
+	[CienciaId] int references Ciencias(Id) NOT NULL,
+	[EditoraId] int references Editoras(Id) NOT NULL,
+	[IdiomaId] int references Idiomas(Id) NOT NULL,
+	[year] datetime NOT NULL,
 	[Estado] int default 1 NOT NULL,
-	[Idioma] nvarchar(75) NOT NULL,
-	[year] date NOT NULL
 )
+Use CocoBoLoBooks;
+drop table Libros;
 
+select * from Libros;
 ------------------------------------TABLA
-create view vw_libros
-as
-select t1.Id, t1.SignaturaTopografica, t1.Nombre, t1.ISB, t1.BibliografiaId, t2.Name as Bibliografia, t1.Autores, t1.Descripcion,t1.Ciencia,t1.Editora
-,t1.Estado, t1.Idioma, t1.year
-from Libros t1 INNER JOIN Bibliografias t2 ON (t1.BibliografiaId = t2.Id)
-
-
-
-
-
-
+CREATE VIEW vw_libros
+AS
+	SELECT t1.Id, t1.SignaturaTopografica, t1.Nombre, t1.ISBN, t1.Descripcion, t1.BibliografiaId, t2.Name as Bibliografia, 
+		t1.CienciaId,t7.Name as Ciencia, t1.AutorId, t3.Name as Autor , t1.EditoraId, t4.Name as Editora, 
+		t1.IdiomaId, t5.Name as Idioma, t1.year ,t1.Estado 
+	FROM Libros t1 
+		INNER JOIN Bibliografias t2 ON (t1.BibliografiaId = t2.Id)
+		INNER JOIN Ciencias t7 ON (t1.CienciaId = t7.Id)
+		INNER JOIN Autores t3 ON (t1.AutorId = t3.Id)
+		INNER JOIN Editoras t4 ON (t1.EditoraId = t4.Id)
+		INNER JOIN Idiomas t5 ON (t1.IdiomaId = t5.Id);
 
 select * from vw_libros;
 
-INSERT INTO Bibliografias(Name,Description)
-VALUES ('Paulo Cojelo', 'Paulo pero cogelo')
-
 select * from Libros;
 
+drop view vw_libros;
 
-
-
-
-
-
-
-
-
-alter table Libros drop column year
-
-alter table libros add year datetime
-
-INSERT INTO Libros  (SignaturaTopografica, Nombre, ISB, BibliografiaId, Autores, Descripcion, Ciencia, Editora, Estado,Idioma, year)
-VALUES 
-('99', 'Penelowao', 21, 1, 'Paulo x', 'Un libro para todos', 'Ficcion', 'SRL venezuela', 1, 'spanish', '2022');
+INSERT INTO Libros 
+VALUES --tirara error en la fecha porque es datetime
+('99E', 'Skratch', 123113, 'Un libro para todos', 2, 5, 1, 1, 4, '2022/02/01', 1);
 
 
 

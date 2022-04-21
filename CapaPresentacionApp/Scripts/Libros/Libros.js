@@ -66,13 +66,37 @@ jQuery.ajax({
     contentType: "application/json; charset=utf-8",
     success: function (data) {
 
-        $("<option>").attr({ "value": "0", "disabled": "true" }).text("Seleccionar").appendTo("#cbxBibliografia");
+        $("<option>").attr({ "value": "0", "disabled": "true", "selected": "true" }).text("Seleccionar").appendTo("#cbxBibliografia");
 
         $.each(data.data, function (index, value) {
 
             console.log(value)
 
             $("<option>").attr({ "value": value.Id }).text(value.Name).appendTo("#cbxBibliografia");
+
+        })
+
+        console.log(data)
+    },
+    error: {
+
+    }
+});
+
+///Ciencias
+jQuery.ajax({
+    url: '/Mantenimiento/ListarCiencias', /*@Url.Action("ListarAutores", "Mantenimiento")*/
+    type: "GET",
+    dataType: "json",
+    contentType: "application/json; charset=utf-8",
+    success: function (data) {
+
+        $("<option>").attr({ "value": "0", "disabled": "true", "selected": "true" }).text("Seleccionar").appendTo("#cbxCiencias");
+
+        $.each(data.data, function (index, value) {
+            console.log(value)
+
+            $("<option>").attr({ "value": value.Id }).text(value.Name).appendTo("#cbxCiencias");
 
         })
 
@@ -91,7 +115,7 @@ jQuery.ajax({
     contentType: "application/json; charset=utf-8",
     success: function (data) {
 
-        $("<option>").attr({ "value": "0", "disabled": "true" }).text("Seleccionar").appendTo("#cbxAutores");
+        $("<option>").attr({ "value": "0", "disabled": "true", "selected": "true" }).text("Seleccionar").appendTo("#cbxAutores");
 
         $.each(data.data, function (index, value) {
             console.log(value)
@@ -106,6 +130,57 @@ jQuery.ajax({
 
     }
 });
+
+
+///Editoras
+jQuery.ajax({
+    url: '/Mantenimiento/ListarEditoras', /*@Url.Action("ListarAutores", "Mantenimiento")*/
+    type: "GET",
+    dataType: "json",
+    contentType: "application/json; charset=utf-8",
+    success: function (data) {
+
+        $("<option>").attr({ "value": "0", "disabled": "true", "selected": "true" }).text("Seleccionar").appendTo("#cbxEditoras");
+
+        $.each(data.data, function (index, value) {
+            console.log(value)
+
+            $("<option>").attr({ "value": value.Id }).text(value.Name).appendTo("#cbxEditoras");
+
+        })
+
+        console.log(data)
+    },
+    error: {
+
+    }
+});
+
+///Idiomas
+jQuery.ajax({
+    url: '/Mantenimiento/ListarIdiomas', /*@Url.Action("ListarAutores", "Mantenimiento")*/
+    type: "GET",
+    dataType: "json",
+    contentType: "application/json; charset=utf-8",
+    success: function (data) {
+
+        $("<option>").attr({ "value": "0", "disabled": "true", "selected": "true" }).text("Seleccionar").appendTo("#cbxIdiomas");
+
+        $.each(data.data, function (index, value) {
+            console.log(value)
+
+            $("<option>").attr({ "value": value.Id }).text(value.Name).appendTo("#cbxIdiomas");
+
+        })
+
+        console.log(data)
+    },
+    error: {
+
+    }
+});
+
+
 
 
 function abrirModal(json) {
@@ -161,16 +236,20 @@ function Guardar() {
         Id: $("#txtId").val(),
         SignaturaTopografica: $("#txtSignaturaTopografica").val(),
         Nombre: $("#txtNombre").val(),
-        ISB: $("#txtISB").val(),
+        ISBN: $("#txtISB").val(),
+        Descripcion: $("#txtDesc").val(),
         BibliografiaId: $("#cbxBibliografia").val(),
         Bibliografia: $("#cbxBibliografia").find(":selected").text(),
-        Autores: $("#txtAutores").val(),
-        Descripcion: $("#txtDesc").val(),
-        Ciencia: $("#txtCiencia").val(),
-        Editora: $("#txtEditora").val(),
-        Estado: $("#cbxActivo").val() == 1 ? true : false,
-        Idioma: $("#txtIdioma").val(),
-        year: $("#txtYear").val()
+        CienciaId: $("#cbxCiencias").val(),
+        Ciencia: $("#cbxCiencias").find(":selected").text(),
+        AutorId: $("#cbxAutores").val(),
+        Autores: $("#cbxAutores").find(":selected").text(),
+        EditoraId: $("#cbxEditoras").val(),
+        Editora: $("#cbxEditoras").find(":selected").text(),
+        IdiomaId: $("#cbxIdiomas").val(),
+        Idioma: $("#cbxIdiomas").find(":selected").text(),
+        year: $("#txtYear").val(),
+        Estado: $("#cbxActivo").val() == 1 ? true : false
 
     }
 
@@ -215,8 +294,9 @@ function Guardar() {
 
                 if (data.resultado) {
 
-                    tablaData.row(filaSeleccionada).data(Libro).draw(false);
-                    filaSeleccionada = null;
+                    //tablaData.row(filaSeleccionada).data(Libro).draw(false);
+                    //filaSeleccionada = null;
+                    tablaData.ajax.reload();
                     $("#FormModal").modal("hide");
 
                     Swal.fire(

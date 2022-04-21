@@ -11,15 +11,19 @@ namespace CapaEntidad
 		public int Id { get; set; }
 		public string SignaturaTopografica { get; set; }
 		public string Nombre { get; set; }
-		public decimal ISB { get; set; }
+		public decimal ISBN { get; set; }
+		public string Descripcion { get; set; }
 		public int BibliografiaId { get; set; } // foreign key
 		public string Bibliografia { get; set; }
-		public string Autores { get; set; }
-		public string Descripcion { get; set; }
+		public int CienciaId { get; set; } // foreign key
 		public string Ciencia { get; set; }
+		public int AutorId { get; set; } // foreign key
+		public string Autores { get; set; }
+		public int EditoraId { get; set; } // foreign key
 		public string Editora { get; set; }
-		public bool Estado  { get; set; }
+		public int IdiomaId { get; set; } // foreign key
 		public string Idioma { get; set; }
 		public string year { get; set; }
+		public bool Estado  { get; set; }
 	}
 }
