@@ -41,7 +41,7 @@ CREATE TABLE Libros(
 	[CienciaId] int references Ciencias(Id) NOT NULL,
 	[EditoraId] int references Editoras(Id) NOT NULL,
 	[IdiomaId] int references Idiomas(Id) NOT NULL,
-	[year] datetime NOT NULL,
+	[year] nvarchar (75) NOT NULL,
 	[Estado] int default 1 NOT NULL,
 )
 Use CocoBoLoBooks;
@@ -63,14 +63,19 @@ AS
 
 select * from vw_libros;
 
-select * from Libros;
+alter table libros add year nvarchar;
+alter table libros drop column year;
 
-drop view vw_libros;
 
 INSERT INTO Libros 
 VALUES --tirara error en la fecha porque es datetime
-('99E', 'Skratch', 123113, 'Un libro para todos', 2, 5, 1, 1, 4, '2022/02/01', 1);
+('99E', 'Skratch', 123113, 'Un libro para todos', 2, 5, 1, 1, 4, 1, '2022-02-01');
 
+sp_help libros;
+
+truncate table libros;
+
+select * from libros;
 
 
 
