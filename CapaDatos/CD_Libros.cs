@@ -208,8 +208,8 @@ namespace CapaDatos
                     sb.Append("CienciaId = @CienciaId,");
                     sb.Append("EditoraId = @EditoraId,");
                     sb.Append("IdiomaId = @IdiomaId,");
-                    sb.Append("year = @year ");
-                    sb.Append("Estado = @Estado,");
+                    sb.Append("year = @year, ");
+                    sb.Append("Estado = @Estado ");
                     sb.Append("WHERE Id = @Id");
 
                     using (SqlCommand cmd = new SqlCommand(sb.ToString(), oConexion))

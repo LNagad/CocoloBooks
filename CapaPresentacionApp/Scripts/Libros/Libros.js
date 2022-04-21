@@ -181,48 +181,40 @@ jQuery.ajax({
 });
 
 
-
-
 function abrirModal(json) {
 
     console.log(json)
 
     if (json != null) {
+      
         $("#mensajeError").hide()
-        $("#txtId").val(json.Id)
-        $("#txtSignaturaTopografica").val(json.SignaturaTopografica)
-        $("#txtNombre").val(json.Nombre)
-        $("#txtDesc").val(json.Descripcion)
-        $("#txtISB").val(json.ISB)
-        $("#txtBibliografiaId").val(json.BibliografiaId)
-
-        /*$("#cbxBibliografia").val(json.xb)*/
-
-        $("#txtAutores").val(json.Autores)
-        $("#txtCiencia").val(json.Ciencia)
-        $("#txtEditora").val(json.Editora)
-        $("#txtIdioma").val(json.Idioma)
-        $("#txtYear").val(json.year)
+        $("#txtId").val(json.Id),
+        $("#txtSignaturaTopografica").val(json.SignaturaTopografica),
+        $("#txtNombre").val(json.Nombre),
+        $("#txtISB").val(json.ISBN),
+        $("#txtDesc").val(json.Descripcion),
+        $("#cbxBibliografia").val(json.BibliografiaId),
+        $("#cbxCiencias").val(json.CienciaId),
+        $("#cbxAutores").val(json.AutorId),
+        $("#cbxEditoras").val(json.EditoraId),
+        $("#cbxIdiomas").val(json.IdiomaId),
+        $("#txtYear").val(json.year),
         $("#cbxActivo").val(json.Estado == true ? 1 : 0)
-
-
+    
     } else {
 
         $("#mensajeError").hide()
         $("#txtId").val(0)
-        $("#txtSignaturaTopografica").val("")
-        $("#txtDesc").val("")
-        $("#txtNombre").val("")
-        $("#txtISB").val("")
-        $("#txtBibliografiaId").val("")
-
-        /*$("#cbxBibliografia").val(json.xb)*/
-
-        $("#txtAutores").val("")
-        $("#txtCiencia").val("")
-        $("#txtEditora").val("")
-        $("#txtIdioma").val("")
-        $("#txtYear").val("")
+        $("#txtSignaturaTopografica").val(""),
+        $("#txtNombre").val(""),
+        $("#txtISB").val(""),
+        $("#txtDesc").val(""),
+        $("#cbxBibliografia").val(""),
+        $("#cbxCiencias").val(""),
+        $("#cbxAutores").val(""),
+        $("#cbxEditoras").val(""),
+        $("#cbxIdiomas").val(""),
+        $("#txtYear").val(""),
         $("#cbxActivo").val("")
     }
 
@@ -268,53 +260,33 @@ function Guardar() {
 
                 if (data.resultado != 0) {
 
-                    /*Libro.Id = data.resultado;*/
                     tablaData.ajax.reload();
-                    /*$('#example').DataTable().ajax.reload()*/
                     $("#FormModal").modal("hide");
 
-                    Swal.fire(
-                        'Todo nitido',
-                        '',
-                        'success'
-                    )
+                    Swal.fire('' + data.mensaje, '', 'success')
 
                 } else {
-                    //$("#mensajeError").text(data.mensaje);
-                    //$("#mensajeError").show();
+                    $("#mensajeError").text(data.mensaje);
+                    $("#mensajeError").show();
 
-                    Swal.fire(
-                        '' + data.mensaje,
-                        '',
-                        'error'
-                    )
+                    Swal.fire('' + data.mensaje, '', 'error')
                 }
             }
             else { // editar
 
                 if (data.resultado) {
 
-                    //tablaData.row(filaSeleccionada).data(Libro).draw(false);
-                    //filaSeleccionada = null;
                     tablaData.ajax.reload();
                     $("#FormModal").modal("hide");
 
-                    Swal.fire(
-                        'Todo nitido',
-                        '',
-                        'success'
-                    )
+                    Swal.fire('' + data.mensaje,'','success')
 
                 } else {
-                    //$("#mensajeError").text(data.mensaje);
+                    $("#mensajeError").text(data.mensaje);
 
-                    //$("#mensajeError").show();
+                    $("#mensajeError").show();
 
-                    Swal.fire(
-                        '' + data.mensaje,
-                        '',
-                        'error'
-                    )
+                    Swal.fire('' + data.mensaje,'','error')
                 }
             }
         },
@@ -333,9 +305,7 @@ function Guardar() {
 function Eliminar(json) {
 
     var Libro = {
-
         Id: json["Id"]
-
     }
 
     jQuery.ajax({
@@ -350,24 +320,15 @@ function Eliminar(json) {
 
             if (data.resultado) {
 
-                tablaData.row(filaSeleccionada).draw(false);
-                filaSeleccionada = null;
-
-                Swal.fire(
-                    'Borrado',
-                    '',
-                    'success'
-                )
+                tablaData.ajax.reload()
+                Swal.fire('' + data.mensaje, '', 'success')
 
             } else {
                 $("#mensajeError").text(data.mensaje);
 
                 $("#mensajeError").show();
-                Swal.fire(
-                    'se jodio' + data.mensaje,
-                    '',
-                    'error'
-                )
+
+                Swal.fire('' + data.mensaje, '', 'error')
             }
         },
         error: function (error) {
@@ -389,10 +350,8 @@ function Detalles(json) {
         $("#txtSignaturaTopograficaD").val(json.SignaturaTopografica)
         $("#txtNombreD").val(json.Nombre)
         $("#txtDescD").val(json.Descripcion)
-        $("#txtISBD").val(json.ISB)
+        $("#txtISBD").val(json.ISBN)
         $("#cbxBibliografiaD").val(json.Bibliografia)
-
-        /*$("#cbxBibliografia").val(json.xb)*/
 
         $("#txtAutoresD").val(json.Autores)
         $("#txtCienciaD").val(json.Ciencia)
@@ -400,9 +359,6 @@ function Detalles(json) {
         $("#txtIdiomaD").val(json.Idioma)
         $("#txtYearD").val(json.year)
         $("#cbxActivoD").val(json.Estado == true ? "Si" : "No")
-
-
-
 
         $("#ModalDetalles").modal("show");
     }
@@ -416,10 +372,9 @@ $("#tablaLibros tbody").on("click", '.btn-editar', function () {
 
     var data = tablaData.row(filaSeleccionada).data()
 
-    console.log(tablaData.row(filaSeleccionada).data())
+    /*console.log(tablaData.row(filaSeleccionada).data())*/
 
     abrirModal(data)
-
 })
 
 $("#tablaLibros tbody").on("click", '.btn-eliminar', function () {
@@ -428,12 +383,7 @@ $("#tablaLibros tbody").on("click", '.btn-eliminar', function () {
 
     var data = tablaData.row(filaSeleccionada).data()
 
-    //console.log(tablaData.row(filaSeleccionada).data())
-
     Eliminar(data)
-
-    tablaData.row(filaSeleccionada).remove();
-
 })
 
 $("#tablaLibros tbody").on("click", '.btn-info', function () {
@@ -443,11 +393,4 @@ $("#tablaLibros tbody").on("click", '.btn-info', function () {
     var data = tablaData.row(filaSeleccionada).data()
 
     Detalles(data)
-
-    //console.log(tablaData.row(filaSeleccionada).data())
-
-    /*Eliminar(data)*/
-
-    /*tablaData.row(filaSeleccionada).remove();*/
-
 })
