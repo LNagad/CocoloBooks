@@ -120,6 +120,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ConsultaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HomePageController.cs" />
     <Compile Include="Controllers\LibrosController.cs" />
@@ -129,6 +130,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Scripts\Consulta\Consulta.js" />
     <Content Include="Scripts\Mantenimiento\Ciencias.js" />
     <Content Include="Scripts\Mantenimiento\Idiomas.js" />
   </ItemGroup>
@@ -502,6 +504,7 @@
     <Content Include="Views\HomePage\DetalleLibro.cshtml" />
     <Content Include="Views\Mantenimiento\Idiomas.cshtml" />
     <Content Include="Views\Mantenimiento\Ciencias.cshtml" />
+    <Content Include="Views\Consulta\Consulta.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

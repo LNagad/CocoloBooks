@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="CN_Autores.cs" />
     <Compile Include="CN_Bibliografias.cs" />
+    <Compile Include="CN_Consulta.cs" />
     <Compile Include="CN_Editoras.cs" />
     <Compile Include="CN_Ciencias.cs" />
     <Compile Include="CN_Idiomas.cs" />
