@@ -19,6 +19,11 @@ namespace CapaPresentacionAdmin.Controllers
             return View();
         }
 
+        public ActionResult Registrar()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult Login(Usuario oUsuario)
         {
@@ -63,6 +68,60 @@ namespace CapaPresentacionAdmin.Controllers
             CapaEntidad.Session.descargarSession();
             Session["Usuario"] = null;
             return RedirectToAction("Index", "HomePage");
+        }
+
+        [HttpPost]
+        public ActionResult Registrar(Usuario oUsuario)
+        {
+            bool registrado;
+            string mensaje;
+
+            if (oUsuario.Clave == oUsuario.ConfirmarClave)
+            {
+
+                oUsuario.Clave = CN_Recursos.ConvertirSha256(oUsuario.Clave);
+            }
+            else
+            {
+                ViewData["Mensaje"] = "Las contraseñas no coinciden";
+                return View();
+            }
+
+            using (SqlConnection cn = new SqlConnection(Conexion.cn))
+            {
+
+                SqlCommand cmd = new SqlCommand("sp_RegistrarUsuario", cn);
+                cmd.Parameters.AddWithValue("Nombre", oUsuario.Nombre);
+                cmd.Parameters.AddWithValue("Apellido", oUsuario.Apellido);
+                cmd.Parameters.AddWithValue("Correo", oUsuario.Correo);
+                cmd.Parameters.AddWithValue("Clave", oUsuario.Clave);
+                cmd.Parameters.AddWithValue("Cedula", oUsuario.Cedula);
+                cmd.Parameters.AddWithValue("NCarnet", oUsuario.NCarnet);
+                cmd.Parameters.Add("Registrado", SqlDbType.Bit).Direction = ParameterDirection.Output;
+                cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 100).Direction = ParameterDirection.Output;
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cn.Open();
+
+                cmd.ExecuteNonQuery();
+
+                registrado = Convert.ToBoolean(cmd.Parameters["Registrado"].Value);
+                mensaje = cmd.Parameters["Mensaje"].Value.ToString();
+
+
+            }
+
+            ViewData["Mensaje"] = mensaje;
+
+            if (registrado)
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            else
+            {
+                return View();
+            }
+
         }
     }
 }

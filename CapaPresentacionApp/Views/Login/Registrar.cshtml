@@ -4,7 +4,7 @@
 }
 
 
-@if (CapaEntidad.Session.TipoUsuario == 0 )
+@if (CapaEntidad.Session.TipoUsuario == 0)
 {
 
 
@@ -31,14 +31,24 @@
                                     <div class="col-md-6 col-lg-7 d-flex align-items-center">
                                         <div class="card-body p-4 p-lg-5 text-black">
 
-                                            <form action="@Url.Action("Login","Login")" method="post">
+                                            <form action="@Url.Action("Registrar","Login")" method="post">
 
                                                 <div class="d-flex align-items-center mb-3 pb-1">
                                                     <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
                                                     <span class="h1 fw-bold mb-0">Logo</span>
                                                 </div>
 
-                                                <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
+                                                <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign up</h5>
+
+                                                <div class="form-outline mb-4">
+                                                    <input type="text" name="Nombre" id="form2Example17" class="form-control form-control-lg" />
+                                                    <label class="form-label" for="form2Example17">Nombre</label>
+                                                </div>
+
+                                                <div class="form-outline mb-4">
+                                                    <input type="text" name="Apellido" id="form2Example17" class="form-control form-control-lg" />
+                                                    <label class="form-label" for="form2Example17">Apellido</label>
+                                                </div>
 
                                                 <div class="form-outline mb-4">
                                                     <input type="email" name="Correo" id="form2Example17" class="form-control form-control-lg" />
@@ -48,6 +58,21 @@
                                                 <div class="form-outline mb-4">
                                                     <input type="password" name="Clave" id="form2Example27" class="form-control form-control-lg" />
                                                     <label class="form-label" for="form2Example27">Password</label>
+                                                </div>
+
+                                                <div class="form-outline mb-4">
+                                                    <input type="password" name="ConfirmarClave" id="form2Example27" class="form-control form-control-lg" />
+                                                    <label class="form-label" for="form2Example27">Confirm Password</label>
+                                                </div>
+
+                                                <div class="form-outline mb-4">
+                                                    <input type="text" name="Cedula" id="form2Example17" class="form-control form-control-lg" />
+                                                    <label class="form-label" for="form2Example17">Cedula</label>
+                                                </div>
+
+                                                <div class="form-outline mb-4">
+                                                    <input type="text" name="NCarnet" id="form2Example17" class="form-control form-control-lg" />
+                                                    <label class="form-label" for="form2Example17">No. Carnet</label>
                                                 </div>
 
                                                 @if (ViewData["Mensaje"] != null)
@@ -63,7 +88,7 @@
 
                                                 <a class="small text-muted" href="#!">Forgot password?</a>
                                                 <p class="mb-5 pb-lg-2" style="color: #393f81;">
-                                                    Don't have an account? <a href="@Url.Action("Registrar","Login")"
+                                                    Don't have an account? <a href="#!"
                                                                               style="color: #393f81;">Registrar aqui</a>
                                                 </p>
                                                 <a href="#!" class="small text-muted">Terminos y condiciones</a>
@@ -85,5 +110,6 @@
 }
 else
 {
-    Response.Redirect("~/HomePage/Index");
+Response.Redirect("~/HomePage/Index");
 }
+
