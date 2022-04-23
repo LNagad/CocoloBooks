@@ -51,20 +51,24 @@
                             Usuarios
                         </a>
                         <a class="nav-link" href="@Url.Action("Index","HomePage")">
-                            <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
                             BookStore
                         </a>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Gestionar Libros</a>
-                                <ul class="dropdown-menu bg-light" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item  dropdown-item2" href="@Url.Action("Libros","Libros")">Libros</a></li>
-                                    <li><a class="dropdown-item  dropdown-item2" href="@Url.Action("Bibliografias","Mantenimiento")">Bibliografias</a></li>
-                                    <li><a class="dropdown-item  dropdown-item2" href="@Url.Action("Autores","Mantenimiento")">Autores</a></li>
-                                    <li><a class="dropdown-item  dropdown-item2" href="@Url.Action("Editoras","Mantenimiento")">Editoras</a></li>
-                                    <li><a class="dropdown-item  dropdown-item2" href="@Url.Action("Idiomas","Mantenimiento")">Idiomas</a></li>
-                                    <li><a class="dropdown-item  dropdown-item2" href="@Url.Action("Ciencias","Mantenimiento")">Ciencias</a></li>
-                                </ul>
-                            </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Gestionar Libros</a>
+                            <ul class="dropdown-menu bg-light" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item  dropdown-item2" href="@Url.Action("Libros","Libros")">Libros</a></li>
+                                <li><a class="dropdown-item  dropdown-item2" href="@Url.Action("Bibliografias","Mantenimiento")">Bibliografias</a></li>
+                                <li><a class="dropdown-item  dropdown-item2" href="@Url.Action("Autores","Mantenimiento")">Autores</a></li>
+                                <li><a class="dropdown-item  dropdown-item2" href="@Url.Action("Editoras","Mantenimiento")">Editoras</a></li>
+                                <li><a class="dropdown-item  dropdown-item2" href="@Url.Action("Idiomas","Mantenimiento")">Idiomas</a></li>
+                                <li><a class="dropdown-item  dropdown-item2" href="@Url.Action("Ciencias","Mantenimiento")">Ciencias</a></li>
+                            </ul>
+                        </li>
+                        <a class="nav-link" href="@Url.Action("Consulta","Consulta")">
+                            <div class="sb-nav-link-icon"><i class="fas fa-filter"></i></div>
+                            Filtrado
+                        </a>
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
