@@ -13,6 +13,7 @@ namespace CapaEntidad
         public string Apellido { get; set; }
         public string Correo { get; set; }
         public string Clave { get; set; }
+        public string ConfirmarClave { get; set; }
         public int TipoUsuario { get; set; } //usuario / admin / master
         public string Cedula { get; set; }
         public int NCarnet { get; set; }
