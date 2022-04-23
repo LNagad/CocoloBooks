@@ -12,7 +12,7 @@ begin
         select '0'
 end
 
-
+--sp registrar para el register
 
 create proc sp_RegistrarUsuario(
 @Nombre varchar(100),

@@ -32,7 +32,7 @@ tablaData = $("#tablaUsuarios").DataTable
                 { "data": "Correo" },
                 /*{ "data": "TipoPersona" },*/
                 {
-                    "data": "TipoUsuario", "render": function (valor) {
+                    "data": "TipoPersona", "render": function (valor) {
                         if (valor == 1) {
                             return '<span style="margin-left: 25px;" class="badge bg-primary">Juridica</span>'
                         } else if (valor == 2) {
