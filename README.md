@@ -37,7 +37,9 @@
 
 --IMG.BD
 
-## TECNOLOGIAS EMPLEADAS
+## IMAGENES
+![image](https://user-images.githubusercontent.com/74669208/164947616-39973f14-d5c8-4d47-8b38-fe88532b2556.png)
+
 --
 
 ## AGRADECIMIENTOS
