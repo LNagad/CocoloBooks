@@ -38,7 +38,9 @@
 --IMG.BD
 
 ## IMAGENES
-![image](https://user-images.githubusercontent.com/74669208/164947616-39973f14-d5c8-4d47-8b38-fe88532b2556.png)
+![image](https://user-images.githubusercontent.com/74669208/164947958-eb3feebe-bbbf-4eac-90db-211d70093979.png)
+------------
+![image](https://user-images.githubusercontent.com/74669208/164948030-debe0612-f056-4b26-a18e-71b8c2818020.png)
 
 --
 
