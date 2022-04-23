@@ -30,7 +30,16 @@ tablaData = $("#tablaUsuarios").DataTable
                 { "data": "Nombre" },
                 { "data": "Apellido" },
                 { "data": "Correo" },
-                { "data": "TipoPersona" },
+                /*{ "data": "TipoPersona" },*/
+                {
+                    "data": "TipoUsuario", "render": function (valor) {
+                        if (valor == 1) {
+                            return '<span style="margin-left: 25px;" class="badge bg-primary">Juridica</span>'
+                        } else if (valor == 2) {
+                            return '<span style="margin-left: 25px;" class="badge bg-danger">Fisica</span>'
+                        }
+                    }
+                },
                 {
                     "data": "TipoUsuario", "render": function (valor) {
                         if (valor == 1) {
@@ -123,8 +132,6 @@ function validar(texto) {
 
     for (x in texto) {
 
-        //alert(texto[x])
-
         if ("@" == texto[x]) {
             return true;
         }
@@ -134,15 +141,9 @@ function validar(texto) {
 
 function Guardar() {
 
-    console.log($("#txtCorreo").val() )
-
     if (validar($("#txtCorreo").val())) {
 
-        console.log('correo con arroba')
-
         var Usuario = {
-
-            /*.find(":selected").text()*/
 
             Id: $("#txtId").val(),
             Nombre: $("#txtNombre").val(),
@@ -157,8 +158,6 @@ function Guardar() {
 
         }
 
-        console.log(Usuario)
-
         jQuery.ajax({
             url: '/Home/GuardarUsuario', /*@Url.Action("GuardarUsuario", "Home")*/
             type: "POST",
@@ -171,7 +170,6 @@ function Guardar() {
 
                 /*debugger;*/
 
-                //USUARIO NUEVO
                 if (Usuario.Id == 0) { // si usuarioID = 0 es que se va a agregar
 
                     if (data.resultado != 0) {
