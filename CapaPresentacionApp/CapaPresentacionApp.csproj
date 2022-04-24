@@ -134,6 +134,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Scripts\Consulta\Consulta.js" />
     <Content Include="Scripts\Mantenimiento\Ciencias.js" />
+    <Content Include="Scripts\Mantenimiento\Empleados.js" />
     <Content Include="Scripts\Mantenimiento\Idiomas.js" />
   </ItemGroup>
   <ItemGroup>
@@ -509,6 +510,7 @@
     <Content Include="Views\Consulta\Consulta.cshtml" />
     <Content Include="Views\Login\Registrar.cshtml" />
     <Content Include="Views\Libros\PrestamoLibros.cshtml" />
+    <Content Include="Views\Mantenimiento\Empleados.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

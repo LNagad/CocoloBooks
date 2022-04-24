@@ -46,6 +46,7 @@
     <Compile Include="Bibliografias.cs" />
     <Compile Include="Editoras.cs" />
     <Compile Include="Ciencias.cs" />
+    <Compile Include="Empleados.cs" />
     <Compile Include="Idiomas.cs" />
     <Compile Include="LibroDetalleSelect.cs" />
     <Compile Include="Libros.cs" />

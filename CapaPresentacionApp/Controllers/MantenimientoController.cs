@@ -35,6 +35,10 @@ namespace CapaPresentacionAdmin.Controllers
         {
             return View();
         }
+        public ActionResult Empleados()
+        {
+            return View();
+        }
 
         #endregion
 
@@ -289,5 +293,60 @@ namespace CapaPresentacionAdmin.Controllers
         }
 
         #endregion
+
+
+        //+++++++++++++++++++++++++++++ Empleados ++++++++++++++++++
+        #region Empleados
+
+        [HttpGet]
+        public JsonResult ListarEmpleados()
+        {
+            List<Empleados> oLista = new List<Empleados>();
+
+            oLista = new CN_Empleados().Listar();
+
+            return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
+
+        }
+
+        [HttpPost]
+        public JsonResult GuardarEmpleados(Empleados empleados)
+        {
+            object resultado;
+            
+            string mensaje = string.Empty;
+
+            if (empleados.Id == 0)
+            {
+                resultado = new CN_Empleados().Registrar(empleados, out mensaje);
+            }
+            else
+            {
+                resultado = new CN_Empleados().Editar(empleados, out mensaje);
+            }
+
+            return Json(new { resultado = resultado, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult EliminarEmpleados(int id)
+        {
+            object resultado;
+            string mensaje = string.Empty;
+
+            if (id == 0)
+            {
+                resultado = false;
+            }
+            else
+            {
+                resultado = new CN_Empleados().Eliminar(id, out mensaje);
+            }
+
+            return Json(new { resultado = resultado, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
+        }
+
+        #endregion
+
     }
 }
