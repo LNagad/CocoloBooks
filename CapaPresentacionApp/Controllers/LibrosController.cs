@@ -16,6 +16,10 @@ namespace CapaPresentacionAdmin.Controllers
             return View();
         }
 
+        public ActionResult PrestamoLibros()
+        {
+            return View();
+        }
 
         [HttpGet]
         public JsonResult ListarLibros()
@@ -74,5 +78,7 @@ namespace CapaPresentacionAdmin.Controllers
 
             return Json(new { resultado = resultado, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
         }
+
+
     }
 }
