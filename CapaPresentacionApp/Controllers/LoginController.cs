@@ -52,7 +52,11 @@ namespace CapaPresentacionAdmin.Controllers
                 {
                     return RedirectToAction("Index", "HomePage");
 
-                } else
+                } else if(CapaEntidad.Session.TipoUsuario == 2)
+                {
+                    return RedirectToAction("Libros", "Libros");
+                }
+                else
                 {
                     return RedirectToAction("Index", "Home");
                 }
@@ -66,7 +70,7 @@ namespace CapaPresentacionAdmin.Controllers
         public ActionResult CerrarSesion()
         {
             CapaEntidad.Session.descargarSession();
-            Session["Usuario"] = null;
+            Session["usuario"] = null;
             return RedirectToAction("Index", "HomePage");
         }
 

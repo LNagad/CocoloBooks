@@ -1,5 +1,6 @@
 ﻿using CapaEntidad;
 using CapaNegocio;
+using CapaPresentacionAdmin.Permisos;
 using System;
 using System.Collections.Generic;
 using System.Linq;

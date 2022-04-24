@@ -129,6 +129,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Permisos\permisosUsuarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Scripts\Consulta\Consulta.js" />
     <Content Include="Scripts\Mantenimiento\Ciencias.js" />

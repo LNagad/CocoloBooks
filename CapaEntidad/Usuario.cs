@@ -14,7 +14,7 @@ namespace CapaEntidad
         public string Correo { get; set; }
         public string Clave { get; set; }
         public string ConfirmarClave { get; set; }
-        public int TipoUsuario { get; set; } //usuario / admin / master
+        public int TipoUsuario { get; set; } //1 = usuario /2 = admin / 3 = Empleados
         public string Cedula { get; set; }
         public int NCarnet { get; set; }
         public int TipoPersona { get; set; } //juridica / fiscal
