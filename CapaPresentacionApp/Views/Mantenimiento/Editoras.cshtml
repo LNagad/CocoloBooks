@@ -5,8 +5,8 @@
 }
 
 
-@if (CapaEntidad.Session.TipoUsuario == 2)
-{
+@*@if (CapaEntidad.Session.TipoUsuario == 2)
+{*@
     <div class="card">
         <div class="card-header">
             <i class="fas fa-users me-1"></i> <h7>Lista de Editoras</h7>
@@ -127,9 +127,9 @@
     @section scripts {
         <script src="~/Scripts/Mantenimiento/Editoras.js"></script>
     }
-}
+@*}
 else
 {
     Response.Redirect("~/HomePage/Index");
-}
+}*@
 

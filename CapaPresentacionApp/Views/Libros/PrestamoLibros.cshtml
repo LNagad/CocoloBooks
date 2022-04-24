@@ -5,8 +5,8 @@
 }
 
 
-@if (CapaEntidad.Session.TipoUsuario == 2)
-{
+@*@if (CapaEntidad.Session.TipoUsuario == 2)
+{*@
     <ol class="breadcrumb mb-4 mt-4">
         <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Principal</a></li>
         <li class="breadcrumb-item active">PrestamoLibros</li>
@@ -41,18 +41,15 @@
         </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="FormModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header bg-dark text-white" style="width: 100%;">
-                    <h5 class="modal-title" id="exampleModalLabel">Usuario</h5>
 
+    <div class="modal modal-xl fade" id="FormModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content ">
+
+                <div class="modal-header bg-dark text-white">
+                    <h5 class="modal-title" id="exampleModalLabel">Agregar prestamo</h5>
                 </div>
                 <div class="modal-body ">
-
-                    @*es importante darle el valor 0 que significa que es un nuevo registro el que vamos a insertar
-                        y asi podemos validar eso*@
 
                     <input id="txtId" type="text" value="0" />
 
@@ -74,40 +71,6 @@
 
                         </div>
                         <div class="col-sm-6">
-                            <label for="txtClave" id="lblClave" class="form-label">Clave</label>
-                            <input type="text" class="form-control" id="txtClave">
-
-                        </div>
-
-                        <div class="col-sm-6">
-                            <label for="cbxActivo" class="form-label">Tipo de usuario</label>
-                            <select class="form-select" id="cbxUsuario">
-                                <option value="1">Usuario</option>
-                                <option value="2">Admin</option>
-                            </select>
-
-                        </div>
-
-                        <div class="col-sm-6">
-                            <label for="txtCedula" class="form-label">Cedula</label>
-                            <input type="text" class="form-control" id="txtCedula">
-                        </div>
-
-                        <div class="col-sm-6">
-                            <label for="txtCarnet" class="form-label">No. Carnet</label>
-                            <input type="text" class="form-control" id="txtCarnet">
-                        </div>
-
-                        <div class="col-sm-6">
-                            <label for="cbxPersona" class="form-label">Tipo de Persona</label>
-                            <select class="form-select" id="cbxPersona">
-                                <option value="1">Juridica</option>
-                                <option value="2">Fisica</option>
-                            </select>
-
-                        </div>
-
-                        <div class="col-sm-6">
                             <label for="cbxActivo" class="form-label">Activo</label>
                             <select class="form-select" id="cbxActivo">
                                 <option value="1">Si</option>
@@ -116,6 +79,22 @@
 
                         </div>
 
+                        <table id="tablaLibros" class="display cell-border " style="width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Bibliografia</th>
+                                    <th>Autores</th>
+                                    <th>Ciencia</th>
+                                    <th>Editora</th>
+                                    <th>Idioma</th>
+                                    <th>Activo</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
                         <div class="row mt-2">
                             <div class="col-12">
                                 <div id="mensajeError" class="alert alert-danger" role="alert">
@@ -133,13 +112,16 @@
         </div>
     </div>
 
+    
+
+    
 
     @section scripts {
         <script src="~/Scripts/Libros/PrestamoLibros.js"></script>
     }
 
-}
+@*}
 else
 {
     Response.Redirect("~/HomePage/Index");
-}
+}*@

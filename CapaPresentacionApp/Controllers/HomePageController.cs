@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CapaPresentacionAdmin.Permisos;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Web.Mvc;
 
 namespace CapaPresentacionAdmin.Controllers
 {
+    [permisosUsuarios]
     public class HomePageController : Controller
     {
         // GET: HomePage

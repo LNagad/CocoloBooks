@@ -4,8 +4,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@if (CapaEntidad.Session.TipoUsuario == 2)
-{
+@*@if (CapaEntidad.Session.TipoUsuario == 2)
+{*@
 
     <div class="card">
         <div class="card-header">
@@ -224,8 +224,8 @@
     @section scripts {
         <script src="~/Scripts/Libros/Libros.js"></script>
     }
-}
+@*}
 else
 {
     Response.Redirect("~/HomePage/Index");
-}
+}*@

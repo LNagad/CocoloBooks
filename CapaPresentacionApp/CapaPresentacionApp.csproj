@@ -126,9 +126,11 @@
     <Compile Include="Controllers\LibrosController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MantenimientoController.cs" />
+    <Compile Include="Controllers\PrestamosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Permisos\permisosUsuarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Scripts\Consulta\Consulta.js" />
     <Content Include="Scripts\Mantenimiento\Ciencias.js" />
@@ -511,6 +513,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Prestamos\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
