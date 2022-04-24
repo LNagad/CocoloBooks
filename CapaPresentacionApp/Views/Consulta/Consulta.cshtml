@@ -3,8 +3,8 @@
     ViewBag.Title = "Consulta";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@if (CapaEntidad.Session.TipoUsuario == 2 || CapaEntidad.Session.TipoUsuario == 3)
-{
+@*@if (CapaEntidad.Session.TipoUsuario == 2 || CapaEntidad.Session.TipoUsuario == 3)
+{*@
 <div class="container " id="contenedor">
     <h2>Consultar por: </h2>
 
@@ -55,9 +55,9 @@
     @section scripts {
         <script src="~/Scripts/Consulta/Consulta.js"></script>
     }
-}
+@*}
 else
 {
     Response.Redirect("~/HomePage/Index");
-}
+}*@
 

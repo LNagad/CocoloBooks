@@ -47,6 +47,10 @@ tablaData = $("#tablaUsuarios").DataTable
                         } else if (valor == 2) {
                             return '<span style="margin-left: 25px;" class="badge bg-danger">Admin</span>'
                         }
+                        else
+                        {
+                            return '<span style="margin-left: 25px;" class="badge bg-warning text-dark">Empleado</span>'
+                        }
                     }
                 },
                 {

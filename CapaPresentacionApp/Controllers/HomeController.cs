@@ -5,16 +5,19 @@ using System.Web;
 using System.Web.Mvc;
 using CapaEntidad;
 using CapaNegocio;
-
+using CapaPresentacionAdmin.Permisos;
 
 namespace CapaPresentacionAdmin.Controllers
 {
+    
     public class HomeController : Controller
     {
         public ActionResult Index()
         {
             return View();
         }
+
+        [permisosUsuarios]
         public ActionResult Usuarios()
         {
             return View();
