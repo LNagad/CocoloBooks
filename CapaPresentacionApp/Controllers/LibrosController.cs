@@ -12,6 +12,7 @@ namespace CapaPresentacionAdmin.Controllers
     public class LibrosController : Controller
     {
         // GET: Libros
+        #region VIEWS
         public ActionResult Libros()
         {
             return View();
@@ -21,6 +22,10 @@ namespace CapaPresentacionAdmin.Controllers
         {
             return View();
         }
+
+        #endregion
+
+        #region Metodos
 
         [HttpGet]
         public JsonResult ListarLibros()
@@ -80,6 +85,6 @@ namespace CapaPresentacionAdmin.Controllers
             return Json(new { resultado = resultado, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
         }
 
-
+        #endregion
     }
 }

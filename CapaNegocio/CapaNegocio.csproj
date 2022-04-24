@@ -48,6 +48,7 @@
     <Compile Include="CN_Ciencias.cs" />
     <Compile Include="CN_Idiomas.cs" />
     <Compile Include="CN_Libros.cs" />
+    <Compile Include="CN_PrestamoLibros.cs" />
     <Compile Include="CN_Recursos.cs" />
     <Compile Include="CN_Usuarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

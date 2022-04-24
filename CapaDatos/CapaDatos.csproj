@@ -49,6 +49,7 @@
     <Compile Include="CD_Ciencias.cs" />
     <Compile Include="CD_Idiomas.cs" />
     <Compile Include="CD_Libros.cs" />
+    <Compile Include="CD_PrestamoLibros.cs" />
     <Compile Include="CD_Usuarios.cs" />
     <Compile Include="Conexion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
