@@ -1,0 +1,180 @@
+﻿
+
+@{
+    ViewBag.Title = "Empleados";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@if (CapaEntidad.Session.TipoUsuario == 2)
+{
+
+    <div class="card">
+        <div class="card-header">
+            <i class="fas fa-users me-1"></i> <h7>Lista de Empleados</h7>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12">
+                    <button type="button" class="btn btn-success" onclick="abrirModal()">Crear nuevo</button>
+                </div>
+            </div>
+            <hr />
+
+            <table id="tablaLibros" class="display cell-border " style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Cedula</th>
+                        <th>Tanda de labor</th>
+                        <th>Porciento de comision</th>
+                        <th>Fecha de ingreso</th>
+                        <th>Activo</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="FormModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-white" style="width: 100%;">
+                    <h5 class="modal-title" id="exampleModalLabel">Empleados</h5>
+
+                </div>
+                <div class="modal-body ">
+
+                    @*es importante darle el valor 0 que significa que es un nuevo registro el que vamos a insertar
+                        y asi podemos validar eso*@
+
+                    <input id="txtId" type="text" value="0" />
+
+                    <div class="row g-1">
+                        <div class="col-sm-6">
+                            <label for="txtNombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="txtNombre">
+
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="txtCedula" class="form-label">Cedula</label>
+                            <input type="text" class="form-control" id="txtCedula">
+
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="txtTandaLabor" class="form-label">Tanda de labor</label>
+                            <select class="form-select" id="txtTandaLabor">
+                                <option value="Matutina">Matutina</option>
+                                <option value="Vispera">Vispera</option>
+                                <option value="Nocturna">Nocturna</option>
+                            </select></div>
+                        <div class="col-sm-6">
+                            <label for="txtPorcientoComision" class="form-label">Porciento de comision</label>
+                            <input type="text" class="form-control" id="txtPorcientoComision">
+
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="txtFechaIngreso" class="form-label">Fecha de ingreso</label>
+                            <input type="date" class="form-control" id="txtFechaIngreso">
+
+                        </div>
+                        
+                        <div class="col-sm-6">
+                            <label for="cbxActivo" class="form-label">Activo</label>
+                            <select class="form-select" id="cbxActivo">
+                                <option value="1">Si</option>
+                                <option value="0">No</option>
+                            </select>
+
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-12">
+                                <div id="mensajeError" class="alert alert-danger" role="alert">
+                                    A simple danger alert—check it out!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" onclick="Guardar()">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="ModalDetalles" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-white" style="width: 100%;">
+                    <h5 class="modal-title" id="exampleModalLabel">Empleados</h5>
+
+                </div>
+                <div class="modal-body ">
+
+                    @*es importante darle el valor 0 que significa que es un nuevo registro el que vamos a insertar
+                        y asi podemos validar eso*@
+
+                    <input id="txtIdD" readonly="readonly" type="text" value="0" />
+
+                    <div class="row g-1">
+                        <div class="col-sm-6">
+                            <label for="txtNombreD" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" readonly="readonly" id="txtNombreD">
+
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="txtCedulaD" class="form-label">Cedula</label>
+                            <input type="text" class="form-control" readonly="readonly" id="txtCedulaD">
+
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="txtTandaLaborD" class="form-label">Tanda de labor</label>
+                            <input type="text" class="form-control" readonly="readonly" id="txtTandaLaborD">
+
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="txtPorcientoComisionD" class="form-label">Porciento de comision</label>
+                            <input type="text" class="form-control" readonly="readonly" id="txtPorcientoComisionD">
+
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="txtFechaIngresoD" class="form-label">Fecha de ingreso</label>
+                            <input type="text" class="form-control" readonly="readonly" id="txtFechaIngresoD">
+
+                        </div>                       
+                        <div class="col-sm-6">
+                            <label for="cbxActivoD" class="form-label">Activo</label>
+                            <input type="text" class="form-control" readonly="readonly" id="cbxActivoD">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    @section scripts {
+        <script src="~/Scripts/Mantenimiento/Empleados.js"></script>
+    }
+
+
+}
+else
+{
+    Response.Redirect("~/HomePage/Index");
+}
+

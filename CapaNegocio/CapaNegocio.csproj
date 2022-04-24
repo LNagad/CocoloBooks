@@ -46,6 +46,7 @@
     <Compile Include="CN_Consulta.cs" />
     <Compile Include="CN_Editoras.cs" />
     <Compile Include="CN_Ciencias.cs" />
+    <Compile Include="CN_Empleados.cs" />
     <Compile Include="CN_Idiomas.cs" />
     <Compile Include="CN_Libros.cs" />
     <Compile Include="CN_PrestamoLibros.cs" />
