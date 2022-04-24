@@ -506,6 +506,7 @@
     <Content Include="Views\Mantenimiento\Ciencias.cshtml" />
     <Content Include="Views\Consulta\Consulta.cshtml" />
     <Content Include="Views\Login\Registrar.cshtml" />
+    <Content Include="Views\Libros\PrestamoLibros.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
