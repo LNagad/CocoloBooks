@@ -228,8 +228,6 @@ function Guardar(data) {
 
     $(string).appendTo(".modal-body")
 
-
-
 }
 
 
