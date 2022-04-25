@@ -1,6 +1,6 @@
-﻿var tablaData;
-
-var filaSeleccionada;
+﻿let tablaData;
+let tablita;
+let filaSeleccionada;
 
 
 tablaData = $("#tablaUsuarios").DataTable
@@ -17,8 +17,6 @@ tablaData = $("#tablaUsuarios").DataTable
                 { "data": "Nombre" },
                 { "data": "Apellido" },
                 { "data": "Correo" },
-                /*{ "data": "TipoPersona" },*/
-
                 {
                     "data": "TipoUsuario", "render": function (valor) {
                         if (valor == 1) {
@@ -38,7 +36,7 @@ tablaData = $("#tablaUsuarios").DataTable
                     }
                 },
                 {
-                    "defaultContent": '<button type="button" class="btn-primary btn-sm btn-editar" >Agregar</button>',
+                    "defaultContent": '<button type="button" class="btn-primary btn-sm btn-agregar" >Agregar</button>',
                     "orderable": false,
                     "searchable": false,
                     "width": "105px",
@@ -51,13 +49,57 @@ tablaData = $("#tablaUsuarios").DataTable
 
     });
 
-    $("#tablaLibros").DataTable
+tablita = $("#tablaLibros").DataTable
+    ({
+        responsive: true,
+        lengthMenu: [[5], [5]],
+        ordering: false,
+        "ajax": {
+            url: '/Prestamos/ListarLibrosActivos', /*@Url.Action("ListarLibros", "Libros")*/
+            type: "GET",
+            dataType: "json",
+        },
+        "columns":
+            [
+                { "data": "Nombre" },
+                { "data": "Bibliografia" },
+                { "data": "Autores" },
+                { "data": "Ciencia" },
+                { "data": "Editora" },
+                { "data": "Idioma" },
+                {
+                    "data": "Estado", "render": function (valor) {
+                        if (valor) {
+                            return '<span class="badge bg-success">Si</span>'
+                        } else {
+                            return '<span class="badge bg-danger">No</span>'
+                        }
+                    }
+                },
+                {
+                    "defaultContent": '<button type="button" class="btn btn-primary btn-sm btn-seleccionar" ><i class="fas fa-pen me-1"></i></button>',
+                    "orderable": false,
+                    "searchable": false,
+                    "width": "120px",
+                    "size": "20px"
+
+                }
+            ],
+        "language": {
+            "url": "https://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json"
+        }
+
+    });
+
+function reBuildTable() {
+
+    tablita = $("#tablaLibros").DataTable
         ({
             responsive: true,
-            lengthMenu: [[5],[5]],
+            lengthMenu: [[5], [5]],
             ordering: false,
             "ajax": {
-                url: '/Libros/ListarLibros', /*@Url.Action("ListarLibros", "Libros")*/
+                url: '/Prestamos/ListarLibrosActivos', /*@Url.Action("ListarLibros", "Libros")*/
                 type: "GET",
                 dataType: "json",
             },
@@ -79,12 +121,12 @@ tablaData = $("#tablaUsuarios").DataTable
                         }
                     },
                     {
-                        "defaultContent": '<button type="button" class="btn btn-primary btn-sm btn-editar" ><i class="fas fa-pen me-1"></i></button>',
+                        "defaultContent": '<button type="button" class="btn btn-primary btn-sm btn-seleccionar" ><i class="fas fa-pen me-1"></i></button>',
                         "orderable": false,
                         "searchable": false,
                         "width": "120px",
                         "size": "20px"
-                        
+
                     }
                 ],
             "language": {
@@ -92,6 +134,7 @@ tablaData = $("#tablaUsuarios").DataTable
             }
 
         });
+}
 
 jQuery.ajax({
     url: '/Home/ListarUsuarios',
@@ -138,65 +181,90 @@ function abrirModal(json) {
     $("#FormModal").modal("show");
 }
 
-function validar(texto) {
 
-    for (x in texto) {
+function Guardar(data) {
+    
+    let string = `
+        <div class="row g-4" id="contenedorTemporal">
+            <h2 class="mb-1 mt-5">Libro seleccionado: </h2>
+            <div class= "d-flex">
+                <div class="w-30 col-sm-2 d-flex justify-content-center">
+                    <img class="card-img-top img_foto" style="width: 150px; " src="../Content/src/Books.png"  alt="..." />
+                </div>
+                <div class="d-flex flex-wrap justify-content-evenly">
+                    <div class="col-sm-3 ms-1">
+                        <label for="txtLibro" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="txtLibro" value="${data.Nombre}" readonly>
 
-        if ("@" == texto[x]) {
-            return true;
-        }
-    }
+                    </div>
+                    <div class="col-sm-3 ms-1">
+                        <label for="txtFecha" class="form-label">Fecha</label>
+                        <input type="text" class="form-control" id="txtFecha" value="${data.year}" readonly>
+
+                    </div>
+                    <div class="col-sm-3 ms-1">
+                        <label for="txtISBN" class="form-label">ISBN</label>
+                        <input type="email" class="form-control" id="txtISBN" value="${data.ISBN}" readonly>
+
+                    </div>
+                    <div class="col-sm-3 ms-1">
+                        <label for="txtLibro" class="form-label">Idioma</label>
+                        <input type="text" class="form-control" id="txtLibro" value="${data.Idioma}" readonly>
+
+                    </div>
+                    <div class="col-sm-3 ms-1">
+                        <label for="txtFecha" class="form-label">Editora</label>
+                        <input type="text" class="form-control" id="txtFecha" value="${data.Editora}" readonly>
+
+                    </div>
+                    <div class="col-sm-3 ms-1">
+                        <label for="txtISBN" class="form-label">Ciencia</label>
+                        <input type="email" class="form-control" id="txtISBN" value="${data.Ciencia}" readonly>
+
+                    </div>
+                </div>
+            </div>
+        </div>`
+
+    $(string).appendTo(".modal-body")
+
+
 
 }
-
-function Guardar() {
-
-
-}
-
 
 
 ////////////////////-----------------------------
 
-$("#tablaUsuarios tbody").on("click", '.btn-editar', function () {
+$("#tablaUsuarios tbody").on("click", '.btn-agregar', function () {
 
     filaSeleccionada = $(this).closest("tr")
 
-    var data = tablaData.row(filaSeleccionada).data()
+    let data = tablaData.row(filaSeleccionada).data()
 
-    console.log(tablaData.row(filaSeleccionada).data())
+    let table_length = tablita.data().count()
+
+    /*$("#contenedorTemporal").hide()*/
+    $("#contenedorTemporal").remove();
+    if (table_length === 0) {
+        reBuildTable()
+        $("#tablaLibros").show()
+        tablita.ajax.reload()
+    }
 
     abrirModal(data)
 
 })
 
-$("#tablaUsuarios tbody").on("click", '.btn-eliminar', function () {
+$("#tablaLibros tbody").on("click", '.btn-seleccionar', function () {
 
     filaSeleccionada = $(this).closest("tr")
 
-    var data = tablaData.row(filaSeleccionada).data()
+    let data = tablita.row(filaSeleccionada).data()
 
-    //console.log(tablaData.row(filaSeleccionada).data())
+    tablita.clear().destroy();
+    $("#tablaLibros").hide()
 
-    Eliminar(data)
-
-    tablaData.row(filaSeleccionada).remove();
-
-})
-
-$("#tablaUsuarios tbody").on("click", '.btn-info', function () {
-
-    filaSeleccionada = $(this).closest("tr")
-
-    var data = tablaData.row(filaSeleccionada).data()
+    Guardar(data)
     console.log(data)
-
-    Detalles(data)
-
-    //console.log(tablaData.row(filaSeleccionada).data())
-
-    /*Eliminar(data)*/
-
-    /*tablaData.row(filaSeleccionada).remove();*/
-
 })
+
