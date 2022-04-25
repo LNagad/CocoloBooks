@@ -5,123 +5,102 @@
 }
 
 
-@*@if (CapaEntidad.Session.TipoUsuario == 2)
-{*@
-    <ol class="breadcrumb mb-4 mt-4">
-        <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Principal</a></li>
-        <li class="breadcrumb-item active">PrestamoLibros</li>
-    </ol>
+<ol class="breadcrumb mb-4 mt-4">
+    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Principal</a></li>
+    <li class="breadcrumb-item active">PrestamoLibros</li>
+</ol>
 
-    <div class="card">
-        <div class="card-header">
-            <i class="fas fa-users me-1"></i> <h7>Lista de Usuarios</h7>
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-12">
-                    <button type="button" class="btn btn-success" onclick="abrirModal()">Crear nuevo</button>
-                </div>
-            </div>
-            <hr />
-
-            <table id="tablaUsuarios" class="display cell-border " style="width: 100%;">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Correo</th>
-                        <th>TipoUsuario</th>
-                        <th>Activo</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-        </div>
+<div class="card">
+    <div class="card-header">
+        <i class="fas fa-users me-1"></i> <h7>Lista de Clientes</h7>
     </div>
+    <div class="card-body">
+        <div class="row">
+        </div>
+        <table id="tablaUsuarios" class="display cell-border " style="width: 100%;">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Correo</th>
+                    <th>TipoUsuario</th>
+                    <th>Activo</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
 
 
-    <div class="modal modal-xl fade" id="FormModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content ">
+<div class="modal fade" tabindex="-1" id="FormModal" data-bs-backdrop="static">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title">Registro prestamo de libro</h5>
+            </div>
+            <div class="modal-body">
+                <input id="txtId" type="text" value="0" hidden />
+                <div class="row g-4">
 
-                <div class="modal-header bg-dark text-white">
-                    <h5 class="modal-title" id="exampleModalLabel">Agregar prestamo</h5>
-                </div>
-                <div class="modal-body ">
+                    <div class="col-sm-3">
+                        <label for="txtNombre" class="form-label">Nombres</label>
+                        <input type="text" class="form-control" id="txtNombre">
 
-                    <input id="txtId" type="text" value="0" hidden />
+                    </div>
+                    <div class="col-sm-3">
+                        <label for="txtApellido" class="form-label">Apellidos</label>
+                        <input type="text" class="form-control" id="txtApellido">
 
-                    <div class="row g-2">
+                    </div>
+                    <div class="col-sm-3">
+                        <label for="txtCorreo" class="form-label">Correo</label>
+                        <input type="email" class="form-control" id="txtCorreo">
 
-                        <div class="col-sm-6">
-                            <label for="txtNombre" class="form-label">Nombres</label>
-                            <input type="text" class="form-control" id="txtNombre">
+                    </div>
+                    <div class="col-sm-3">
+                        <label for="cbxActivo" class="form-label">Activo</label>
+                        <select class="form-select" id="cbxActivo">
+                            <option value="1">Si</option>
+                            <option value="0">No</option>
+                        </select>
 
-                        </div>
-                        <div class="col-sm-6">
-                            <label for="txtApellido" class="form-label">Apellidos</label>
-                            <input type="text" class="form-control" id="txtApellido">
+                    </div>
 
-                        </div>
-                        <div class="col-sm-6">
-                            <label for="txtCorreo" class="form-label">Correo</label>
-                            <input type="email" class="form-control" id="txtCorreo">
-
-                        </div>
-                        <div class="col-sm-6">
-                            <label for="cbxActivo" class="form-label">Activo</label>
-                            <select class="form-select" id="cbxActivo">
-                                <option value="1">Si</option>
-                                <option value="0">No</option>
-                            </select>
-
-                        </div>
-
-                        <table id="tablaLibros" class="display cell-border " style="width: 100%;">
-                            <thead>
-                                <tr>
-                                    <th>Nombre</th>
-                                    <th>Bibliografia</th>
-                                    <th>Autores</th>
-                                    <th>Ciencia</th>
-                                    <th>Editora</th>
-                                    <th>Idioma</th>
-                                    <th>Activo</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                        <div class="row mt-2">
-                            <div class="col-12">
-                                <div id="mensajeError" class="alert alert-danger" role="alert">
-                                    A simple danger alert—check it out!
-                                </div>
+                    <table id="tablaLibros" class="display cell-border " style="width: 100%;">
+                        <thead>
+                            <tr>
+                                <th>Libro</th>
+                                <th>Bibliografia</th>
+                                <th>Autores</th>
+                                <th>Ciencia</th>
+                                <th>Editora</th>
+                                <th>Idioma</th>
+                                <th>Activo</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <div id="mensajeError" class="alert alert-danger" role="alert">
+                                A simple danger alert—check it out!
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary" onclick="Guardar()">Guardar</button>
-                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="Guardar()">Guardar</button>
             </div>
         </div>
     </div>
 
-    
-
-    
-
     @section scripts {
         <script src="~/Scripts/Libros/PrestamoLibros.js"></script>
     }
-
-@*}
-else
-{
-    Response.Redirect("~/HomePage/Index");
-}*@

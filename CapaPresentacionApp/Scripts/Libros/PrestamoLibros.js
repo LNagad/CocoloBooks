@@ -54,6 +54,7 @@ tablaData = $("#tablaUsuarios").DataTable
     $("#tablaLibros").DataTable
         ({
             responsive: true,
+            lengthMenu: [[5],[5]],
             ordering: false,
             "ajax": {
                 url: '/Libros/ListarLibros', /*@Url.Action("ListarLibros", "Libros")*/
@@ -83,6 +84,7 @@ tablaData = $("#tablaUsuarios").DataTable
                         "searchable": false,
                         "width": "120px",
                         "size": "20px"
+                        
                     }
                 ],
             "language": {
