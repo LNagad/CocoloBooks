@@ -236,8 +236,8 @@ function Guardar() {
     else {
         Swal.fire({
 
-            title: 'Correo no bien escrito',
-            text: 'Usted si es bruto hermano, escriba eso bien',
+            title: 'Correo Incorrecto',
+            text: 'Validar el campo de correo el cual está erróneo',
             icon: 'error',
             confirmButtonColor: '#157347'
         })

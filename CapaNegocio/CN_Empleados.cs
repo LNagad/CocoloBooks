@@ -28,12 +28,12 @@ namespace CapaNegocio
 
             else if (string.IsNullOrEmpty(empleados.Cedula) || string.IsNullOrWhiteSpace(empleados.Cedula))
             {
-                Mensaje = "La Cedula del empleados no puede estar vacio";
+                Mensaje = "La Cedula del empleado no puede estar vacio";
             }
 
             else if (string.IsNullOrEmpty(empleados.TandaLabor) || string.IsNullOrWhiteSpace(empleados.TandaLabor))
             {
-                Mensaje = "La tanda de labor del empleado no puede estar vacio";
+                Mensaje = "La tanda de labor del empleado no puede estar vacia";
             }
             else if (string.IsNullOrEmpty(empleados.PorcientoComision) || string.IsNullOrWhiteSpace(empleados.PorcientoComision))
             {

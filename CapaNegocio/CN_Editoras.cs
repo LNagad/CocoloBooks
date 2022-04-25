@@ -24,12 +24,12 @@ namespace CapaNegocio
 
             if (string.IsNullOrEmpty(editoras.Name) || string.IsNullOrWhiteSpace(editoras.Name))
             {
-                Mensaje = "El nombre de la bibliografia no puede estar vacio";
+                Mensaje = "El nombre de la editora no puede estar vacia";
             }
 
             else if (string.IsNullOrEmpty(editoras.Description) || string.IsNullOrWhiteSpace(editoras.Description))
             {
-                Mensaje = "La descripcion de la bibliografia no puede estar vacio";
+                Mensaje = "La descripcion de la editora no puede estar vacia";
             }
 
 
@@ -50,12 +50,12 @@ namespace CapaNegocio
 
             if (string.IsNullOrEmpty(editoras.Name) || string.IsNullOrWhiteSpace(editoras.Name))
             {
-                Mensaje = "El nombre de la bibliografia no puede estar vacio";
+                Mensaje = "El nombre de la editora no puede estar vacia";
             }
 
             else if (string.IsNullOrEmpty(editoras.Description) || string.IsNullOrWhiteSpace(editoras.Description))
             {
-                Mensaje = "La descripcion de la bibliografia no puede estar vacio";
+                Mensaje = "La descripcion de la editora no puede estar vacia";
             }
 
             if (string.IsNullOrEmpty(Mensaje))

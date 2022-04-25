@@ -32,12 +32,12 @@ namespace CapaNegocio
 
             if (string.IsNullOrEmpty(libro.Nombre) || string.IsNullOrWhiteSpace(libro.Nombre))
             {
-                Mensaje = "El nombre de la bibliografia no puede estar vacio";
+                Mensaje = "El nombre del libro no puede estar vacio";
             }
 
             else if (string.IsNullOrEmpty(libro.Descripcion) || string.IsNullOrWhiteSpace(libro.Descripcion))
             {
-                Mensaje = "La descripcion de la bibliografia no puede estar vacio";
+                Mensaje = "La descripcion del libro no puede estar vacio";
             }
 
 
