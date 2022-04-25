@@ -20,5 +20,15 @@ namespace CapaPresentacionAdmin.Controllers
         }
 
 
+        public JsonResult ListarLibrosActivos()
+        {
+            List<Libros> Olista = new List<Libros>();
+
+            Olista = new CN_PrestamoLibros().ListarLibrosActivos();
+
+            return Json(new { data = Olista }, JsonRequestBehavior.AllowGet);
+        }
+
+
     }
 }

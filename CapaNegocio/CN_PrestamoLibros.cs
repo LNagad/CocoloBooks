@@ -17,5 +17,10 @@ namespace CapaNegocio
             return obj.ListarUsuariosClientes();
         }
 
+        public List<Libros> ListarLibrosActivos()
+        {
+            return obj.ListarLibrosActivos();
+        }
+
     }
 }
