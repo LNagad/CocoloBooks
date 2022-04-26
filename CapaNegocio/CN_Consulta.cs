@@ -16,21 +16,5 @@ namespace CapaNegocio
         {
             return objCapaDato.ListarPorEditora(id);
         }
-        public List<Libros> ConsultarPorCiencias(int id)
-        {
-            return objCapaDato.ListarPorCiencias(id);
-        }
-        public List<Libros> ConsultarPorIdiomas(int id)
-        {
-            return objCapaDato.ListarPorIdiomas(id);
-        }
-        public List<Libros> ConsultarPorAutores(int id)
-        {
-            return objCapaDato.ListarPorAutores(id);
-        }
-        public List<Libros> ConsultarPorBibliografias(int id)
-        {
-            return objCapaDato.ListarPorBibliografias(id);
-        }
     }
 }
