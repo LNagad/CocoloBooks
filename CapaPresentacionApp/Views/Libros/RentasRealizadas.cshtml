@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "RentasRealizadas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>RentasRealizadas</h2>
+
+
+<ol class="breadcrumb mb-4 mt-4">
+    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Principal</a></li>
+    <li class="breadcrumb-item active">Rentas Realizadas</li>
+</ol>
+
+<div class="card">
+    <div class="card-header">
+        <i class="fas fa-users me-1"></i> <h7>Lista de Rentas</h7>
+    </div>
+    <div class="card-body">
+        <div class="row">
+        </div>
+        <table id="tablaUsuarios" class="display cell-border " style="width: 100%;">
+            <thead>
+                <tr>
+                    <th>IdRenta</th>
+                    <th>LibroNombre</th>
+                    <th>FechaEntrega</th>
+                    <th>ComisionEntregaTardia</th>
+                    <th>fechaRenta</th>
+                    <th>Activo</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<div class="modal fade" tabindex="-1" id="FormModal" data-bs-backdrop="static">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title">Registro prestamo de libro</h5>
+            </div>
+            <div class="modal-body">
+                <input id="txtId" type="text" value="0" hidden />
+                <div class="row g-4">
+                 
+                    <div class="col-sm-3">
+                        <label for="cbxActivo" class="form-label">Activo</label>
+                        <select class="form-select" id="cbxActivo">
+                            <option value="1">Si</option>
+                            <option value="0">No</option>
+                        </select>
+
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <div id="mensajeError" class="alert alert-danger" role="alert">
+                                A simple danger alert—check it out!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-success" onclick="Guardar()">Actualizar Renta</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script src="~/Scripts/Libros/PrestamoLibros.js"></script>
+}

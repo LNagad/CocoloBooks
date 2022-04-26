@@ -53,10 +53,15 @@
                                 Usuarios
                             </a>
                         }
-                        <a class="nav-link" href="@Url.Action("PrestamoLibros","Libros")">
-                            <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
-                            Prestamo libros
-                        </a>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Gestionar prestamos</a>
+                        <ul class="dropdown-menu bg-light" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item  dropdown-item2" href="@Url.Action("PrestamoLibros","Libros")">Rentar Libro</a></li>
+                            <li><a class="dropdown-item  dropdown-item2" href="@Url.Action("RentasRealizadas","Libros")">Rentas Realizadas</a></li>
+                        </ul>
+                    </li>
+
                         @if (CapaEntidad.Session.TipoUsuario == 2)
                         {
                             <li class="nav-item dropdown">

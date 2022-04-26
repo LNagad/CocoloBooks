@@ -29,6 +29,15 @@ namespace CapaPresentacionAdmin.Controllers
             return Json(new { data = Olista }, JsonRequestBehavior.AllowGet);
         }
 
+        [HttpPost]
+        public JsonResult RegistrarRenta(RentasLibros datosRenta)
+        {
+            object resultado;
+            string mensaje = string.Empty;
 
+            resultado = new CN_PrestamoLibros().RegistrarRenta(datosRenta, out mensaje);
+
+            return Json(new { resultado = resultado, mensaje = mensaje}, JsonRequestBehavior.AllowGet);
+        }
     }
 }

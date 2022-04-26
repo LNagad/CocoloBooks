@@ -118,6 +118,49 @@ namespace CapaDatos
             return lista;
         }
 
+        public int RegistrarRenta(RentasLibros datosRenta, out string mensaje)
+        {
+            mensaje = string.Empty;
+            int trans = 0;
+
+            try
+            {
+                using (SqlConnection oConexion = new SqlConnection(Conexion.cn))
+                {
+                    SqlCommand cmd = new SqlCommand("sp_registrarRenta", oConexion);
+                    cmd.Parameters.AddWithValue("@IdLibro", datosRenta.IdLibro);
+                    cmd.Parameters.AddWithValue("@IdUsuario", datosRenta.IdUsuario);
+                    cmd.Parameters.AddWithValue("@FechaEntrega", datosRenta.FechaEntrega);
+                    cmd.Parameters.AddWithValue("@ComisionEntregaTardia", datosRenta.ComisionEntregaTardia);
+                    cmd.Parameters.AddWithValue("@Estado", 1);
+                    cmd.Parameters.Add("@Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    oConexion.Open();
+                    cmd.ExecuteNonQuery();
+
+                    if (cmd.Parameters["@Mensaje"].Value.ToString() == "Este libro ya se encuentra rentado")
+                    {
+                        trans = 0;
+                        mensaje = cmd.Parameters["@Mensaje"].Value.ToString();
+
+                    } else
+                    {
+                        trans = 1;
+                        mensaje = cmd.Parameters["@Mensaje"].Value.ToString();
+
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                mensaje = ex.Message;
+            }
+
+            return trans;
+        }
+
     }
 
     
