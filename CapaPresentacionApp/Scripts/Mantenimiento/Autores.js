@@ -97,7 +97,7 @@ function Guardar() {
                     tablaData.ajax.reload();
                     $("#FormModal").modal("hide");
 
-                    Swal.fire('' + data.mensaje,'','success')
+                    Swal.fire('' + data.mensaje,'','Agregado de manera exitosa')
 
                 } else {
                     
@@ -117,7 +117,7 @@ function Guardar() {
                     filaSeleccionada = null;
                     $("#FormModal").modal("hide");
 
-                    Swal.fire('' + data.mensaje, '', 'success')
+                    Swal.fire('' + data.mensaje, '', 'Editado de manera exitosa')
 
                 } else {
 
@@ -167,7 +167,7 @@ function Eliminar(json) {
                 Swal.fire(
                     '' + data.mensaje,
                     '',
-                    'success'
+                    'Eliminado de manera exitosa'
                 )
 
             } else {

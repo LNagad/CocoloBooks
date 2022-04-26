@@ -18,7 +18,7 @@
     </head>
     <body>
         <div>
-            <section class="vh-100" style="background-color: #9A616D;">
+            <section class="vh-100" style="background-color: #9A616D; height: 200vh !important;">
                 <div class="container py-5 h-100">
                     <div class="row d-flex justify-content-center align-items-center h-100">
                         <div class="col col-xl-10">
@@ -41,37 +41,37 @@
                                                 <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Registrarse</h5>
 
                                                 <div class="form-outline mb-4">
-                                                    <input type="text" name="Nombre" id="form2Example17" class="form-control form-control-lg" />
+                                                    <input type="text" name="Nombre" id="form2Example17" class="form-control form-control-lg" placeholder="Nombre"/>
                                                     <label class="form-label" for="form2Example17">Nombre</label>
                                                 </div>
 
                                                 <div class="form-outline mb-4">
-                                                    <input type="text" name="Apellido" id="form2Example17" class="form-control form-control-lg" />
+                                                    <input type="text" name="Apellido" id="form2Example17" class="form-control form-control-lg" placeholder="Apellido"/>
                                                     <label class="form-label" for="form2Example17">Apellido</label>
                                                 </div>
 
                                                 <div class="form-outline mb-4">
-                                                    <input type="email" name="Correo" id="form2Example17" class="form-control form-control-lg" />
+                                                    <input type="email" name="Correo" id="form2Example17" class="form-control form-control-lg" placeholder="Correo Electrónico"/>
                                                     <label class="form-label" for="form2Example17">Correo Electrónico</label>
                                                 </div>
 
                                                 <div class="form-outline mb-4">
-                                                    <input type="password" name="Clave" id="form2Example27" class="form-control form-control-lg" />
+                                                    <input type="password" name="Clave" id="form2Example27" class="form-control form-control-lg" placeholder="Contraseña"/>
                                                     <label class="form-label" for="form2Example27">Contraseña</label>
                                                 </div>
 
                                                 <div class="form-outline mb-4">
-                                                    <input type="password" name="ConfirmarClave" id="form2Example27" class="form-control form-control-lg" />
+                                                    <input type="password" name="ConfirmarClave" id="form2Example27" class="form-control form-control-lg" placeholder="Confirmar contraseña"/>
                                                     <label class="form-label" for="form2Example27">Confirmar contraseña</label>
                                                 </div>
 
                                                 <div class="form-outline mb-4">
-                                                    <input type="text" name="Cedula" id="form2Example17" class="form-control form-control-lg" />
-                                                    <label class="form-label" for="form2Example17">Cedula</label>
+                                                    <input type="text" name="Cedula" id="form2Example17" class="form-control form-control-lg" placeholder="Cédula"/>
+                                                    <label class="form-label" for="form2Example17">Cédula</label>
                                                 </div>
 
                                                 <div class="form-outline mb-4">
-                                                    <input type="text" name="NCarnet" id="form2Example17" class="form-control form-control-lg" />
+                                                    <input type="text" name="NCarnet" id="form2Example17" class="form-control form-control-lg" placeholder="No. Carnet"/>
                                                     <label class="form-label" for="form2Example17">No. Carnet</label>
                                                 </div>
 
@@ -88,8 +88,8 @@
 
                                                 <a class="small text-muted" href="#!">Olvidaste tu contraseña?</a>
                                                 <p class="mb-5 pb-lg-2" style="color: #393f81;">
-                                                    No tienes una cuenta? <a href="#!"
-                                                                              style="color: #393f81;">Registrate aqui</a>
+                                                    Ya tienes una cuenta? <a href="@Url.Action("Login","Login")"
+                                                                              style="color: #393f81;">Inicia sesión aqui</a>
                                                 </p>
                                                 <a href="https://elfondoenlinea.com/Politicas.aspx" target="_blank" class="small text-muted">Terminos y condiciones</a>
                                                 <a href="https://elfondoenlinea.com/Politicas.aspx" target="_blank" class="small text-muted">Politica de privacidad</a>

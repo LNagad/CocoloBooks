@@ -99,7 +99,7 @@ function Guardar() {
                     tablaData.ajax.reload()
                     $("#FormModal").modal("hide");
 
-                    Swal.fire(data.mensaje , '', 'success')
+                    Swal.fire(data.mensaje , '', 'Agregado de manera exitosa')
 
                 } else {
                     //error
