@@ -105,7 +105,7 @@ function Guardar() {
 
                     $("#FormModal").modal("hide");
 
-                    Swal.fire('' + data.mensaje, '', 'success')
+                    Swal.fire('' + data.mensaje, '', 'Agregado de manera exitosa')
 
                 } else {
                     //error
@@ -122,7 +122,7 @@ function Guardar() {
                     filaSeleccionada = null;
                     $("#FormModal").modal("hide");
 
-                    Swal.fire('' + data.mensaje, '', 'success')
+                    Swal.fire('' + data.mensaje, '', 'Editado de manera exitosa')
                 } else {
 
                     Swal.fire('' + data.mensaje, '', 'error')
@@ -165,7 +165,7 @@ function Eliminar(json) {
                 tablaData.ajax.reload()
                 filaSeleccionada = null;
 
-                Swal.fire('' + data.mensaje, '', 'success')
+                Swal.fire('' + data.mensaje, '', 'Eliminado de manera exitosa')
 
             } else {
 
