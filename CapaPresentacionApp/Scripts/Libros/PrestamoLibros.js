@@ -181,9 +181,8 @@ function abrirModal(json) {
     $("#FormModal").modal("show");
 }
 
+function appendDiv(data) {
 
-function Guardar(data) {
-    
     let string = `
         <div class="row g-4" id="contenedorTemporal">
             <h2 class="mb-1 mt-5">Libro seleccionado: </h2>
@@ -227,6 +226,12 @@ function Guardar(data) {
         </div>`
 
     $(string).appendTo(".modal-body")
+
+}
+
+function Guardar(data) {
+    
+    appendDiv(data)
 
 }
 
