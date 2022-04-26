@@ -6,14 +6,19 @@ using System.Web.Mvc;
 
 namespace CapaPresentacionAdmin.Permisos
 {
-    public class permisosUsuarios : ActionFilterAttribute
+    public class permisosAdmin : ActionFilterAttribute
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            if (HttpContext.Current.Session["usuario"] == null)
+            if (CapaEntidad.Session.TipoUsuario < 2)
             {
-                filterContext.Result = new RedirectResult("~/Login/Login");
+                filterContext.Result = new RedirectResult("~/HomePage/Index");
             }
+            else if (CapaEntidad.Session.TipoUsuario > 2 )
+            {
+                filterContext.Result = new RedirectResult("~/Home/Index");
+            }
+
             base.OnActionExecuting(filterContext);
         }
 
