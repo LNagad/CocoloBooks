@@ -88,7 +88,7 @@ function Guardar() {
                     tablaData.row.add(Bibliografia).draw(false);
                     $("#FormModal").modal("hide");
 
-                    Swal.fire('Todo nitido', '', 'success')
+                    Swal.fire('' + data.mensaje, 'Agregado de manera exitosa')
 
                 } else {
                     //error
@@ -107,7 +107,7 @@ function Guardar() {
                     filaSeleccionada = null;
                     $("#FormModal").modal("hide");
 
-                    Swal.fire('Todo nitido', '', 'success')
+                    Swal.fire('' + data.mensaje, 'Editado de manera exitosa')
                 } else {
                     $("#mensajeError").text(data.mensaje);
                     $("#mensajeError").show();
@@ -147,9 +147,9 @@ function Eliminar(json) {
                 filaSeleccionada = null;
 
                 Swal.fire(
-                    'Borrado',
-                    '',
-                    'success'
+                    ' ' +
+                    data.mensaje,
+                    'Eliminado de manera exitosa'
                 )
 
             } else {
@@ -157,7 +157,7 @@ function Eliminar(json) {
 
                 $("#mensajeError").show();
                 Swal.fire(
-                    'se jodio' + data.mensaje,
+                    ' ' + data.mensaje,
                     '',
                     'error'
                 )
