@@ -51,6 +51,7 @@
     <Compile Include="LibroDetalleSelect.cs" />
     <Compile Include="Libros.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RentasLibros.cs" />
     <Compile Include="Session.cs" />
     <Compile Include="Usuario.cs" />
   </ItemGroup>
