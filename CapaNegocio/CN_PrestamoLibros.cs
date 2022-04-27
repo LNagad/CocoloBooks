@@ -22,6 +22,12 @@ namespace CapaNegocio
             return obj.ListarLibrosActivos();
         }
 
+        public List<RentasLibros> ListarRentas()
+        {
+            return obj.ListarRentas();
+        }
+
+
         public int RegistrarRenta(RentasLibros datosRenta, out string mensaje)
         {
             mensaje = string.Empty;
@@ -44,6 +50,26 @@ namespace CapaNegocio
                 return 0;
             }
             
+        }
+
+        public int ActualizarRenta(RentasLibros datosRenta, out string mensaje)
+        {
+            mensaje = string.Empty;
+
+            if (datosRenta.Estado)
+            {
+                mensaje = "Esta renta ya se encuentra activa";
+            }
+            
+            if (string.IsNullOrEmpty(mensaje))
+            {
+                return obj.ActualizarRenta(datosRenta, out mensaje);
+            }
+            else
+            {
+                return 0;
+            }
+
         }
     }
 }

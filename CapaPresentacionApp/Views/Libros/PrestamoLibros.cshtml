@@ -47,22 +47,22 @@
 
                     <div class="col-sm-3">
                         <label for="txtNombre" class="form-label">Nombres</label>
-                        <input type="text" class="form-control" id="txtNombre">
+                        <input type="text" class="form-control" id="txtNombre" readonly>
 
                     </div>
                     <div class="col-sm-3">
                         <label for="txtApellido" class="form-label">Apellidos</label>
-                        <input type="text" class="form-control" id="txtApellido">
+                        <input type="text" class="form-control" id="txtApellido" readonly>
 
                     </div>
                     <div class="col-sm-3">
                         <label for="txtCorreo" class="form-label">Correo</label>
-                        <input type="email" class="form-control" id="txtCorreo">
+                        <input type="email" class="form-control" id="txtCorreo" readonly>
 
                     </div>
                     <div class="col-sm-3">
                         <label for="cbxActivo" class="form-label">Activo</label>
-                        <select class="form-select" id="cbxActivo">
+                        <select class="form-select" id="cbxActivo" disabled >
                             <option value="1">Si</option>
                             <option value="0">No</option>
                         </select>
@@ -95,7 +95,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onclick="reBuildTable()">Cancelar</button>
                 <button type="button" class="btn btn-success" onclick="Guardar()">Prestar libro</button>
             </div>
         </div>
