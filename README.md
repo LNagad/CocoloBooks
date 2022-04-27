@@ -38,6 +38,8 @@
 --IMG.BD
 
 ## ANEXOS
+![image](https://user-images.githubusercontent.com/86993307/165434058-37e9dacb-3b36-44ea-9fd7-f235cdf6d1aa.png)
+---------
 ![image](https://user-images.githubusercontent.com/74669208/164947958-eb3feebe-bbbf-4eac-90db-211d70093979.png)
 ------------
 ![image](https://user-images.githubusercontent.com/74669208/164948030-debe0612-f056-4b26-a18e-71b8c2818020.png)
@@ -49,6 +51,8 @@
 ![image](https://user-images.githubusercontent.com/86993307/165433775-9a6a4e3b-62ee-4e65-8537-6305553f3c5e.png)
 ---------
 ![image](https://user-images.githubusercontent.com/86993307/165433816-7feaa1f3-27d8-4853-a58e-02dc0e4e67ba.png)
+--------
+
 
 ## AGRADECIMIENTOS
 
