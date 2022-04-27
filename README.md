@@ -44,6 +44,12 @@
 ---------
 ![image](https://user-images.githubusercontent.com/86993307/165432220-1ce07215-568d-42e3-9e38-09537a0daa4b.png)
 ---------
+![image](https://user-images.githubusercontent.com/86993307/165433723-76f43cb7-a3a4-448f-b73f-89ac5cb5524e.png)
+---------
+![image](https://user-images.githubusercontent.com/86993307/165433775-9a6a4e3b-62ee-4e65-8537-6305553f3c5e.png)
+---------
+![image](https://user-images.githubusercontent.com/86993307/165433816-7feaa1f3-27d8-4853-a58e-02dc0e4e67ba.png)
+
 ## AGRADECIMIENTOS
 
 Primero que nada queremos agradecer a nuestro docente Jean Arnaud quien desde el inicio de esta asignatura se ha mostrado empatico y disponible para aclarar nuestras dudas, a los recursos que hemos consultado en el internet, las plataformas que nos han servido de guía tales como Youtube, UDEMY, a Dios por permitirnos trabajar como un equipo desde el inicio del proyecto, esperamos que el desarrollo de este sistema sea de su agrado y entendimiento.
