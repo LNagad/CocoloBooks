@@ -19,7 +19,7 @@
     <div class="card-body">
         <div class="row">
         </div>
-        <table id="tablaUsuarios" class="display cell-border " style="width: 100%;">
+        <table id="tablaRentas" class="display cell-border " style="width: 100%;">
             <thead>
                 <tr>
                     <th>IdRenta</th>
@@ -39,10 +39,10 @@
 
 
 <div class="modal fade" tabindex="-1" id="FormModal" data-bs-backdrop="static">
-    <div class="modal-dialog modal-xl">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header bg-dark text-white">
-                <h5 class="modal-title">Registro prestamo de libro</h5>
+                <h5 class="modal-title">Actualizar estado de renta</h5>
             </div>
             <div class="modal-body">
                 <input id="txtId" type="text" value="0" hidden />
@@ -74,5 +74,5 @@
     </div>
 </div>
 @section scripts {
-    <script src="~/Scripts/Libros/PrestamoLibros.js"></script>
+    <script src="~/Scripts/Libros/RentasRealizadas.js"></script>
 }

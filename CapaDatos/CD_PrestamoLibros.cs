@@ -118,6 +118,50 @@ namespace CapaDatos
             return lista;
         }
 
+        public List<RentasLibros> ListarRentas()
+        {
+            List<RentasLibros> lista = new List<RentasLibros>();
+
+            try
+            {
+                using (SqlConnection oConexion = new SqlConnection(Conexion.cn))
+                {
+                    string query = "select * from vw_rentas";
+                    SqlCommand cmd = new SqlCommand(query, oConexion);
+                    cmd.CommandType = CommandType.Text;
+
+                    oConexion.Open();
+
+                    using (SqlDataReader DR = cmd.ExecuteReader())
+                    {
+                        while (DR.Read())
+                        {
+                            lista.Add(new RentasLibros()
+                            {
+                                    IdRenta = Convert.ToInt32(DR["IdRenta"]),
+                                    IdLibro = Convert.ToInt32(DR["IdLibro"]),
+                                    LibroNombre = DR["LibroNombre"].ToString(),
+                                    IdUsuario = Convert.ToInt32(DR["IdUsuario"]),
+                                    UsuarioNombre = DR["UsuarioNombre"].ToString(),
+                                    FechaEntrega = DR["FechaEntrega"].ToString(),
+                                    ComisionEntregaTardia = Convert.ToInt32(DR["ComisionEntregaTardia"]),
+                                    fechaRenta = DR["FechaRenta"].ToString(),
+                                    Estado = Convert.ToBoolean(DR["Estado"]),
+                            }); 
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                lista = new List<RentasLibros>();
+            }
+            return lista;
+        }
+
+
+
         public int RegistrarRenta(RentasLibros datosRenta, out string mensaje)
         {
             mensaje = string.Empty;
@@ -161,7 +205,33 @@ namespace CapaDatos
             return trans;
         }
 
-    }
 
-    
+        public int ActualizarRenta(RentasLibros datosRenta, out string mensaje)
+        {
+            mensaje = string.Empty;
+            int trans = 0;
+
+            try
+            {
+                using (SqlConnection oConexion = new SqlConnection(Conexion.cn))
+                {
+                    SqlCommand cmd = new SqlCommand("sp_ActualizarRenta", oConexion);
+                    cmd.Parameters.AddWithValue("@IdRenta", datosRenta.IdRenta);
+                    cmd.Parameters.AddWithValue("@IdLibro", datosRenta.IdLibro);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    oConexion.Open();
+                    cmd.ExecuteNonQuery();
+                }
+                    mensaje = "Renta actualizada correctamente";
+                    trans = 1;
+            }
+            catch (Exception ex)
+            {
+                mensaje = ex.Message;
+            }
+
+            return trans;
+        }
+    }
 }

@@ -4,51 +4,58 @@ let filaSeleccionada;
 
 function reBuildTable() {
 
-   
-    tablita = $("#tablaLibros").DataTable
-        ({
-            responsive: true,
-            lengthMenu: [[5], [5]],
-            ordering: false,
-            "ajax": {
-                url: '/Prestamos/ListarLibrosActivos', /*@Url.Action("ListarLibros", "Libros")*/
-                type: "GET",
-                dataType: "json",
-            },
-            "columns":
-                [
-                    { "data": "Nombre" },
-                    { "data": "Bibliografia" },
-                    { "data": "Autores" },
-                    { "data": "Ciencia" },
-                    { "data": "Editora" },
-                    { "data": "Idioma" },
-                    {
-                        "data": "Estado", "render": function (valor) {
-                            if (valor) {
-                                return '<span class="badge bg-success">Si</span>'
-                            } else {
-                                return '<span class="badge bg-danger">No</span>'
-                            }
-                        }
-                    },
-                    {
-                        "defaultContent": '<button type="button" class="btn btn-primary btn-sm btn-seleccionar" ><i class="fas fa-pen me-1"></i></button>',
-                        "orderable": false,
-                        "searchable": false,
-                        "width": "120px",
-                        "size": "20px"
+    if (tablita.data().count() != 0) {
 
-                    }
-                ],
-            "language": {
-                "url": "https://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json"
-            }
-
-        });
+        /*console.log(tablita.data().count() )*/
         
-  
+        tablita.ajax.reload()
+
+    } else {
+
+        tablita = $("#tablaLibros").DataTable
+            ({
+                responsive: true,
+                lengthMenu: [[5], [5]],
+                ordering: false,
+                "ajax": {
+                    url: '/Prestamos/ListarLibrosActivos', /*@Url.Action("ListarLibros", "Libros")*/
+                    type: "GET",
+                    dataType: "json",
+                },
+                "columns":
+                    [
+                        { "data": "Nombre" },
+                        { "data": "Bibliografia" },
+                        { "data": "Autores" },
+                        { "data": "Ciencia" },
+                        { "data": "Editora" },
+                        { "data": "Idioma" },
+                        {
+                            "data": "Estado", "render": function (valor) {
+                                if (valor) {
+                                    return '<span class="badge bg-success">Si</span>'
+                                } else {
+                                    return '<span class="badge bg-danger">No</span>'
+                                }
+                            }
+                        },
+                        {
+                            "defaultContent": '<button type="button" class="btn btn-primary btn-sm btn-seleccionar" ><i class="fas fa-pen me-1"></i></button>',
+                            "orderable": false,
+                            "searchable": false,
+                            "width": "120px",
+                            "size": "20px"
+
+                        }
+                    ],
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json"
+                }
+
+            });
+    }
     
+    /*$("#tablaLibros").hide()*/
 }
 
 function abrirModal(json) {
@@ -166,15 +173,17 @@ function Guardar() {
             if (data.resultado == 1) {
 
                 Swal.fire(data.mensaje, '', 'success')
+                $("#FormModal").modal("hide");
 
             } else {
 
                 Swal.fire(data.mensaje, '', 'error')
             }
 
-            $("#FormModal").modal("hide");
         }
     })
+
+    reBuildTable()
 
 }
 
@@ -225,47 +234,47 @@ tablaData = $("#tablaUsuarios").DataTable
 
     });
 
-    tablita = $("#tablaLibros").DataTable
-    ({
-        responsive: true,
-        lengthMenu: [[5], [5]],
-        ordering: false,
-        "ajax": {
-            url: '/Prestamos/ListarLibrosActivos', /*@Url.Action("ListarLibros", "Libros")*/
-            type: "GET",
-            dataType: "json",
-        },
-        "columns":
-            [
-                { "data": "Nombre" },
-                { "data": "Bibliografia" },
-                { "data": "Autores" },
-                { "data": "Ciencia" },
-                { "data": "Editora" },
-                { "data": "Idioma" },
-                {
-                    "data": "Estado", "render": function (valor) {
-                        if (valor) {
-                            return '<span class="badge bg-success">Si</span>'
-                        } else {
-                            return '<span class="badge bg-danger">No</span>'
-                        }
+tablita = $("#tablaLibros").DataTable
+({
+    responsive: true,
+    lengthMenu: [[5], [5]],
+    ordering: false,
+    "ajax": {
+        url: '/Prestamos/ListarLibrosActivos', /*@Url.Action("ListarLibros", "Libros")*/
+        type: "GET",
+        dataType: "json",
+    },
+    "columns":
+        [
+            { "data": "Nombre" },
+            { "data": "Bibliografia" },
+            { "data": "Autores" },
+            { "data": "Ciencia" },
+            { "data": "Editora" },
+            { "data": "Idioma" },
+            {
+                "data": "Estado", "render": function (valor) {
+                    if (valor) {
+                        return '<span class="badge bg-success">Si</span>'
+                    } else {
+                        return '<span class="badge bg-danger">No</span>'
                     }
-                },
-                {
-                    "defaultContent": '<button type="button" class="btn btn-primary btn-sm btn-seleccionar" ><i class="fas fa-pen me-1"></i></button>',
-                    "orderable": false,
-                    "searchable": false,
-                    "width": "120px",
-                    "size": "20px"
-
                 }
-            ],
-        "language": {
-            "url": "https://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json"
-        }
+            },
+            {
+                "defaultContent": '<button type="button" class="btn btn-primary btn-sm btn-seleccionar" ><i class="fas fa-pen me-1"></i></button>',
+                "orderable": false,
+                "searchable": false,
+                "width": "120px",
+                "size": "20px"
 
-    });
+            }
+        ],
+    "language": {
+        "url": "https://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json"
+    }
+
+});
 
 
 
@@ -280,26 +289,20 @@ $("#tablaUsuarios tbody").on("click", '.btn-agregar', function () {
 
     let table_length = tablita.data().count()
 
-    console.log(table_length)
-
+    tablita.ajax.reload()
     /*$("#contenedorTemporal").hide()*/
     $("#contenedorTemporal").remove();
-    if (table_length === 0) {
-        
-        reBuildTable()
+
+    if (table_length == 0) {
+
+        Swal.fire('Ningun libro entontrado', 'No hay libros disponibles para prestar por el momento', 'question')
+        data = false;
+
+    } else {
+
         $("#tablaLibros").show()
-        tablita.ajax.reload()
-
-        if (tablita.data().count() === 0) { // si luego de re inicializar la tabla sigue en 0 entonces significa que no hay libros
-
-            Swal.fire('Ningun libro entontrado','No hay libros disponibles para prestar por el momento','question')
-            data = false; 
-        }
-
-    }
-
+    }    
     abrirModal(data)
-
 
 })
 
@@ -313,6 +316,5 @@ $("#tablaLibros tbody").on("click", '.btn-seleccionar', function () {
     $("#tablaLibros").hide()
 
     appendDiv(data)
-    console.log(data)
 })
 
