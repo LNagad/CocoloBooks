@@ -20,21 +20,19 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
 
                         <li class="nav-item"><a class="nav-link active" href="@Url.Action("Index","HomePage")">Inicio</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Prestamos</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#!">Devoluciones</a></li>
-                                <li><a class="dropdown-item" href="#!">Mis libros</a></li>
-                            </ul>
-                        </li>
+                      
                     </ul>
                     <div class="loginBTN navbar-nav me-0 mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Mi dashboard</a>
-                            @*<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#!">Cambiar contraseña</a></li>
-                            </ul>*@
-                        </li>
+                        @if (CapaEntidad.Session.TipoUsuario != 0)
+                            {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Mi dashboard</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="#!">Mis libros</a></li>
+                                </ul>
+                            </li>
+
+                            }
                         @if (CapaEntidad.Session.TipoUsuario == 0)
                         {
                             <li class="nav-item" style="right: 0;"><a class="nav-link" href="@Url.Action("Login", "Login")">Iniciar sesion</a></li>

@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace CapaPresentacionAdmin.Controllers
 {
-    [permisosUsuarios]
+    
     public class HomePageController : Controller
     {
         // GET: HomePage

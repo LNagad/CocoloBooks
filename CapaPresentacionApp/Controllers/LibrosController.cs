@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace CapaPresentacionAdmin.Controllers
 {
+ 
     public class LibrosController : Controller
     {
         // GET: Libros
@@ -17,11 +18,12 @@ namespace CapaPresentacionAdmin.Controllers
         {
             return View();
         }
-
+        [permisosAdmin]
         public ActionResult PrestamoLibros()
         {
             return View();
         }
+        [permisosAdmin]
         public ActionResult RentasRealizadas()
         {
             return View();
