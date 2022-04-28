@@ -41,11 +41,17 @@ CREATE TABLE Libros(
 	[CienciaId] int references Ciencias(Id) NOT NULL,
 	[EditoraId] int references Editoras(Id) NOT NULL,
 	[IdiomaId] int references Idiomas(Id) NOT NULL,
+	RutaImagen nvarchar(100),
+	NombreImagen nvarchar (100),
 	[year] nvarchar (75) NOT NULL,
 	[Estado] int default 1 NOT NULL,
 )
 Use CocoBoLoBooks;
 drop table Libros;
+
+alter table libros add 
+RutaImagen nvarchar(100),
+NombreImagen nvarchar (100);
 
 select * from Libros;
 ------------------------------------TABLA
@@ -53,7 +59,7 @@ CREATE VIEW vw_libros
 AS
 	SELECT t1.Id, t1.SignaturaTopografica, t1.Nombre, t1.ISBN, t1.Descripcion, t1.BibliografiaId, t2.Name as Bibliografia, 
 		t1.CienciaId,t7.Name as Ciencia, t1.AutorId, t3.Name as Autor , t1.EditoraId, t4.Name as Editora, 
-		t1.IdiomaId, t5.Name as Idioma, t1.year ,t1.Estado 
+		t1.IdiomaId, t5.Name as Idioma, t1.year ,t1.Estado, t1.RutaImagen, t1.NombreImagen 
 	FROM Libros t1 
 		INNER JOIN Bibliografias t2 ON (t1.BibliografiaId = t2.Id)
 		INNER JOIN Ciencias t7 ON (t1.CienciaId = t7.Id)
@@ -63,13 +69,15 @@ AS
 
 select * from vw_libros;
 
-alter table libros add year nvarchar;
-alter table libros drop column year;
-
 
 INSERT INTO Libros 
 VALUES --tirara error en la fecha porque es datetime
 ('99E', 'Skratch', 123113, 'Un libro para todos', 2, 5, 1, 1, 4, 1, '2022-02-01');
+
+INSERT INTO Libros ( SignaturaTopografica, Nombre, ISBN, Descripcion, AutorId , 
+BibliografiaId, CienciaId, EditoraId, IdiomaId, year,Estado)
+VALUES ('99E', 'pampi', 123113, 'Un libro para todos', 2, 5, 1, 1, 4, '2022-02-01',1)
+SELECT Idx=SCOPE_IDENTITY();
 
 sp_help libros;
 

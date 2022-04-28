@@ -24,8 +24,12 @@ namespace CapaEntidad
 		public string Editora { get; set; }
 		public int IdiomaId { get; set; } // foreign key
 		public string Idioma { get; set; }
-
+		public string RutaImagen { get; set; }
+		public string NombreImagen { get; set; }
 		public string year { get; set; }
 		public bool Estado  { get; set; }
+
+		public string Base64 { get; set; }
+		public string ExtensionImagen { get; set; }
 	}
 }

@@ -32,14 +32,11 @@ jQuery.ajax({
 
             var miString = `<div class= "col mb-5" >` +
                 `<div class="card h-100">` +
-                `<img class="card-img-top img_foto" style="width: 150px; " src="../Content/src/Books.png"  alt="..." />` +
+                `<img class="card-img-top img_foto border rounded mx-auto d-block img-fluid" style="width: 158px; height: 239px; object-fit: cover;" src="../FOTOS_LIBROS/${value.NombreImagen}"  alt="..." />` +
                 `<div class="card-body p-4">` +
                 `<div class="text-center" >` +
                 `<input type="text" id="inputId" value="${value.Id}" hidden/>` +
-                `<h5 class="fw-bolder" > Nombre: ${value.Nombre}</h5 >` +
-                `Autores: ${value.Autores}` +
-                `<br>Editora: ${value.Editora}` +
-                `<br>Idioma: ${value.Idioma}` +
+                `<h5 class="fw-bolder" style="text-transform: capitalize;">${value.Nombre}</h5 >`+
                 `</div>` +
                 `</div >` +
                 `<!-- Product actions-->` +

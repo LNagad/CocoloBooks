@@ -49,7 +49,9 @@ namespace CapaDatos
                                         IdiomaId = Convert.ToInt32(DR["IdiomaId"]), // fk
                                         Idioma = DR["Idioma"].ToString(),
                                         year = DR["year"].ToString(),
-                                        Estado = Convert.ToBoolean(DR["Estado"])
+                                        Estado = Convert.ToBoolean(DR["Estado"]),
+                                        RutaImagen = DR["RutaImagen"].ToString(),
+                                        NombreImagen = DR ["NombreImagen"].ToString()
                                     }
                                 ); 
                         }
@@ -105,6 +107,8 @@ namespace CapaDatos
                                     Idioma = DR["Idioma"].ToString(),
                                     year = DR["year"].ToString(),
                                     Estado = Convert.ToBoolean(DR["Estado"]),
+                                    RutaImagen = DR["RutaImagen"].ToString(),
+                                    NombreImagen = DR["NombreImagen"].ToString()
 
                                 }
 
@@ -138,11 +142,15 @@ namespace CapaDatos
                     //SqlCommand cmd = new SqlCommand("INSERT INTO Libros VALUES @Signa, @Nombre, @ISB, @BibliografiaId, @Autores, @Descripcion, @Ciencia, @Editora, @Estado, @Idioma, @year", oConexion);
                     //cmd.Parameters
 
-                     StringBuilder sb = new StringBuilder(); // (SignaturaTopografica, Nombre, ISB, BibliografiaId, Autores, Descripcion, Ciencia, Editora, Estado,Idioma, year) 
-                    sb.Append("INSERT INTO Libros ");
-                     sb.Append("VALUES ( @SignaturaTopografica, @Nombre, @ISBN, @Descripcion, @AutorId" +
-                         ", @BibliografiaId, @CienciaId, @EditoraId, @IdiomaId, @year, @Estado)");
-                    
+                    StringBuilder sb = new StringBuilder(); // (SignaturaTopografica, Nombre, ISB, BibliografiaId, Autores, Descripcion, Ciencia, Editora, Estado,Idioma, year) 
+                    sb.Append("INSERT INTO Libros ( SignaturaTopografica, Nombre, ISBN, Descripcion, AutorId , ");
+                    sb.Append("BibliografiaId, CienciaId, EditoraId, IdiomaId, year, Estado)");
+                    sb.Append("VALUES ( @SignaturaTopografica, @Nombre, @ISBN, @Descripcion, @AutorId" +
+                         ", @BibliografiaId, @CienciaId, @EditoraId, @IdiomaId, @year, @Estado); ");
+                    sb.Append("SELECT  CAST(scope_identity() AS int);");
+
+                    //sb.Append("DECLARE @ID INT OUTPUT; SET @ID=SCOPE_IDENTITY()");
+
                     using (SqlCommand cmd = new SqlCommand(sb.ToString(), oConexion))
                     {
                         cmd.Parameters.AddWithValue("@SignaturaTopografica", libro.SignaturaTopografica);
@@ -158,10 +166,10 @@ namespace CapaDatos
                         cmd.Parameters.AddWithValue("@Estado", libro.Estado);
 
                         oConexion.Open();
-                        cmd.ExecuteNonQuery();
+                        idAutoGenerado = (int) cmd.ExecuteScalar();
+                        //cmd.ExecuteNonQuery();
                         oConexion.Close();
 
-                        idAutoGenerado = 1;
                     }
 
                     //oConexion.Open();
@@ -245,6 +253,49 @@ namespace CapaDatos
 
             return resultado;
         }
+
+
+        public bool GuardarDatosImagen(Libros libro, out string Mensaje)
+        {
+            bool resultado = false;
+            Mensaje = string.Empty;
+
+            try
+            {
+                using (SqlConnection oConexion = new SqlConnection(Conexion.cn))
+                {
+                    string query = "update libros SET RutaImagen = @RutaImagen, NombreImagen = @NombreImagen WHERE Id = @Id";
+                    
+                    SqlCommand cmd = new SqlCommand(query, oConexion);
+
+                    cmd.Parameters.AddWithValue("@RutaImagen", libro.RutaImagen);
+                    cmd.Parameters.AddWithValue("@NombreImagen", libro.NombreImagen);
+                    cmd.Parameters.AddWithValue("@Id", libro.Id);
+                    
+                    oConexion.Open();
+
+                    if (cmd.ExecuteNonQuery() > 0 )
+                    {
+                        resultado = true;
+                    } 
+                    else
+                    {
+                        Mensaje = "No se pudo cargar la imagen";
+                    }
+                   
+                    oConexion.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                resultado = false;
+
+                Mensaje = ex.Message;
+            }
+            return resultado;
+        }
+    
+
 
 
         public bool Eliminar(int id, out string Mensaje)

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace CapaNegocio
 {
@@ -26,5 +27,30 @@ namespace CapaNegocio
             }
             return Sb.ToString();
         }
+
+        public static string ConvertirBase64(string ruta, out bool resultado)
+        {
+            string textoBase64 = string.Empty;
+            resultado = true;
+
+            try
+            {
+                byte[] bytes = File.ReadAllBytes(ruta);
+                textoBase64 = Convert.ToBase64String(bytes);
+            }
+            catch (Exception)
+            {
+                resultado = false;
+            }
+
+            return textoBase64;
+        }
     }
+
+
+
+    
 }
+
+
+

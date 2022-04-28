@@ -1,7 +1,20 @@
 ﻿
-var tablaData;
+let tablaData;
 
-var filaSeleccionada;
+let filaSeleccionada;
+
+function mostrarImagen(input) {
+    if (input.files) {
+        let reader = new FileReader();
+
+        reader.onload = function (e) {
+            $("#imgLibro").attr("src", e.target.result).width(200).height(197)
+        }
+
+        reader.readAsDataURL(input.files[0])
+    }
+}
+
 
 //@* jQuery.ajax({
 //    url: '/Home/ListarUsuarios', /*@Url.Action("ListarUsuarios", "Home")*/
@@ -201,21 +214,47 @@ function abrirModal(json) {
         $("#txtYear").val(json.year),
             
         $("#cbxActivo").val(json.Estado == true ? 1 : 0)
+        
+        jQuery.ajax({
+            url: '/Libros/ImagenArchivo', /*@Url.Action("EliminarLibro", "Libros")*/
+            type: "POST",
+            data: JSON.stringify({ id: json.Id }), // parametro del metodo GuardarUsuario que es usuariox y se carga con el objeto Usuario
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) { //la data es lo que resivimos del url que viene del controlador metodo GuardarUsuario
+                console.log('llego')
+
+                 if (data.resultado) {
+                    $("#imgLibro").attr({"src": "data:image/" +data.extension +";base64,"+data.textoBase64});
+
+                    }
+
+            },
+            error: function (error) {
+                console.log(error)
+                $("#mensajeError").text("Error al mostrar imagen");
+            },
+        });
+
+
+
     
     } else {
 
         $("#mensajeError").hide()
         $("#txtId").val(0)
-        $("#txtSignaturaTopografica").val(""),
-        $("#txtNombre").val(""),
-        $("#txtISB").val(""),
-        $("#txtDesc").val(""),
-        $("#cbxBibliografia").val(""),
-        $("#cbxCiencias").val(""),
-        $("#cbxAutores").val(""),
-        $("#cbxEditoras").val(""),
-        $("#cbxIdiomas").val(""),
-        $("#txtYear").val(""),
+        $("#imgLibro").removeAttr("src")
+        $("#fileLibroImmg").val("")
+        $("#txtSignaturaTopografica").val("")
+        $("#txtNombre").val("")
+        $("#txtISB").val("")
+        $("#txtDesc").val("")
+        $("#cbxBibliografia").val("")
+        $("#cbxCiencias").val("")
+        $("#cbxAutores").val("")
+        $("#cbxEditoras").val("")
+        $("#cbxIdiomas").val("")
+        $("#txtYear").val("")
         $("#cbxActivo").val("")
     }
 
@@ -224,7 +263,9 @@ function abrirModal(json) {
 
 function Guardar() {
 
-    var Libro = {
+    let ImagenSeleccionada = $("#fileLibroImmg")[0].files[0]
+
+    let Libro = {
 
         Id: $("#txtId").val(),
         SignaturaTopografica: $("#txtSignaturaTopografica").val(),
@@ -243,48 +284,48 @@ function Guardar() {
         
         year: $("#txtYear").val(),
         Estado: $("#cbxActivo").val() == 1 ? true : false
-
     }
+
+    let request = new FormData();
+    request.append("objeto", JSON.stringify(Libro))
+    request.append("archivoImagen", ImagenSeleccionada)
 
     jQuery.ajax({
         url: '/Libros/GuardarLibro', /*@Url.Action("GuardarLibro", "Libros")*/
         type: "POST",
-        data: JSON.stringify({ libro: Libro }), // parametro del metodo GuardarUsuario que es usuariox y se carga con el objeto Usuario
-        dataType: "json",
-        contentType: "application/json; charset=utf-8",
+        data: request, 
+        processData: false,
+        contentType: false,
         success: function (data) { //la data es lo que resivimos del url que viene del controlador metodo GuardarUsuario
 
             /*debugger;*/
 
-            //USUARIO NUEVO
-            if (Libro.Id == 0) { // si usuarioID = 0 es que se va a agregar
+            //LIBRO NUEVO
+            if (Libro.Id == 0) { // si ID = 0 es que se va a agregar
 
-                if (data.resultado != 0) {
+                if (data.idGenerado != 0) {
 
                     tablaData.ajax.reload();
                     $("#FormModal").modal("hide");
-
                     Swal.fire('' + data.mensaje, '', 'success')
 
                 } else {
                     $("#mensajeError").text(data.mensaje);
                     $("#mensajeError").show();
-
                     Swal.fire('' + data.mensaje, '', 'error')
                 }
             }
             else { // editar
 
-                if (data.resultado) {
+                if (data.operacionExitosa) {
 
                     tablaData.ajax.reload();
+                    filaSeleccionada = null;
                     $("#FormModal").modal("hide");
-
                     Swal.fire('' + data.mensaje,'','success')
 
                 } else {
                     $("#mensajeError").text(data.mensaje);
-
                     $("#mensajeError").show();
 
                     Swal.fire('' + data.mensaje,'','error')
