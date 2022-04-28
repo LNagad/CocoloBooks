@@ -253,62 +253,74 @@ function Eliminar(json) {
         Id: json["Id"]
 
     }
-
-    jQuery.ajax({
-        url: '/Home/EliminarUsuario', /*@Url.Action("EliminarUsuario", "Home")*/
-        type: "POST",
-        //JSON.stringify( {usuario: Usuario } ) formatea el json y debemos pasarle el objeto y de donde
-        // los valores en este caso Usuario que es el objeto de arriba y usuario que es el parametro del controlador
-        data: JSON.stringify({ usuario: Usuario }), // parametro del metodo GuardarUsuario que es usuariox y se carga con el objeto Usuario
-        dataType: "json",
-        contentType: "application/json; charset=utf-8",
-        success: function (data) { //la data es lo que resivimos del url que viene del controlador metodo GuardarUsuario
-
-            /*debugger;*/
-
-            //USUARIO NUEVO
-            if (Usuario.Id == 0) { // si usuarioID = 0 es que se va a agregar
-
-                Swal.fire(
-                    '' + data.mensaje,
-                    '',
-                    'error'
-                )
-            }
-            else { // editar
-
-                if (data.resultado) {
-
-                    tablaData.ajax.reload()
-
-                    /*tablaData.row(filaSeleccionada).draw(false);*/
-                    filaSeleccionada = null;
-
-                    Swal.fire(
-                        '' + data.mensaje,
-                        '',
-                        'success'
-                    )
-
-                } else {
-                    $("#mensajeError").text(data.mensaje);
-
-                    $("#mensajeError").show();
-                    Swal.fire(
-                        'se jodio' + data.mensaje,
-                        '',
-                        'error'
-                    )
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+            jQuery.ajax({
+                url: '/Home/EliminarUsuario', /*@Url.Action("EliminarUsuario", "Home")*/
+                type: "POST",
+                //JSON.stringify( {usuario: Usuario } ) formatea el json y debemos pasarle el objeto y de donde
+                // los valores en este caso Usuario que es el objeto de arriba y usuario que es el parametro del controlador
+                data: JSON.stringify({ usuario: Usuario }), // parametro del metodo GuardarUsuario que es usuariox y se carga con el objeto Usuario
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) { //la data es lo que resivimos del url que viene del controlador metodo GuardarUsuario
+        
+                    /*debugger;*/
+        
+                    //USUARIO NUEVO
+                    if (Usuario.Id == 0) { // si usuarioID = 0 es que se va a agregar
+        
+                        Swal.fire(
+                            '' + data.mensaje,
+                            '',
+                            'error'
+                        )
+                    }
+                    else { // editar
+        
+                        if (data.resultado) {
+        
+                            tablaData.ajax.reload()
+        
+                            /*tablaData.row(filaSeleccionada).draw(false);*/
+                            filaSeleccionada = null;
+        
+                            Swal.fire(
+                                '' + data.mensaje,
+                                '',
+                                'success'
+                            )
+        
+                        } else {
+                            $("#mensajeError").text(data.mensaje);
+        
+                            $("#mensajeError").show();
+                            Swal.fire(
+                                'se jodio' + data.mensaje,
+                                '',
+                                'error'
+                            )
+                        }
+                    }
+                },
+                error: function (error) {
+                    console.log(error)
+                },
+                beforeSend: function () {
+        
                 }
-            }
-        },
-        error: function (error) {
-            console.log(error)
-        },
-        beforeSend: function () {
-
+            });
         }
-    });
+      })
+   
 
     $("#FormModal").modal("hide");
 }
@@ -358,8 +370,6 @@ $("#tablaUsuarios tbody").on("click", '.btn-eliminar', function () {
     //console.log(tablaData.row(filaSeleccionada).data())
 
     Eliminar(data)
-
-    tablaData.row(filaSeleccionada).remove();
 
 })
 

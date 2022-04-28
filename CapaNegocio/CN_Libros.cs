@@ -77,6 +77,12 @@ namespace CapaNegocio
 
         }
 
+        public bool GuardarDatosImagen(Libros libro, out string Mensaje)
+        {
+
+            return objCapaDato.GuardarDatosImagen(libro, out Mensaje);
+        }
+
         public bool Eliminar(int id, out string Mensaje)
         {
             return objCapaDato.Eliminar(id, out Mensaje);

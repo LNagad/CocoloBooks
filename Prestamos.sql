@@ -1,8 +1,5 @@
 use CocoBoLoBooks
 
-
-use CocoBoLoBooks;
-
 CREATE TABLE RentasLibros (
 	IdRenta int primary key identity,
 	IdLibro int references LIBROS(Id) NOT NULL,
@@ -41,14 +38,6 @@ begin
 		SET @Mensaje = 'Este libro ya se encuentra rentado'	
 end
 
-truncate table RentasLibros;
-UPDATE Libros set estado = 1;
-
-
-exec sp_registrarRenta @IdLibro = 2, @IdUsuario = 10, @FechaEntrega = '2022-04-30', 
-@ComisionEntregaTardia = 50, @Estado = 1, @Mensaje = ''
-
-
 create proc sp_ActualizarRenta
 (
 	@IdRenta int,
@@ -68,14 +57,6 @@ begin
 		end
 end
 
-drop proc sp_ActualizarRenta;
-
-
-select * from Libros where estado = 1;
-select * from USUARIOS where TipoUsuario = 1;
-
-drop view Rentas_view;
-select * from vw_rentas;
 
 CREATE VIEW vw_rentas
 	as
@@ -84,3 +65,20 @@ CREATE VIEW vw_rentas
 		FROM RentasLibros t1
 		INNER JOIN Libros t2 ON (t1.IdLibro = t2.Id)
 		INNER JOIN USUARIOS t3 ON (t1.IdUsuario = t3.Id);
+
+
+---COMANDOS DE TESTEOS, NO SON NECESARIOS EJECUTAR, CUIDADO
+truncate table RentasLibros;
+UPDATE Libros set estado = 1;
+
+
+exec sp_registrarRenta @IdLibro = 2, @IdUsuario = 10, @FechaEntrega = '2022-04-30', 
+@ComisionEntregaTardia = 50, @Estado = 1, @Mensaje = ''
+
+drop proc sp_ActualizarRenta;
+
+select * from Libros where estado = 1;
+select * from USUARIOS where TipoUsuario = 1;
+
+drop view Rentas_view;
+select * from vw_rentas;

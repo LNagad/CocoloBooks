@@ -134,6 +134,7 @@
     <Compile Include="Permisos\permisosUsuarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Scripts\Consulta\Consulta.js" />
+    <None Include="Scripts\jquery-2.1.0-vsdoc.js" />
     <Content Include="Scripts\Mantenimiento\Ciencias.js" />
     <Content Include="Scripts\Mantenimiento\Empleados.js" />
     <Content Include="Scripts\Mantenimiento\Idiomas.js" />
