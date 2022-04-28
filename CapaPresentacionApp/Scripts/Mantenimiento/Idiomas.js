@@ -150,36 +150,48 @@ function Eliminar(json) {
         Id: json["Id"]
 
     }
-
-    jQuery.ajax({
-        url: '/Mantenimiento/EliminarIdiomas', //@Url.Action("EliminarIdiomas", "Mantenimiento")
-        type: "POST",
-        data: JSON.stringify({ id: Idiomas.Id }), // parametro del metodo GuardarUsuario que es usuariox y se carga con el objeto Usuario
-        dataType: "json",
-        contentType: "application/json; charset=utf-8",
-        success: function (data) { //la data es lo que resivimos del url que viene del controlador metodo GuardarUsuario
-
-            if (data.resultado) {
-
-                /*tablaData.row(filaSeleccionada).draw(false);*/
-                tablaData.ajax.reload()
-                filaSeleccionada = null;
-
-                Swal.fire('' + data.mensaje, '', 'Eliminado de manera exitosa')
-
-            } else {
-
-                $("#mensajeError").text(data.mensaje);
-
-                $("#mensajeError").show();
-
-                Swal.fire('' + data.mensaje, '', 'error')
-            }
-        },
-        error: function (error) {
-            console.log(error)
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+            jQuery.ajax({
+                url: '/Mantenimiento/EliminarIdiomas', //@Url.Action("EliminarIdiomas", "Mantenimiento")
+                type: "POST",
+                data: JSON.stringify({ id: Idiomas.Id }), // parametro del metodo GuardarUsuario que es usuariox y se carga con el objeto Usuario
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) { //la data es lo que resivimos del url que viene del controlador metodo GuardarUsuario
+        
+                    if (data.resultado) {
+        
+                        /*tablaData.row(filaSeleccionada).draw(false);*/
+                        tablaData.ajax.reload()
+                        filaSeleccionada = null;
+        
+                        Swal.fire('' + data.mensaje, '', 'Eliminado de manera exitosa')
+        
+                    } else {
+        
+                        $("#mensajeError").text(data.mensaje);
+        
+                        $("#mensajeError").show();
+        
+                        Swal.fire('' + data.mensaje, '', 'error')
+                    }
+                },
+                error: function (error) {
+                    console.log(error)
+                }
+            });
         }
-    });
+      })
+   
 
     $("#FormModal").modal("hide");
 }

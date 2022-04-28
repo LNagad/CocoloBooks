@@ -12,7 +12,7 @@ CREATE TABLE [dbo].[Bibliografias](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Name] [nvarchar](25) NOT NULL,
 	[Description] [nvarchar](75) NOT NULL,
-	[Estado] [bit] NULL,
+	[Estado] [bit] default 1 NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
@@ -22,9 +22,4 @@ GO
 
 ALTER TABLE [dbo].[Bibliografias] ADD  DEFAULT ((1)) FOR [Estado]
 GO
-
-
--- Agregar nuevo campo a bibliografias (Importante)
-alter table Bibliografias
-ADD Estado bit default 1;
 

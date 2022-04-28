@@ -5,6 +5,7 @@ aspnet-mvc.gitignore
 # compiled source #
 ###################
 /bin
+/CapaPresentacionApp/FOTOS_LIBROS/
 /.vs
 /obj
 [Bb]in/
