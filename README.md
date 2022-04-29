@@ -35,12 +35,22 @@
 
 ## BASE DE DATOS
 
---IMG.BD
+![image](https://user-images.githubusercontent.com/74669208/166005400-d3161a64-c36e-47df-9ede-661a17065237.png)
 
 ## ANEXOS
-![image](https://user-images.githubusercontent.com/86993307/165434058-37e9dacb-3b36-44ea-9fd7-f235cdf6d1aa.png)
----------
-![image](https://user-images.githubusercontent.com/74669208/164947958-eb3feebe-bbbf-4eac-90db-211d70093979.png)
+
+
+![image](https://user-images.githubusercontent.com/74669208/166005524-e71c04ac-fec2-4f76-81db-38fc4eee0147.png)
+------------
+![image](https://user-images.githubusercontent.com/74669208/166005636-afd50aae-93f5-44ef-bd2d-4f23783c7c3b.png)
+------------
+![image](https://user-images.githubusercontent.com/74669208/166005799-a871024e-9a32-4809-81d4-7916db7cc974.png)
+------------
+![image](https://user-images.githubusercontent.com/74669208/166006242-02bd4a23-6fe6-4e10-bfcb-1c1181b1a259.png)
+------------
+![image](https://user-images.githubusercontent.com/74669208/166006277-d1b5d3e3-45ea-45ec-8727-f9c37db03a65.png)
+------------
+![image](https://user-images.githubusercontent.com/74669208/166006330-b723827f-665c-41f7-83be-85bf81e1ab00.png)
 ------------
 ![image](https://user-images.githubusercontent.com/74669208/164948030-debe0612-f056-4b26-a18e-71b8c2818020.png)
 ---------
@@ -52,6 +62,20 @@
 ---------
 ![image](https://user-images.githubusercontent.com/86993307/165433816-7feaa1f3-27d8-4853-a58e-02dc0e4e67ba.png)
 --------
+![image](https://user-images.githubusercontent.com/74669208/166006491-e3c3e4e1-c76f-4885-b0e5-b8c842dffe1a.png)
+## Rsponsive 
+![image](https://user-images.githubusercontent.com/74669208/166006798-5a980138-8e75-4741-9465-62a727ec48d3.png)
+--------
+![image](https://user-images.githubusercontent.com/74669208/166006844-37f5da0d-a17d-4739-aabe-6d625ff4687a.png)
+--------
+![image](https://user-images.githubusercontent.com/74669208/166006887-4dced089-b0f9-4a6f-90fc-c1b79ae4dc12.png)
+--------
+![image](https://user-images.githubusercontent.com/74669208/166006915-865ef082-a069-40b6-8564-a247feb9b42b.png)
+--------
+![image](https://user-images.githubusercontent.com/74669208/166006957-e57358f7-672f-430a-9e29-2bc6dcf573e2.png)
+--------
+![image](https://user-images.githubusercontent.com/74669208/166007443-c2dee456-d9a3-47aa-a9f4-22b3bfab3fd8.png)
+
 
 
 ## AGRADECIMIENTOS
