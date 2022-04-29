@@ -72,6 +72,7 @@ function abrirModal(json) {
 
             $("#cbxActivo").val(json.Estado == true ? 1 : 0)
 
+            
 
         } else {
 
@@ -99,7 +100,7 @@ function appendDiv(data) {
             <h2 class="mb-1 mt-5">Libro seleccionado: </h2>
             <div class= "d-flex">
                 <div class="w-30 col-sm-2 d-flex justify-content-center">
-                    <img class="card-img-top img_foto" style="width: 150px; " src="../Content/src/Books.png"  alt="..." />
+                    <img class="card-img-top img_foto" id="imgLibro" style="width: 150px; " src="../FOTOS_LIBROS/${data.NombreImagen}"  alt="..." />
                 </div>
                 <div class="d-flex flex-wrap justify-content-evenly">
                     <div class="col-sm-3 ms-1" hidden>
@@ -150,6 +151,25 @@ function appendDiv(data) {
         </div>`
 
     $(string).appendTo(".modal-body")
+
+    jQuery.ajax({
+        url: '/Libros/ImagenArchivo', /*@Url.Action("EliminarLibro", "Libros")*/
+        type: "POST",
+        data: JSON.stringify({ id: data.Id }), // parametro del metodo GuardarUsuario que es usuariox y se carga con el objeto Usuario
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        success: function (data) { //la data es lo que resivimos del url que viene del controlador metodo GuardarUsuario
+            console.log('llego')
+
+             if (data.resultado) {
+                $("#imgLibro").attr({"src": "data:image/" +data.extension +";base64,"+data.textoBase64});
+                }
+        },
+        error: function (error) {
+            console.log(error)
+            $("#mensajeError").text("Error al mostrar imagen");
+        },
+    });
 
 }
 
@@ -314,7 +334,7 @@ $("#tablaLibros tbody").on("click", '.btn-seleccionar', function () {
 
     tablita.clear().destroy();
     $("#tablaLibros").hide()
-
+    console.log(data)
     appendDiv(data)
 })
 

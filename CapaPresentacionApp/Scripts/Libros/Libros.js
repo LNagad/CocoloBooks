@@ -40,9 +40,7 @@ tablaData = $("#tablaLibros").DataTable
         "columns":
             [
                 { "data": "Nombre" },
-                { "data": "Bibliografia" },
-                { "data": "Autores" },
-                { "data": "Ciencia" },
+                { "data": "Descripcion" },
                 { "data": "Editora" },
                 { "data": "Idioma" },
                 {
@@ -291,7 +289,7 @@ function Guardar() {
         processData: false,
         contentType: false,
         success: function (data) { //la data es lo que resivimos del url que viene del controlador metodo GuardarUsuario
-
+            console.log(data)
             /*debugger;*/
 
             //LIBRO NUEVO

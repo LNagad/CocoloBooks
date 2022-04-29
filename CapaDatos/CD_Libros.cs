@@ -277,6 +277,7 @@ namespace CapaDatos
                     if (cmd.ExecuteNonQuery() > 0 )
                     {
                         resultado = true;
+                        Mensaje = "Registro insertado exitosamente!";
                     } 
                     else
                     {

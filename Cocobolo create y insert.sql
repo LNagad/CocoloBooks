@@ -62,7 +62,7 @@ Estado bit default 1 not null,
 CREATE TABLE Libros(
 	Id int primary key IDENTITY NOT NULL,
 	[SignaturaTopografica] nvarchar(75) NOT NULL,
-	[Nombre] nvarchar(75) NOT NULL,
+	[Nombre] VARCHAR(500) NOT NULL,
 	[ISBN] decimal NOT NULL,
 	[Descripcion] nvarchar(500) NOT NULL,
 	[AutorId] int references Autores(Id) NOT NULL,
@@ -75,6 +75,7 @@ CREATE TABLE Libros(
 	[year] nvarchar (75) NOT NULL,
 	[Estado] int default 1 NOT NULL,
 )
+
 
 ------------------------------------views
 CREATE VIEW vw_libros

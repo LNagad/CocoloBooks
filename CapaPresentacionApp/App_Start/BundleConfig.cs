@@ -32,7 +32,7 @@ namespace CapaPresentacionAdmin
                         "~/Scripts/DataTables/jquery.dataTables.js",
                         "~/Scripts/DataTables/jquery.dataTables.responsive.js",
                         "~/Scripts/fontawesome/all.min.js",
-                        "~/Scripts/scripts.js"));
+                        "~/Scripts/scripts2.js"));
 
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
